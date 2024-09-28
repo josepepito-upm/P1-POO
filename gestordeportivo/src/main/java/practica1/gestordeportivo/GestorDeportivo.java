@@ -1,6 +1,6 @@
 package practica1.gestordeportivo;
 
-public class Main {
+public class GestorDeportivo {
     public static void main(String[] args) {
         System.out.println("Hello world!");
     }
