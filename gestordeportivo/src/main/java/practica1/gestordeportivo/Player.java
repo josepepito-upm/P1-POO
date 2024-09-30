@@ -1,5 +1,11 @@
 package practica1.gestordeportivo;
 
 public class Player {
-    System.out.println("prueba");
+    private String player;
+    private double score;
+
+    public String player(String name) {
+        this.name = name;
+        score = 0.0;
+    }
 }
