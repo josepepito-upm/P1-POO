@@ -14,10 +14,10 @@ Implementación de la primera práctica de POO hecha por alejandro Rosado, Mario
 
 - Player.java: Creación y uso de un jugador en la app ( algo como Player player(nombre, puntuación); ) 
     *TODO:*
-    * Incluir todas las funcionalidades que se requieren (clase con nombre y puntuación) [] 
-    * Nombre único y requerido por el usuario. La puntuación se añadiría después (A lo mejor establecer una puntuación mínima de base?) []
-    * funcion que establezca la puntuación (float mínimo -999999.0) []
-
+    * Incluir todas las funcionalidades que se requieren (clase con nombre y puntuación) [*] 
+    * Nombre único y requerido por el usuario. La puntuación se añadiría después (A lo mejor establecer una puntuación mínima de base?) [*]
+    * funcion que establezca la puntuación (float mínimo -999999.0) [*]
+    * toString []
 - PlayerList.java: Lista de jugadores en el sistema
     *TODO:*
     * toString: imprime los jugadores presentes en el sistema (lista)[] 
