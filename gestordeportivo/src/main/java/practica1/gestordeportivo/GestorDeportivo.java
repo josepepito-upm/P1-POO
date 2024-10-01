@@ -4,7 +4,7 @@ public class GestorDeportivo {
     public static void main(String[] args) {
         System.out.println("Hello world!");
 
-        Player player = new Player(Luisa);
+        Player player = new Player("Luisa");
 
     }
 }

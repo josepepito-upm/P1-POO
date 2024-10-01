@@ -1,11 +1,11 @@
 package practica1.gestordeportivo;
 
 public class Player {
-    private String player;
+    private String name;
     private double score;
 
-    public String player(String name) {
+    public Player(String name) {
         this.name = name;
-        score = 0.0;
+        score = Integer.MIN_VALUE;
     }
 }
