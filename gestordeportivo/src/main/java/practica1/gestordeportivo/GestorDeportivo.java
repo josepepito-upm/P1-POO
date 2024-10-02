@@ -5,6 +5,9 @@ public class GestorDeportivo {
         System.out.println("Hello world!");
 
         Player player = new Player("Luisa");
+        PlayerList playerList = new PlayerList(player);
+        Player p2 = new Player("Paco");
+        playerList.addPlayer(p2);
 
     }
 }
