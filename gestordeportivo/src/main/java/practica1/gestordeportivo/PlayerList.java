@@ -1,6 +1,18 @@
 package practica1.gestordeportivo;
-import java.util.LinkedList;
+
 
 public class PlayerList {
+
+private Player[] players;
+int elems;
+
+public PlayerList(Player player) {
+   this.players = new Player[] {player};
+}
+
+public void addPlayer (Player player) {
+    
+}
+
 
 }
