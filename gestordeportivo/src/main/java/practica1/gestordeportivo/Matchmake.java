@@ -2,16 +2,18 @@ package practica1.gestordeportivo;
 
 public class Matchmake {
 
-    private Player[] matchmake;
+    Player p1;
+    Player p2;
 
-    public Matchmake(Player player1, Player player2) {
-        this.matchmake = new Player[2];
-        this.matchmake[0] = player1;
-        this.matchmake[1] = player2;
+    public Matchmake(Player p1, Player p2) {
+        this.p1 = p1;
+            p1.setMatchmaking();
+        this.p2 = p2;
+            p2.setMatchmaking();        
     }
 
     public String toString() {
-        return matchmake[0].getName() + " vs " + matchmake[1].getName();
+        return p1.getName() + "(" + p1.getScore() + ") vs. " + p2.getName() + "(" + p2.getScore() + ")";
     }
     
 }
