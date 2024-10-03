@@ -7,9 +7,9 @@ public class Matchmake {
 
     public Matchmake(Player p1, Player p2) {
         this.p1 = p1;
-            p1.setMatchmaking();
+            p1.setMatchmakingTrue();
         this.p2 = p2;
-            p2.setMatchmaking();        
+            p2.setMatchmakingTrue();        
     }
 
     public String toString() {

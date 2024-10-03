@@ -30,8 +30,12 @@ public class Player {
         this.score = score;
     }
 
-    public void setMatchmaking () {
+    public void setMatchmakingTrue () {
         matched = true;
+    }
+
+    public void setMatchmakingFalse() {
+        matched = false;
     }
 
     public boolean getStatus() {
