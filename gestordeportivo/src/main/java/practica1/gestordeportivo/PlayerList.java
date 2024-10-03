@@ -59,6 +59,9 @@ public void show() {
    }
 }
 
+public void rank()  {
+   
+}
 
 
 }

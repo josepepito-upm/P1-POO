@@ -11,7 +11,9 @@ public class GestorDeportivo {
         Player p2 = new Player("Paco");
         playerList.add(p2);
 
-        playerList.showPlayers();
+        playerList.show();
+
+        
 
     }
 }
