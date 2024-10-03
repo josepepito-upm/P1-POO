@@ -4,6 +4,11 @@ public class PlayerList {
 private Player[] players;
 private int size;
 
+public PlayerList() {
+   size = 10;  
+   players = new Player[size];
+}
+
 public PlayerList(Player player) {
     size = 10;  
     players = new Player[size];
@@ -65,6 +70,15 @@ public void show() {
 
 public void rank()  {
    
+}
+
+public boolean exists(String name) {
+   for (Player player : players) {
+       if (player != null && player.getName().equals(name)) {
+           return true;
+       }
+   }
+   return false;
 }
 
 

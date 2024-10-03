@@ -6,17 +6,27 @@ public class Manager {
     public Manager() {
         playerList = new PlayerList();
         matchmakeList = new MatchmakeList();
+
+        playerList.add(new Player("Luisa", 4.5));
+        playerList.add(new Player("Manuel", 2.7));
+        playerList.add(new Player("Kurt", 4.0));
+        playerList.add(new Player("Sofia", 3.8));
+        playerList.add(new Player("Robert", 3.8));
     }
     
-    public void addPlayer(String name){
-        Player player = new Player (name);
-        PlayerList.add(player);
+    public void createPlayer(String name) {
+        if (!playerList.exists(name)) {
+            playerList.add(new Player(name));
+            System.out.println("Jugador " + name + " creado.");
+        } else {
+            System.out.println("El jugador ya existe.");
+        }
     }
 
-    public void removePlayer(String name) {
-        Player player = playerList.findPlayerByName(name);
-        if (player != null) {
+    public void removePlayer(Player player) {
+        if (playerList.exists(player.getName())) {
             playerList.remove(player);
+            System.out.println("Jugador " + player + " eliminado.");
         } else {
             System.out.println("Jugador no encontrado.");
         }
