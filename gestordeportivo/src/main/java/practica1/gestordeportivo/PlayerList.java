@@ -11,7 +11,7 @@ public PlayerList(Player player) {
     players[0] = player;
 }
 
-public void addPlayer (Player player) {
+public void add(Player player) {
    int count = 0; boolean added = false; 
    while(count < players.length && !added) {  
       assert players[count] != player : "ERROR: player already added.";
@@ -27,7 +27,7 @@ public void addPlayer (Player player) {
    this.resize(count);   
 }
 
-public void removePlayer (Player player) {
+public void remove(Player player) {
    int count = players.length; boolean removed = false;
 
    while (count > 0 && !removed) {
@@ -39,7 +39,7 @@ public void removePlayer (Player player) {
 
 }
 
-private void resize (int index) {
+private void resize(int index) {
    if (index == players.length) {
       int aux = size + 10;
       Player[] auxPlayers = new Player[aux];
@@ -53,6 +53,11 @@ private void resize (int index) {
    }
 }
 
+public void show() {
+   for (int i = 0; i < players.length && (players[i] != null); i++) {
+      System.out.println(players[i]);
+   }
+}
 
 
 

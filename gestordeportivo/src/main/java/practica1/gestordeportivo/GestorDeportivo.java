@@ -1,13 +1,17 @@
 package practica1.gestordeportivo;
+import java.io.Console;
 
 public class GestorDeportivo {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        Console console = System.console();
 
         Player player = new Player("Luisa");
         PlayerList playerList = new PlayerList(player);
         Player p2 = new Player("Paco");
-        playerList.addPlayer(p2);
+        playerList.add(p2);
+
+        playerList.showPlayers();
 
     }
 }
