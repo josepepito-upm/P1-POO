@@ -7,7 +7,7 @@ private int size;
 
 public PlayerList(Player player) {
     size = 10;  
-    this.players = new Player[size];
+    players = new Player[size];
     players[0] = player;
 }
 
