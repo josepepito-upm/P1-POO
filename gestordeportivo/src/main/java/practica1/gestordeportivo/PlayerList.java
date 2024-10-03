@@ -1,5 +1,4 @@
 package practica1.gestordeportivo;
-
 public class PlayerList {
 
 private Player[] players;

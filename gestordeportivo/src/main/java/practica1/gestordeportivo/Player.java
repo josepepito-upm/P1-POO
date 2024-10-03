@@ -7,8 +7,8 @@ public class Player {
     private boolean matched;
 
     public Player(String name) {
-        assert !name.isBlank() &&
-                name.length() >= 3 &&
+        assert !name.isBlank() && 
+                name.length() >= 2 && 
                 Character.isUpperCase(name.charAt(0)) && 
                 !name.matches(".*\\d.*") :
                 "ERROR: formato incorrecto en el nombre especificcado. ";
