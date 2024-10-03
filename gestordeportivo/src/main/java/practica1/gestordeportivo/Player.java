@@ -4,14 +4,17 @@ public class Player {
 
     private String name;
     private double score;
+    private boolean matched;
 
     public Player(String name) {
-        assert !(name.isBlank()) &&
-                name.length() > 3 &&
-                Character.isUpperCase(name.charAt(0)) :
+        assert !name.isBlank() &&
+                name.length() >= 3 &&
+                Character.isUpperCase(name.charAt(0)) && 
+                !name.matches(".*\\d.*") :
                 "ERROR: formato incorrecto en el nombre especificcado. ";
         this.name = name;
         score = 0.0;
+        matched = false;
     }
 
     public String getName() {
@@ -27,6 +30,7 @@ public class Player {
         this.score = score;
     }
 
+    public void setMatchmaking ()
     public String toString() {
         return "Usuario : " + this.name + ". Puntuación: " + this.score;
     }
