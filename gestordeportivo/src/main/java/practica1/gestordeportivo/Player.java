@@ -17,6 +17,16 @@ public class Player {
         matched = false;
     }
 
+    /* lo pongo x aki para no sobreescribir el otro pero no sería mejor así?
+    public Player(String name) {
+        assert !(name.isBlank() || name.length() <= 3 || !Character.isUpperCase(name.charAt(0))) : 
+            "ERROR: formato incorrecto en el nombre especificado.";
+        
+        this.name = name;
+        this.score = 0.0;
+    }
+     */
+
     public String getName() {
         return name;
     }
