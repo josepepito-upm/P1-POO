@@ -1,6 +1,5 @@
 package practica1.gestordeportivo;
 import java.io.Console;
-import java.util.Scanner;
 
 public class GestorDeportivo {
     public static void main(String[] args) {
@@ -19,6 +18,13 @@ public class GestorDeportivo {
         playerList.add(p2);
 
         playerList.show();
+
+        MatchmakeList matchmakes = new MatchmakeList();
+
+        matchmakes.match(player, p2);
+        matchmakes.match(player, p2);
+        matchmakes.show();
+        System.out.println(matchmakes.getNumMatchamakes());
 
     }
 }

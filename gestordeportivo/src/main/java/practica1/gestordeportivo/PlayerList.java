@@ -3,10 +3,13 @@ public class PlayerList {
 
 private Player[] players;
 private int size;
+private int numPlayers;
+private boolean added;
 
 public PlayerList() {
    size = 10;  
    players = new Player[size];
+   added = false;
 }
 
 public PlayerList(Player player) {
@@ -16,33 +19,30 @@ public PlayerList(Player player) {
 }
 
 public void add(Player player) {
-   int count = 0; 
-   boolean added = false; 
    
-   while(count < players.length && !added) {  
-      assert players[count] != player : "ERROR: el jugador ya ha sido añadido.";
+   while(numPlayers < players.length && !added) {  
+      assert players[numPlayers] != player : "ERROR: el jugador ya ha sido añadido.";
       
-      if(players[count] == null) {
-         players[count] = player;
+      if(players[numPlayers] == null) {
+         players[numPlayers] = player;
          added = true;
       }
 
-      count++;
+      numPlayers++;
    }
 
-   this.resize(count);   
+   this.resize(numPlayers);   
 }
 
 public void remove(Player player) {
-   int count = players.length; 
    boolean removed = false;
 
-   while (count > 0 && !removed) {
-      if (players[count] == player) {
-         players[count] = null;
+   while (numPlayers > 0 && !removed) {
+      if (players[numPlayers] == player) {
+         players[numPlayers] = null;
          removed = true;         
       }
-      count--;
+      numPlayers--;
    }
 
    assert removed : "ERROR: jugador no encontrado.";
@@ -63,7 +63,7 @@ private void resize(int index) {
 }
 
 public void show() {
-   for (int i = 0; i < players.length && (players[i] != null); i++) {
+   for (int i = 0; i < numPlayers; i++) {
       System.out.println(players[i]);
    }
 }
@@ -81,5 +81,8 @@ public boolean exists(String name) {
    return false;
 }
 
+public int getNumPlayers() {
+   return numPlayers;
+}
 
 }

@@ -4,25 +4,23 @@ public class MatchmakeList {
 
     private Matchmake[] matchmakes;
     private int size;
+    private int numMatchmakes;
     
     public MatchmakeList() {
         size = 5;
         matchmakes = new Matchmake[size];
     }
 
-    public void add(Player p1, Player p2) {
-        int count = 0;
+    public void match(Player p1, Player p2) {
 
-        assert p1.getStatus() == true && p2.getStatus() == true : "ERROR: uno de los jugadores ya está emparejado.";
-        while(count < matchmakes.length) {
-            if(matchmakes[count] == null) {
-                matchmakes[count] = new Matchmake(p1, p2);
-                p1.setMatchmakingTrue();
-                p2.setMatchmakingTrue();
+        assert p1.getStatus() == false && p2.getStatus() == false : "ERROR: uno de los jugadores ya está emparejado.";
+        while(numMatchmakes < matchmakes.length && !p1.getStatus() && !p1.getStatus()) {
+            if(matchmakes[numMatchmakes] == null) {
+                matchmakes[numMatchmakes] = new Matchmake(p1, p2);
             }
-            count++;
+            numMatchmakes++;
         }
-        this.resize(count);
+        this.resize(numMatchmakes);
     }
 
     private void resize(int index) {
@@ -39,18 +37,29 @@ public class MatchmakeList {
      }
 
     public void show() {
-        for (int i = 0; i < matchmakes.length; i++) {
+        for (int i = 0; i < numMatchmakes; i++) {
             System.out.println(matchmakes[i]);
         }
     }
 
     public void clear() {
-        matchmakes = null;
+        for (int i = 0; i < matchmakes.length; i++) {
+            matchmakes[i] = null;
+        }
+        numMatchmakes = 0;
+    }
+
+    public int getNumMatchamakes() {
+        return numMatchmakes;
     }
 
     public void random() {
-        for (int i = 0; i < matchmakes.length; i++) {
+        assert players.getNumPlayers() % 2 != 0 : "ERROR: número de jugadores impar.";
+
+        clear();
+        while(numMatchmakes != players.getNumPlayers()/2) {
+            matchmakes.add(players[(int)(Math.random()*numPlayers)], players[(int)(Math.random()*numPlayers)]);
+            numMatchmakes++;
         }
-        assert .... % 2 != 0 : "ERROR: número de jugadores impar.";
     }
 }

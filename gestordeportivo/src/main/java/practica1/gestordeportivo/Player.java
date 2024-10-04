@@ -42,11 +42,11 @@ public class Player {
         this.score = score;
     }
 
-    public void setMatchmakingTrue () {
+    public void setMatchedTrue () {
         matched = true;
     }
 
-    public void setMatchmakingFalse() {
+    public void setMatchedFalse() {
         matched = false;
     }
 
