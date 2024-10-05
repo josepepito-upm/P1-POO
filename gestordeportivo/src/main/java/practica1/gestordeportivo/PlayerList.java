@@ -37,12 +37,12 @@ public void add(Player player) {
    this.resize();   
 }
 
-public void remove(Player player) {
+public void remove(String name) {
    boolean removed = false;
    int count = players.length - 1;
 
    while (count > 0 && !removed) {
-      if (players[numPlayers] == player) {
+      if (players[count].getName() == name) {
          players[numPlayers] = null;
          removed = true;         
          numPlayers--;
@@ -101,5 +101,20 @@ public Player[] getPlayers() {
    return players;
 }
 
+public Player getPlayer(String name) {
+   boolean found = false;
+   int i = 0;
+
+   while(i < players.length && !found) {
+      if(players[i].getName().equals(name)) {
+         found = true;
+         return players[i];
+      }
+
+   }
+
+   assert found : "ERROR: jugador no encontrado. ";
+   return null;
+}
 
 }
