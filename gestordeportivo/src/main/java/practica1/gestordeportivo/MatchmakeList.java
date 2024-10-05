@@ -56,20 +56,27 @@ public class MatchmakeList {
         return numMatchmakes;
     }
 
-    public void random() {
-        
-        /** Rubén: De esto se encarga Alex:
-         * 
-         *  assert players.getNumPlayers() % 2 != 0 : "ERROR: número de jugadores impar.";
+    public void random(PlayerList playerList) {
 
-            clear();
-            while (numMatchmakes != players.getNumPlayers() / 2) {
-                matchmakes.add(players[(int) (Math.random() * numPlayers)], players[(int) (Math.random() * numPlayers)]);
-                numMatchmakes++;
-            }
-         * 
-         * 
-         * 
-        */
+        Player[] allPlayers = playerList.getPlayers();
+        int pos1, pos2;
+    
+        assert playerList.getNumPlayers() % 2 == 0 : "ERROR: número de jugadores impar.";
+
+        clear();
+        for (int i = 0; i < playerList.getNumPlayers()/2; i++) {
+            do { 
+                pos1 = (int)(Math.random()*playerList.getNumPlayers());
+            } while (allPlayers[pos1].getStatus() != true);
+            allPlayers[pos1].setMatchmaking(true);
+
+            do { 
+                pos2 = (int)(Math.random()*playerList.getNumPlayers());
+            } while (allPlayers[pos2].getStatus() != true && pos2 != pos1);
+            allPlayers[pos2].setMatchmaking(true);
+    
+            match(allPlayers[pos1], allPlayers[pos2]);
+        }
+        numMatchmakes = playerList.getNumPlayers()/2;
     }
 }

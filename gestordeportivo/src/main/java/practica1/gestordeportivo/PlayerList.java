@@ -81,10 +81,12 @@ public void rank()  {
    }
 }
 
-
-
 public int getNumPlayers() {
    return numPlayers;
+}
+
+public Player[] getPlayers() {
+   return players;
 }
 
 }
