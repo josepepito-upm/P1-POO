@@ -1,15 +1,21 @@
 package practica1.gestordeportivo;
 
 public class Matchmake {
-
-    Player p1;
-    Player p2;
+    
+    //he dejado esto en privado por temas de seguridad. Si veo que lo encesitamos para algo más entonces lo cambio 
+    private Player p1;
+    private Player p2;
 
     public Matchmake(Player p1, Player p2) {
         this.p1 = p1;
-            p1.setMatchedTrue();
+            p1.setMatchmaking(true);
         this.p2 = p2;
-            p2.setMatchedTrue();        
+            p2.setMatchmaking(true);        
+    }
+
+    public void unmatch () {
+        p1.setMatchmaking(false);
+        p2.setMatchmaking(false);
     }
 
     public String toString() {

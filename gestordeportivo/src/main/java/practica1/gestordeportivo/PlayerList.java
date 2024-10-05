@@ -19,8 +19,10 @@ public PlayerList(Player player) {
 }
 
 public void add(Player player) {
+   boolean added = false; 
+   int count = 0; 
    
-   while(numPlayers < players.length && !added) {  
+   while(count < players.length && !added) {  
       assert players[numPlayers] != player : "ERROR: el jugador ya ha sido añadido.";
       
       if(players[numPlayers] == null) {
@@ -29,7 +31,7 @@ public void add(Player player) {
          numPlayers++;
       }
 
-      numPlayers++;
+      count++;
    }
 
    this.resize();   
@@ -37,14 +39,15 @@ public void add(Player player) {
 
 public void remove(Player player) {
    boolean removed = false;
+   int count = players.length;
 
-   while (numPlayers > 0 && !removed) {
+   while (count > 0 && !removed) {
       if (players[numPlayers] == player) {
          players[numPlayers] = null;
          removed = true;         
          numPlayers--;
       }
-      numPlayers--;
+      count--;
    }
 
    assert removed : "ERROR: jugador no encontrado.";
@@ -71,7 +74,11 @@ public void show() {
 }
 
 public void rank()  {
-   
+   Player[] playersAux = players;
+
+   for (int i = 0; i < playersAux.length; i++) {
+      
+   }
 }
 
 
