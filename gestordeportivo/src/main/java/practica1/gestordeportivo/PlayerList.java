@@ -1,4 +1,7 @@
 package practica1.gestordeportivo;
+
+import java.lang.reflect.Array;
+
 public class PlayerList {
 
 private Player[] players;
@@ -39,7 +42,7 @@ public void add(Player player) {
 
 public void remove(Player player) {
    boolean removed = false;
-   int count = players.length;
+   int count = players.length - 1;
 
    while (count > 0 && !removed) {
       if (players[numPlayers] == player) {
@@ -75,10 +78,22 @@ public void show() {
 
 public void rank()  {
    Player[] playersAux = players;
-
-   for (int i = 0; i < playersAux.length; i++) {
+   Player auxPlayer;
+   for (int i = 1; i < playersAux.length; i++) {
+      int point = i;
+      auxPlayer = playersAux[i];
       
+      while (point > 0 && playersAux[point - 1].getScore() < auxPlayer.getScore()) {
+         playersAux[point] = playersAux[point - 1];
+         
+         point--;
+      }
+      playersAux[point] = auxPlayer;      
    }
+
+   for (int i = 0; i < playersAux.length; i++) 
+      System.out.println(i+1 + "º" + playersAux[i].toString());
+   
 }
 
 public int getNumPlayers() {
@@ -88,5 +103,6 @@ public int getNumPlayers() {
 public Player[] getPlayers() {
    return players;
 }
+
 
 }
