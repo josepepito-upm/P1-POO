@@ -4,19 +4,11 @@ public class PlayerList {
 private Player[] players;
 private int size;
 private int numPlayers;
-<<<<<<< HEAD
-private boolean added;
-=======
->>>>>>> e11f5ee (cambios que hice ayer y no subí)
 
 public PlayerList() {
    size = 10;  
    players = new Player[size];
-<<<<<<< HEAD
-   added = false;
-=======
    numPlayers = 0;
->>>>>>> e11f5ee (cambios que hice ayer y no subí)
 }
 
 public PlayerList(Player player) {
@@ -40,11 +32,7 @@ public void add(Player player) {
       numPlayers++;
    }
 
-<<<<<<< HEAD
-   this.resize(numPlayers);   
-=======
    this.resize();   
->>>>>>> e11f5ee (cambios que hice ayer y no subí)
 }
 
 public void remove(Player player) {

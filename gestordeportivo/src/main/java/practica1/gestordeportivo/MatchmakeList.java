@@ -14,17 +14,11 @@ public class MatchmakeList {
     public void match(Player p1, Player p2) {
 
         assert p1.getStatus() == false && p2.getStatus() == false : "ERROR: uno de los jugadores ya está emparejado.";
-<<<<<<< HEAD
-        while(numMatchmakes < matchmakes.length && !p1.getStatus() && !p1.getStatus()) {
-            if(matchmakes[numMatchmakes] == null) {
-                matchmakes[numMatchmakes] = new Matchmake(p1, p2);
-=======
         while(count < matchmakes.length) {
             if(matchmakes[count] == null) {
                 matchmakes[count] = new Matchmake(p1, p2);
                p1.setMatchmaking(true); 
                p2.setMatchmaking(true); 
->>>>>>> e11f5ee (cambios que hice ayer y no subí)
             }
             numMatchmakes++;
         }

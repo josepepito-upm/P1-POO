@@ -30,20 +30,10 @@ public class Player {
         this.score = score;
     }
 
-<<<<<<< HEAD
-    public void setMatchedTrue () {
-        matched = true;
-    }
-
-    public void setMatchedFalse() {
-        matched = false;
-    }
-=======
     public void setMatchmaking(boolean stat) {
         matched = stat;
     }
 
->>>>>>> e11f5ee (cambios que hice ayer y no subí)
 
     public boolean getStatus() {
         return matched;
