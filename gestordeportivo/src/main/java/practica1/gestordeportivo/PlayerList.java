@@ -1,7 +1,4 @@
 package practica1.gestordeportivo;
-
-import java.lang.reflect.Array;
-
 public class PlayerList {
 
 private Player[] players;
