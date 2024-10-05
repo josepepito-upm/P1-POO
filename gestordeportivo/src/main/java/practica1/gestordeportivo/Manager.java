@@ -7,19 +7,12 @@ public class Manager {
         playerList = new PlayerList();
         matchmakeList = new MatchmakeList();
 
-        playerList.add(new Player("Luisa", 4.5));
-        playerList.add(new Player("Manuel", 2.7));
-        playerList.add(new Player("Kurt", 4.0));
-        playerList.add(new Player("Sofia", 3.8));
-        playerList.add(new Player("Robert", 3.8));
     }
     
     public void createPlayer(String name) {
         if (!playerList.exists(name)) {
             playerList.add(new Player(name));
             System.out.println("Jugador " + name + " creado.");
-        } else {
-            System.out.println("El jugador ya existe.");
         }
     }
 
@@ -35,4 +28,20 @@ public class Manager {
     public void showPlayers() {
         playerList.show();
     }
+    
+    
+    /**
+     * A grosso modo mi idea 
+     * 
+     * public void command (String string) {
+     *   switch (String.contains(string)) {
+     *       case "add": playerList.add(string.split(" "));
+     *       case ... : 
+     *          ...
+     *      si no: "ERROR: comando no especificado. "           
+     *  }
+     * }
+     * 
+     */
+    
 }
