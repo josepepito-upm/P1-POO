@@ -99,17 +99,16 @@ public Player[] getPlayers() {
 }
 
 public Player getPlayer(String name) {
-   boolean found = false;
+   Player foundPlayer = null;
    int i = 0;
-
-   while(i < players.length && !found) {
-      if(players[i].getName().equals(name)) {
-         found = true;
-         return players[i];
-      }
+   while (i < numPlayers && foundPlayer == null) {
+       if (players[i].getName().equals(name)) {
+           foundPlayer = players[i];
+       }
+       i++;
    }
-   assert found : "ERROR: jugador no encontrado. ";
-   return null;
+   assert foundPlayer != null : "ERROR: jugador no encontrado.";
+   return foundPlayer;
 }
 
 }
