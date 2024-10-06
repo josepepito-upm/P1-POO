@@ -61,29 +61,31 @@ public class MatchmakeList {
         return numMatchmakes;
     }
 
+
     public void random(PlayerList playerList) {
-
         Player[] allPlayers = playerList.getPlayers();
-        int pos1, pos2;
-    
-        assert playerList.getNumPlayers() % 2 == 0 : "ERROR: número de jugadores impar.";
-
+        int numPlayers = playerList.getNumPlayers();
+        
         clear();
-        for (int i = 0; i < playerList.getNumPlayers()/2; i++) {
-            do { 
-                pos1 = (int)(Math.random() * playerList.getNumPlayers());
-            } while (allPlayers[pos1].getMatched() == true);
+        
+        assert numPlayers >= 2 : "ERROR: no hay suficientes jugadores desemparejados para emparejar.";
+        assert numPlayers % 2 == 0 : "ERROR: número de jugadores desemparejados impar.";
 
-            allPlayers[pos1].setMatched(true);
+        int numNewMatches = numPlayers / 2;
+        for (int i = 0; i < numNewMatches; i++) {
+            int pos1, pos2;
+             
+            do { 
+                pos1 = (int)(Math.random() * numPlayers);
+            } while (allPlayers[pos1] == null || allPlayers[pos1].getMatched());
 
             do { 
-                pos2 = (int)(Math.random() * playerList.getNumPlayers());
-            } while (allPlayers[pos2].getMatched() == true || pos2 == pos1);
+                pos2 = (int)(Math.random() * numPlayers);
+            } while (allPlayers[pos2] == null || allPlayers[pos2].getMatched() || pos2 == pos1);
             
-            allPlayers[pos2].setMatched(true);
-    
             match(allPlayers[pos1], allPlayers[pos2]);
         }
-        numMatchmakes = playerList.getNumPlayers()/2;
+        
+        System.out.println("Emparejamiento aleatorio completado. " + numNewMatches + " nuevos emparejamientos creados.");
     }
 }
