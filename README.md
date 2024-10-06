@@ -7,7 +7,7 @@ Implementación de la primera práctica de POO. Contiene todas las funcionalidad
 
 -Alejandro Rosado Gómez (bu0417) al.rosad@alumnos.upm.es
 
--Mario Reyes Morales (matricula) correo
+-Mario Reyes Morales (matricula) mario.reyes@alumnos.upm.es
 
 -Rubén Nuño Peña (matricula) correo
 
@@ -16,8 +16,4 @@ Implementación de la primera práctica de POO. Contiene todas las funcionalidad
 
 *AUTOEVALUACIÓN:*
 
--Alejandro: (nota)
-
--Mario: (nota)
-
--Rubén: (nota)
+Nota final: "7"
