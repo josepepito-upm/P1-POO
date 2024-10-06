@@ -4,7 +4,6 @@ import java.io.Console;
 public class GestorDeportivo {
     public static void main(String[] args) {
         Console console = System.console();
-        Manager manager = new Manager();
         MatchmakeList matchmakes = new MatchmakeList();
         PlayerList playerList = new PlayerList();
 
@@ -25,6 +24,8 @@ public class GestorDeportivo {
         playerList.add(p3);
         playerList.add(p4);
         playerList.add(p5);
+
+        Manager manager = new Manager(playerList, matchmakes);
         
         String command = console.readLine("Introduzca un comando disponible: ");
         while (!command.equalsIgnoreCase("exit")) {

@@ -39,7 +39,7 @@ public class Player {
     }
 
     public String toString() {
-        return "Usuario: " + this.name + ". Puntuación: " + this.score;
+        return "Usuario: " + this.name + ". Puntuación: " + this.score + ". Estado: " + matched;
     }
 
 }

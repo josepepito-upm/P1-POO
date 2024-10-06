@@ -8,6 +8,11 @@ public class Manager {
         matchmakeList = new MatchmakeList();
 
     }
+
+    public Manager(PlayerList player_list, MatchmakeList matchmake_list) {
+        playerList = player_list;
+        matchmakeList = matchmake_list;
+    }
     
     public void Commands (String command) {
         String action[] = command.split(" ");
