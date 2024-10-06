@@ -28,6 +28,7 @@ public class GestorDeportivo {
         
         String command = console.readLine("Introduzca un comando disponible: ");
         while (!command.equalsIgnoreCase("exit")) {
+            manager.Commands(command);
             command = console.readLine("Introduzca otro comando o 'exit' para salir: ");
         }
 
