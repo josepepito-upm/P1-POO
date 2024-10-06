@@ -20,11 +20,14 @@ public class Manager {
         switch (action[0]) {
             case "create":
                 playerList.add(new Player(action[1]));
+                System.out.println("Jugador '" + action[1] + "' creado.");
                 break;
             case "remove":
                 playerList.remove(action[1]);
+                System.out.println("Jugador '" + action[1] + "' borrado.");
                 break;
             case "show":
+                System.out.println("> JUGADORES EN EL SISTEMA <");
                 playerList.show();
                 break;
             case "score":
@@ -32,6 +35,7 @@ public class Manager {
                 playerList.getPlayer(aux[0]).setScore(Float.parseFloat(aux[1]));
                 break;
             case "rank":
+                System.out.println("> RANKING DE JUGADORES EN EL SISTEMA (mayor a menor puntuación) <");
                 playerList.rank();
                 break;
             case "show_matchmake":
@@ -42,9 +46,11 @@ public class Manager {
             case "matchmake":
                 String aux2[] = action[1].split(";");
                 matchmakeList.match(playerList.getPlayer(aux2[0]), playerList.getPlayer(aux2[1]));
+                System.out.println("Emparejamiento entre '" + action[0] + "' y '" + action[1] + "' creado.");
                 break;
             case "random_matchmake":
                 matchmakeList.random(playerList);
+                System.out.println("Emparejamiento aleatorio hecho.");
                 break;
             case "help":
                 System.out.println("--------------------------- COMANDOS DISPONIBLES -----------------------------");
@@ -57,8 +63,6 @@ public class Manager {
                 System.out.println(" clear_matchmake:                                    Borra los emparejamientos");
                 System.out.println(" matchmake [player1];[player2]:        Crea emparejamiento entre dos jugadores");
                 System.out.println(" random_matchmake:                             Crea emparejamientos aleatorios");
-            case "clear":
-                System.out.flush();
             default:
                 System.out.println("ERROR: comando desconocido. Escriba 'help' para todas las opciones disponibles");
                 break;

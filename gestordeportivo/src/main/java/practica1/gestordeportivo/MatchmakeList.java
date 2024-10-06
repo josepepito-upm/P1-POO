@@ -84,8 +84,6 @@ public class MatchmakeList {
             } while (allPlayers[pos2] == null || allPlayers[pos2].getMatched() || pos2 == pos1);
             
             match(allPlayers[pos1], allPlayers[pos2]);
-        }
-        
-        System.out.println("Emparejamiento aleatorio completado. " + numNewMatches + " nuevos emparejamientos creados.");
+        }  
     }
 }

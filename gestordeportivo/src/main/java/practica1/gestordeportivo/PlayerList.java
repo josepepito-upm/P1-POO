@@ -22,7 +22,6 @@ public void add(Player player) {
          players[numPlayers] = player;
          added = true;
          numPlayers++;
-         System.out.println("Jugador creado.");
       }
       count++;
    }
@@ -72,7 +71,7 @@ public void rank()  {
       if (playersAux[i] != null) {
          auxPlayer = playersAux[i];
       
-         while (point > 0 && playersAux[point - 1].getScore() > auxPlayer.getScore()) {
+         while (point > 0 && playersAux[point - 1].getScore() < auxPlayer.getScore()) {
             playersAux[point] = playersAux[point - 1];
          
             point--;
