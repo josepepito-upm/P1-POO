@@ -15,7 +15,7 @@ public class MatchmakeList {
     public void match(Player p1, Player p2) {
         int count = 0;
         boolean matched = false;
-        assert p1.getStatus() == false && p2.getStatus() == false : "ERROR: uno de los jugadores ya está emparejado.";
+        assert p1.getMatched() == false && p2.getMatched() == false : "ERROR: uno de los jugadores ya está emparejado.";
         while (count < matchmakes.length && !matched) {
             if (matchmakes[count] == null) {
                 matchmakes[count] = new Matchmake(p1, p2);
@@ -36,7 +36,6 @@ public class MatchmakeList {
             for (int i = 0; i < matchmakes.length; i++) {
                 auxMatchmakes[i] = matchmakes[i];
             }
-
             size = aux;
             matchmakes = auxMatchmakes;
         }
@@ -50,8 +49,10 @@ public class MatchmakeList {
 
     public void clear() {
         for (int i = 0; i < matchmakes.length; i++) {
-            matchmakes[i].unmatch();
-            matchmakes[i] = null;
+            if(matchmakes[i] != null) {
+                matchmakes[i].unmatch();
+                matchmakes[i] = null;
+            }
         }
         numMatchmakes = 0;
     }
@@ -70,14 +71,16 @@ public class MatchmakeList {
         clear();
         for (int i = 0; i < playerList.getNumPlayers()/2; i++) {
             do { 
-                pos1 = (int)(Math.random()*playerList.getNumPlayers());
-            } while (allPlayers[pos1].getStatus() != true);
-            allPlayers[pos1].setMatchmaking(true);
+                pos1 = (int)(Math.random() * playerList.getNumPlayers());
+            } while (allPlayers[pos1].getMatched() == true);
+
+            allPlayers[pos1].setMatched(true);
 
             do { 
-                pos2 = (int)(Math.random()*playerList.getNumPlayers());
-            } while (allPlayers[pos2].getStatus() != true && pos2 != pos1);
-            allPlayers[pos2].setMatchmaking(true);
+                pos2 = (int)(Math.random() * playerList.getNumPlayers());
+            } while (allPlayers[pos2].getMatched() == true || pos2 == pos1);
+            
+            allPlayers[pos2].setMatched(true);
     
             match(allPlayers[pos1], allPlayers[pos2]);
         }

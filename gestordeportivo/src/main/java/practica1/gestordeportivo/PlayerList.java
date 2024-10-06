@@ -11,13 +11,6 @@ public PlayerList() {
    numPlayers = 0;
 }
 
-public PlayerList(Player player) {
-    size = 10;  
-    players = new Player[size];
-    players[0] = player;
-    numPlayers = 1;
-}
-
 public void add(Player player) {
    boolean added = false; 
    int count = 0; 
@@ -30,10 +23,8 @@ public void add(Player player) {
          added = true;
          numPlayers++;
       }
-
       count++;
    }
-
    this.resize();   
 }
 
@@ -49,9 +40,7 @@ public void remove(String name) {
       }
       count--;
    }
-
    assert removed : "ERROR: jugador no encontrado.";
-
 }
 
 private void resize() {
@@ -78,18 +67,26 @@ public void rank()  {
    Player auxPlayer;
    for (int i = 1; i < playersAux.length; i++) {
       int point = i;
-      auxPlayer = playersAux[i];
+
+      if (playersAux[i] != null) {
+         auxPlayer = playersAux[i];
       
-      while (point > 0 && playersAux[point - 1].getScore() < auxPlayer.getScore()) {
-         playersAux[point] = playersAux[point - 1];
+         while (point > 0 && playersAux[point - 1].getScore() > auxPlayer.getScore()) {
+            playersAux[point] = playersAux[point - 1];
          
-         point--;
+            point--;
+         }
+
+      playersAux[point] = auxPlayer;
+      
       }
-      playersAux[point] = auxPlayer;      
    }
 
-   for (int i = 0; i < playersAux.length; i++) 
-      System.out.println(i+1 + "º" + playersAux[i].toString());
+   for (int i = 0; i < playersAux.length; i++) {
+      if(playersAux[i] != null)
+         System.out.println(i+1 + "º " + playersAux[i].toString());
+   }
+      
    
 }
 
@@ -110,9 +107,7 @@ public Player getPlayer(String name) {
          found = true;
          return players[i];
       }
-
    }
-
    assert found : "ERROR: jugador no encontrado. ";
    return null;
 }

@@ -2,7 +2,7 @@ package practica1.gestordeportivo;
 
 public class Player {
 
-    private String name;
+    private final String name;
     private double score;
     private boolean matched;
 
@@ -30,18 +30,16 @@ public class Player {
         this.score = score;
     }
 
-    public void setMatchmaking(boolean stat) {
+    public void setMatched(boolean stat) {
         matched = stat;
     }
 
-
-    public boolean getStatus() {
+    public boolean getMatched() {
         return matched;
     }
 
-
     public String toString() {
-        return "Usuario : " + this.name + ". Puntuación: " + this.score;
+        return "Usuario: " + this.name + ". Puntuación: " + this.score;
     }
 
 }

@@ -1,50 +1,15 @@
 package practica1.gestordeportivo;
 public class Manager {
-    private PlayerList playerList;
-    private MatchmakeList matchmakeList;
+    private final PlayerList playerList;
+    private final MatchmakeList matchmakeList;
 
     public Manager() {
         playerList = new PlayerList();
         matchmakeList = new MatchmakeList();
 
     }
-    /* 
-    public void createPlayer(String name) {
-        if (!playerList.exists(name)) {
-            playerList.add(new Player(name));
-            System.out.println("Jugador " + name + " creado.");
-        }
-    }
     
-    public void removePlayer(Player player) {
-        if (playerList.exists(player.getName())) {
-            playerList.remove(player);
-            System.out.println("Jugador " + player + " eliminado.");
-        } else {
-            System.out.println("Jugador no encontrado.");
-        }
-    }
-
-    public void showPlayers() {
-        playerList.show();
-    }
-    */
-    
-    /**
-     * A grosso modo mi idea 
-     * 
-     * public void command (String string) {
-     *   switch (String.contains(string)) {
-     *       case "add": playerList.add(string.split(" "));
-     *       case ... : 
-     *          ...
-     *      si no: "ERROR: comando no especificado. "           
-     *  }
-     * }
-     * 
-     */
-
-     public void command (String command) {
+    public void Commands (String command) {
         String action[] = command.split(" ");
 
         switch (action[0]) {
@@ -79,14 +44,19 @@ public class Manager {
             case "help":
                 System.out.println("------------------- COMANDOS DISPONIBLES --------------------");
                 System.out.println("> create [player]:              crea un jugador en el sistema");
-                /**
-                 * El resto lo hacéis mañana, yo me voy a dormir ya que tengo sueño
-                 * Fdo. Rubén
-                 */
+                System.out.println("> remove [player]:             elimina un jugador del sistema");
+                System.out.println("> show:                         muestra la lista de jugadores");
+                System.out.println("> rank:         Clasifica a los jugadores segun su puntuación");
+                System.out.println("> score [player];[score]: Asigna una puntuación a un jugdador");
+                System.out.println("> show_matchmake:                 Muestra los emparejamientos");
+                System.out.println("> clear_matchmake:                  Borra los emparejamientos");
+                System.out.println("> matchmake [player1];[player2]:  Crea emparejamiento entre dos jugadores");
+                System.out.println("> random_matchmake:           Crea emparejamientos aleatorios");
+
             default:
                 System.out.println("ERROR: comando desconocido. Escriba 'help' para todas las opciones disponibles");
                 break;
         }
-     }
+    }
     
 }
