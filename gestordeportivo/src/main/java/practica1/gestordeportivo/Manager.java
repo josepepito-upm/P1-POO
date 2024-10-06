@@ -48,16 +48,17 @@ public class Manager {
                 break;
             case "help":
                 System.out.println("--------------------------- COMANDOS DISPONIBLES -----------------------------");
-                System.out.println(" create [player]:               Crea un jugador en el sistema");
-                System.out.println(" remove [player]:               Elimina un jugador del sistema");
-                System.out.println(" show:                          Muestra la lista de jugadores");
-                System.out.println(" rank:                          Clasifica a los jugadores segun su puntuación");
-                System.out.println(" score [player];[score]:        Asigna una puntuación a un jugdador");
-                System.out.println(" show_matchmake:                Muestra los emparejamientos");
-                System.out.println(" clear_matchmake:               Borra los emparejamientos");
-                System.out.println(" matchmake [player1];[player2]: Crea emparejamiento entre dos jugadores");
-                System.out.println(" random_matchmake:              Crea emparejamientos aleatorios");
-
+                System.out.println(" create [player]:                                Crea un jugador en el sistema");
+                System.out.println(" remove [player]:                               Elimina un jugador del sistema");
+                System.out.println(" show:                                           Muestra la lista de jugadores");
+                System.out.println(" rank:                           Clasifica a los jugadores segun su puntuación");
+                System.out.println(" score [player];[score]:                    Asigna una puntuación a un jugador");
+                System.out.println(" show_matchmake:                                   Muestra los emparejamientos");
+                System.out.println(" clear_matchmake:                                    Borra los emparejamientos");
+                System.out.println(" matchmake [player1];[player2]:        Crea emparejamiento entre dos jugadores");
+                System.out.println(" random_matchmake:                             Crea emparejamientos aleatorios");
+            case "clear":
+                System.out.flush();
             default:
                 System.out.println("ERROR: comando desconocido. Escriba 'help' para todas las opciones disponibles");
                 break;

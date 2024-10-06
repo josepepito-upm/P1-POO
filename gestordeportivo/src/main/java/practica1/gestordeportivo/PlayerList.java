@@ -22,6 +22,7 @@ public void add(Player player) {
          players[numPlayers] = player;
          added = true;
          numPlayers++;
+         System.out.println("Jugador creado.");
       }
       count++;
    }

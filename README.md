@@ -9,10 +9,7 @@ Implementación de la primera práctica de POO. Contiene todas las funcionalidad
 
 -Mario Reyes Morales (matricula) mario.reyes@alumnos.upm.es
 
--Rubén Nuño Peña (matricula) correo
-
-
-*APUNTES:*
+-Rubén Nuño Peña (bu0124) correo r.nuno@alumnos.upm.es
 
 *AUTOEVALUACIÓN:*
 
