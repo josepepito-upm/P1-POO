@@ -15,6 +15,9 @@ Implementación de la primera práctica de POO. Contiene todas las funcionalidad
 *APUNTES:*
 
 *AUTOEVALUACIÓN:*
+
 -Alejandro: (nota)
+
 -Mario: (nota)
+
 -Rubén: (nota)
