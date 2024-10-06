@@ -30,15 +30,15 @@ public void add(Player player) {
 
 public void remove(String name) {
    boolean removed = false;
-   int count = players.length - 1;
-
-   while (count > 0 && !removed) {
-      if (players[count].getName() == name) {
-         players[numPlayers] = null;
-         removed = true;         
-         numPlayers--;
-      }
-      count--;
+   int i = 0;
+   while (i < numPlayers && !removed) {
+       if (players[i].getName().equals(name)) {
+           players[i] = players[numPlayers - 1];
+           players[numPlayers - 1] = null;
+           numPlayers--;
+           removed = true;
+       }
+       i++;
    }
    assert removed : "ERROR: jugador no encontrado.";
 }
