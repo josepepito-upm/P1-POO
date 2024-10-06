@@ -2,7 +2,6 @@ package practica1.gestordeportivo;
 
 public class Matchmake {
     
-    //he dejado esto en privado por temas de seguridad. Si veo que lo encesitamos para algo más entonces lo cambio 
     private Player p1;
     private Player p2;
 

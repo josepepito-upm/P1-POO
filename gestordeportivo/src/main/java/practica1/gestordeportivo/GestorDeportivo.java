@@ -18,10 +18,8 @@ public class GestorDeportivo {
         playerList.add(p2);
 
         playerList.show();
-
         MatchmakeList matchmakes = new MatchmakeList();
 
-        matchmakes.match(player, p2);
         matchmakes.match(player, p2);
         matchmakes.show();
         System.out.println(matchmakes.getNumMatchamakes());
