@@ -5,7 +5,7 @@ Implementación de la primera práctica de POO. Contiene todas las funcionalidad
 
 *MIEMBROS DEL GRUPO:*
 
--Alejandro Rosado Gómez (bu0417) al.rosad@alumnos.upm.es
+-Alejandro Rosado Gómez (bu0417) al.rosado@alumnos.upm.es
 
 -Mario Reyes Morales (matricula) mario.reyes@alumnos.upm.es
 
