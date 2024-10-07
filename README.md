@@ -15,4 +15,4 @@ Implementación de la primera práctica de POO. Contiene todas las funcionalidad
 
 Nota final: "7"
 
--En su gran mayoría está correcto, aunque encontramos dificultades con algunos métodos. La legibilidad del código podría mejorar. Añadimos algún método y comando que puede ser útil para el usuario.
+-Mayormente correcto, aunque encontramos dificultades con algunos métodos. La legibilidad del código podría mejorar. Añadimos algún método y comando útiles para el usuario.
