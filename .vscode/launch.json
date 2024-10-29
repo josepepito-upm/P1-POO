@@ -3,12 +3,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SportsManager",
+            "request": "launch",
+            "mainClass": "practica1.gestordeportivo.SportsManager",
+            "projectName": "gestordeportivo"
+        },
+        {
+            "type": "java",
             "name": "GestorDeportivo",
             "request": "launch",
             "mainClass": "practica1.gestordeportivo.GestorDeportivo",
             "projectName": "gestordeportivo",
             "vmArgs": "-ea"
-
         }
     ]
 }

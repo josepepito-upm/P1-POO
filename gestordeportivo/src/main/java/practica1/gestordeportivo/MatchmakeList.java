@@ -1,7 +1,7 @@
 package practica1.gestordeportivo;
 
 public class MatchmakeList {
-
+//cambiar array por lista (?)
     private Matchmake[] matchmakes;
     private int size;
     private int numMatchmakes;

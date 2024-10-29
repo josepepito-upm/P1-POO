@@ -1,6 +1,6 @@
 package practica1.gestordeportivo;
 public class PlayerList {
-
+//cambiar array por lista (?)
 private Player[] players;
 private int size;
 private int numPlayers;

@@ -2,23 +2,24 @@ package practica1.gestordeportivo;
 
 public class Matchmake {
     
-    private final Player p1;
-    private final Player p2;
+    private final Player player1;
+    private final Player player2;
 
+    //usar array de dos jugadores
     public Matchmake(Player p1, Player p2) {
-        this.p1 = p1;
+        this.player1 = p1;
             p1.setMatched(true);
-        this.p2 = p2;
+        this.player2 = p2;
             p2.setMatched(true);        
     }
 
     public void unmatch () {
-        p1.setMatched(false);
-        p2.setMatched(false);
+        player1.setMatched(false);
+        player2.setMatched(false);
     }
 
     public String toString() {
-        return p1.getName() + " (" + p1.getScore() + ") vs. " + p2.getName() + " (" + p2.getScore() + ")";
+        return player1.getName() + " (" + player1.getScore() + ") vs. " + player2.getName() + " (" + player2.getScore() + ")";
     }
     
 }

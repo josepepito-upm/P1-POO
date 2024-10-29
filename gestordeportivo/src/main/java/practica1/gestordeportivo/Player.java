@@ -17,6 +17,17 @@ public class Player {
         matched = false;
     }
 
+    public Player(String name, double score) {
+        assert !name.isBlank() && 
+                name.length() >= 2 && 
+                Character.isUpperCase(name.charAt(0)) && 
+                !name.matches(".*\\d.*") :
+                "ERROR: formato incorrecto en el nombre especificcado. ";
+        this.name = name;
+        this.score = score;
+        matched = false;
+    }
+
     public String getName() {
         return name;
     }
