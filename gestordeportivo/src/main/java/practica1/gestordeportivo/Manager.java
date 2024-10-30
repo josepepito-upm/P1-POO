@@ -3,6 +3,8 @@ public class Manager {
     private final PlayerList playerList;
     private final MatchmakeList matchmakeList;
 
+    //la que hay que montar aqui para hacer el menu con polimorfismo aksjdkas
+
     public Manager() {
         playerList = new PlayerList();
         matchmakeList = new MatchmakeList();

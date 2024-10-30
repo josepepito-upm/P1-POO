@@ -2,16 +2,18 @@ package practica1.gestordeportivo;
 
 public class MatchmakeList {
 //cambiar array por lista (?)
-    private Matchmake[] matchmakes;
-    private int size;
-    private int numMatchmakes;
+    private Matchmake[] matchmakes; //se cambia por private List<Matchmake> matchmakes;
+    private int size; //desaparece
+    private int numMatchmakes; //desaparece
 
+    //se cambia por el constructor de la lista
     public MatchmakeList() {
         size = 5;
         matchmakes = new Matchmake[size];
         numMatchmakes = 0;
     }
 
+    //rehacer para listas + assert
     public void match(Player p1, Player p2) {
         int count = 0;
         boolean matched = false;
@@ -29,6 +31,7 @@ public class MatchmakeList {
         this.resize();
     }
 
+    //desaparece
     private void resize() {
         if (numMatchmakes == matchmakes.length) {
             int aux = size + 5;
@@ -41,12 +44,14 @@ public class MatchmakeList {
         }
     }
 
+    //rehacer para listas (no se si hay comando de la api de java para esto)
     public void show() {
         for (int i = 0; i < numMatchmakes; i++) {
             System.out.println(matchmakes[i]);
         }
     }
 
+    //desaparece (hay un metodo clear en la api de java)
     public void clear() {
         for (int i = 0; i < matchmakes.length; i++) {
             if(matchmakes[i] != null) {
@@ -57,11 +62,12 @@ public class MatchmakeList {
         numMatchmakes = 0;
     }
 
+    //desaparece
     public int getNumMatchamakes() {
         return numMatchmakes;
     }
 
-
+    //rehacer para listas + asserts
     public void random(PlayerList playerList) {
         Player[] allPlayers = playerList.getPlayers();
         int numPlayers = playerList.getNumPlayers();

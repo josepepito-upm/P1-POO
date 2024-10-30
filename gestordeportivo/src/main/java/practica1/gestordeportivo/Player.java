@@ -6,6 +6,7 @@ public class Player {
     private double score;
     private boolean matched;
 
+    //revisar assert
     public Player(String name) {
         assert !name.isBlank() && 
                 name.length() >= 2 && 
@@ -17,6 +18,7 @@ public class Player {
         matched = false;
     }
 
+    //revisar assert
     public Player(String name, double score) {
         assert !name.isBlank() && 
                 name.length() >= 2 && 
@@ -36,6 +38,7 @@ public class Player {
         return score;
     }
 
+    //revisar assert
     public void setScore(double score) {
         assert score >= -999999.0 : "ERROR: valor demasiado pequeño";
         this.score = score;
