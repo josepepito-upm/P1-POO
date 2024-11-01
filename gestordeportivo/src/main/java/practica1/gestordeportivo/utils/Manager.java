@@ -1,4 +1,9 @@
-package practica1.gestordeportivo;
+package practica1.gestordeportivo.utils;
+
+import practica1.gestordeportivo.utils.matchmake.MatchmakeList;
+import practica1.gestordeportivo.utils.player.Player;
+import practica1.gestordeportivo.utils.player.PlayerList;
+
 public class Manager {
     private final PlayerList playerList;
     private final MatchmakeList matchmakeList;

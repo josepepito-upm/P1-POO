@@ -1,4 +1,4 @@
-package practica1.gestordeportivo;
+package practica1.gestordeportivo.utils.player;
 
 public class PlayerList {
    //cambiar array por lista (?)
