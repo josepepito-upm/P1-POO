@@ -5,6 +5,12 @@ public class Player {
     private final String name;
     private double score;
     private boolean matched;
+    
+    private double markedPoints;
+    private double matchesWon;
+    private double assistancePoints;
+    private double tournamentsWon;
+    private double generatedMoney;
 
     //revisar assert
     public Player(String name) {
