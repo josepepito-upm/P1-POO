@@ -4,6 +4,7 @@ import practica1.gestordeportivo.utils.matchmake.MatchmakeList;
 import practica1.gestordeportivo.utils.player.Player;
 import practica1.gestordeportivo.utils.player.PlayerList;
 
+import java.io.Console;
 public class Manager {
     private final PlayerList playerList;
     private final MatchmakeList matchmakeList;
@@ -15,13 +16,8 @@ public class Manager {
         matchmakeList = new MatchmakeList();
 
     }
-
-    public Manager(PlayerList player_list, MatchmakeList matchmake_list) {
-        playerList = player_list;
-        matchmakeList = matchmake_list;
-    }
     
-    public void Commands (String command) {
+    private void Commands (String command) {
         String action[] = command.split(" ");
 
         switch (action[0]) {
@@ -73,6 +69,22 @@ public class Manager {
             default:
                 System.out.println("ERROR: comando desconocido. Escriba 'help' para todas las opciones disponibles");
                 break;
+        }
+    }
+
+    public void manage() {
+        Console console = System.console();
+               
+        playerList.add(new Player("Luisa", 4.5));
+        playerList.add(new Player("Manuel", 2.7));
+        playerList.add(new Player("Kurt", 4.0));
+        playerList.add(new Player("Sofia", 3.8));
+        playerList.add(new Player("Robert", 3.8));
+
+        String command = console.readLine("Introduzca un comando disponible: ");
+        while (!command.equalsIgnoreCase("exit")) {
+            this.Commands(command);
+            command = console.readLine("Introduzca otro comando o 'exit' para salir: ");
         }
     }
     
