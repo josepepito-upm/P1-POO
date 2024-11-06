@@ -3,7 +3,7 @@ package practica1.gestordeportivo.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import practica1.gestordeportivo.commands.Command; 
+import practica1.gestordeportivo.utils.commandList.Commands; 
 import practica1.gestordeportivo.utils.commandList.CreateCommand;
 import practica1.gestordeportivo.utils.commandList.RemoveCommand; 
 import practica1.gestordeportivo.utils.commandList.ShowCommand;
@@ -17,7 +17,7 @@ import practica1.gestordeportivo.utils.user.player.PlayerList;
 public class Manager {
     private final PlayerList playerList;
     private final MatchmakeList matchmakeList;
-    private final List<Command> commands;
+    private final List<Commands> commands;
 
 
     //la que hay que montar aqui para hacer el menu con polimorfismo aksjdkas
@@ -47,7 +47,7 @@ public class Manager {
     public void Commands(String command) {
         String[] action = command.split(" ");
 
-        for (Command cmd : commands) {
+        for (Commands cmd : commands) {
             if (cmd.getTitle().equalsIgnoreCase(action[0])) {
                 cmd.execute(action, this);
                 return;
