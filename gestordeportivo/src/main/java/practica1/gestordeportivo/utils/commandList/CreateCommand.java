@@ -4,8 +4,9 @@ import practica1.gestordeportivo.utils.Manager;
 import practica1.gestordeportivo.utils.user.player.Player;
 
 public class CreateCommand extends Commands {
-
-    @Override
+    public CreateCommand() {
+        super("create", "Crea un nuevo jugador en el sistema");
+    }
     public void execute(String[] args, Manager manager) {
         if (args.length > 1) {
             manager.getPlayerList().add(new Player(args[1]));

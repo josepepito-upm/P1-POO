@@ -21,4 +21,9 @@ public abstract class Commands {
     }
 
     public abstract void execute(String[] action, Manager manager);
+
+    public Commands() {
+        this.title = "default";
+        this.description = "default description";
+    }
 }
