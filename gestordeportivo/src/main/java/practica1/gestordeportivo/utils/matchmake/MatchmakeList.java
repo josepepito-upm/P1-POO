@@ -1,7 +1,7 @@
 package practica1.gestordeportivo.utils.matchmake;
 
-import practica1.gestordeportivo.utils.player.Player;
-import practica1.gestordeportivo.utils.player.PlayerList;
+import practica1.gestordeportivo.utils.user.player.Player;
+import practica1.gestordeportivo.utils.user.player.PlayerList;
 
 public class MatchmakeList {
 //cambiar array por lista (?)

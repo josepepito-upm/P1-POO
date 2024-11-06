@@ -1,6 +1,6 @@
 package practica1.gestordeportivo.utils.matchmake;
 
-import practica1.gestordeportivo.utils.player.Player;
+import practica1.gestordeportivo.utils.user.player.Player;
 
 public class Matchmake {
     
