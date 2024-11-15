@@ -2,12 +2,12 @@ package practica1.gestordeportivo.utils.commandList;
 
 import practica1.gestordeportivo.utils.Manager;
 
-public abstract class Commands {
+public abstract class Command {
 
     private String title;
     private String description;
 
-    public Commands(String title, String description) {
+    public Command(String title, String description) {
         this.title = title;
         this.description = description;
     }
@@ -20,10 +20,13 @@ public abstract class Commands {
         return description;
     }
 
-    public abstract void execute(String[] action, Manager manager);
-
-    public Commands() {
-        this.title = "default";
-        this.description = "default description";
+    public void setTitle(String title) {
+        this.title = title;
     }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public abstract void execute(String[] action, Manager manager);
 }

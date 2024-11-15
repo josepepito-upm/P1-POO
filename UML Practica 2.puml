@@ -1,0 +1,144 @@
+@startuml
+
+abstract class Command {
+- title
+- description
++Command(String title, String description)
+#getTitle()
+#getDescription()
+#setTitle()
+#setDescription()
+}
+
+class CreatePlayerCommand {
++CreatePlayerCommand(String title, String description)
++create(Player player)
+}
+
+class CreateTeamCommand {
++CreateTeamCommand(String title, String description)
++create(Team team)
+}
+
+class CreateTournamentCommand {
++CreateTournamentCommand(String title, String description)
++create(Tournament tournament)
+}
+
+class DeletePlayerCommand {
++DeletePlayerCommand(String title, String description)
++delete(Player player)
+}
+
+class DeleteTeamCommand {
++DeleteTeamCommand(String title, String description)
++delete(Team team)
+}
+
+class DeleteTournamentCommand {
++DeleteTournamentCommand(String title, String description)
++delete(Tournament tournament)
+}
+
+class AddTournamentCommand {
++AddTournamentCommand(String title, String description)
++add(Tournament tournament)
+}
+
+class AddTeamCommand {
++AddTeamCommand(String title, String description)
++add(Player player, Team team)
+}
+
+class RemoveTournamentCommand {
++RemoveTournamentCommand(String title, String description)
++remove(Tournament tournament)
+}
+
+class RemoveTeamCommand {
++RemoveTeamCommand(String title, String description)
++remove(Player player, Team team)
+}
+
+class LoginCommand {
++LoginCommand(String title, String description)
++login(User username)
+}
+
+class LogoutCommand {
++LogoutCommand(String title, String description)
++logout()
+}
+
+class StatisticShowCommand {
++StatisticShowCommand(String title, String description)
++show()
+}
+
+class TournamentListCommand {
++TournamentListCommand(String title, String description)
++list()
+}
+
+class TournamentMatchmakingCommand {
++TournamentMatchmakingCommand(String title, String description)
++match(Player player1, Player player2
++random()
+}
+
+Command <|-up- CreatePlayerCommand
+Command <|-up- CreateTeamCommand
+Command <|-up- CreateTournamentCommand
+Command <|-up- DeletePlayerCommand
+Command <|-up- DeleteTeamCommand
+Command <|-up- DeleteTournamentCommand
+Command <|-down- AddTeamCommand
+Command <|-down- AddTournamentCommand
+Command <|-down- RemoveTeamCommand
+Command <|-down- RemoveTournamentCommand
+Command <|-right- LoginCommand
+Command <|-right- LogoutCommand
+Command <|-left- StatisticShowCommand
+Command <|-left- TournamentListCommand
+Command <|-left- TournamentMatchmakingCommand
+
+class CommandLineInterpreter
+class SportsManager
+class Manager
+enum Error
+class PlayerList
+class Matchmake
+class MatchmakeList
+class Tournament
+class TournamentList
+class Team 
+class TeamList 
+
+class User {
+-username
+-password
+-authenticated
+}
+
+User <|-down- Player 
+User <|-down- Admin
+
+Player -down-> PlayerList
+Team -down-> TeamList
+Tournament -down-> TournamentList
+Matchmake -down-> MatchmakeList
+Player -down-> Matchmake
+Command -down-> CommandLineInterpreter
+
+class Player {
+-forename
+-surname
+-id
+-matched
+-markedPoints
+-matchesWon
+-tournamentsWon
+-generatedMoney
+}
+
+@enduml
