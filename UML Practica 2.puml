@@ -1,0 +1,120 @@
+@startuml
+
+abstract class Command {
+- title: String
+- description: String
++ Command(String title, String description)
++ execute(String[] action, Manager manager): void
+}
+
+abstract class PlayerCommand
+Command <|-up- PlayerCommand
+PlayerCommand <|-down- CreatePlayerCommand
+PlayerCommand <|-down- DeletePlayerCommand
+PlayerCommand <|-down- StatisticsShowCommand
+PlayerCommand .up.> PlayerList
+
+abstract class TeamCommand
+Command <|-up- TeamCommand
+TeamCommand <|-down- CreateTeamCommand
+TeamCommand <|-down- DeleteTeamCommand
+TeamCommand <|-down- AddTeamCommand
+TeamCommand <|-down- RemoveTeamCommand
+TeamCommand .up.> TeamList
+
+abstract class TournamentCommand
+Command <|-up- TournamentCommand
+TournamentCommand <|-down- CreateTournamentCommand
+TournamentCommand <|-down- DeleteTournamentCommand
+TournamentCommand <|-down- TournamentListCommand
+TournamentCommand <|-down- TournamentMatchmakingCommand
+TournamentCommand <|-down- AddTournamentCommand
+TournamentCommand <|-down- RemoveTournamentCommand
+TournamentCommand .up.> TournamentList
+TournamentCommand .up.> MatchmakeList
+
+class Manager {
+    - playerList: PlayerList
+    - teamList: TeamList
+    - tournamentList: TournamentList
+    - matchmakeList: MatchmakeList
+    + manage(): void
+}
+
+class User  {
+  - username: String
+  - password: String
+  - authenticated: boolean
+}
+
+class Player {
+  - forename: String
+  - surname: String
+  - id: String
+  - matched: boolean
+  - markedPoints: double 
+  - matchesWon: doube 
+  - assistancePoints: double 
+  - tournamentsWon: double
+  - generatedMoney: double
+}
+
+class PlayerList {
+    - List<Player> players
+}
+
+class Team {
+    - name: String
+    - List<Player> members
+    - matched: boolean
+    - markedPoints: double 
+    - matchesWon: doube 
+    - assistancePoints: double 
+    - tournamentsWon: double
+    - generatedMoney: double
+}
+
+class TeamList {
+    - List<Team> teams
+}
+
+class Tournament {
+    - name: String
+    - startDate: Date
+    - endDate: Date
+    - league: String
+    - sport: String
+    - participants: List<Object> // Players or Teams
+}
+
+class TournamentList {
+    - List<Tournament> tournaments
+}
+
+class MatchmakeList {
+    - List<Matchmake> matchmakes
+}
+
+User <|-down- Player
+User <|-down- Admin
+
+Command *--> Login
+Command *--> Logout
+
+CommandLineInterpreter o--> Command
+CommandLineInterpreter *--> Manager
+
+Manager *--> PlayerList
+Manager *--> TeamList
+Manager *--> TournamentList
+Manager *--> MatchmakeList
+
+PlayerList .down.> Player
+TeamList .down.> Team
+TournamentList .down.> Tournament
+MatchmakeList .down.> Matchmake
+
+SportsManager *--> CommandLineInterpreter
+enum Error
+
+@enduml
