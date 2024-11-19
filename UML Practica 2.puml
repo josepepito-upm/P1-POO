@@ -1,0 +1,123 @@
+@startuml
+
+package Commands {
+  class Command {
+    - title
+    - description
+    +Command(String title, String description)
+    #getTitle()
+    #getDescription()
+    #setTitle()
+    #setDescription()
+  }
+    
+    class PublicCommands {
+      +LoginCommand()
+      +LogoutCommand()
+      +TournamentListCommand()
+    }
+    
+    class AdminCommands {
+      +CreatePlayerCommand()
+      +CreateTeamCommad()
+      +PlayerDeleteCommand()
+      +TeamDeleteCommand()
+      +AddTeamCommand()
+      +RemoveTeamCommand()
+      +CreateTournamentCommand()
+      +TournamentMatchmakingCommand()
+    }
+    
+    class PlayerCommands {
+      +AddTournamentCommand()
+      +RemoveTournamentCommand()
+      +StatisticsShowCommand()
+    }
+}
+
+package Items {
+  class User {
+    -username
+    -password
+    -authenticated
+    -isAdmin
+  }
+  
+  class Player {
+    -forename
+    -surname
+    -id
+    -matched
+    -markedPoints
+    -matchesWon
+    -assistancePoints
+    -tournamentsWon
+    -generatedMoney
+  }
+  
+  class PlayerList {
+    - List<Player> players
+  }
+  
+  class Matchmake
+  
+  class MatchmakeList {
+    - List<Matchmake> matchmakes
+  }
+  
+  class Tournament {
+    - name: String
+    - startDate: Date
+    - endDate: Date
+    - league: String
+    - sport: String
+    - participants: List<Object> // Players or Teams
+  }
+  
+  class TournamentList {
+    - List<Tournament> tournaments
+  }
+  
+  class Team {
+    - name: String
+    - List<Player> members
+    - matched: boolean
+    - markedPoints: double 
+    - matchesWon: doube 
+    - assistancePoints: double 
+    - tournamentsWon: double
+    - generatedMoney: double
+  }
+  
+  class TeamList {
+    - List<Team> teams
+  }
+  
+}
+
+package Tools {
+  class CommandLineInterpreter {
+    +CommandList[] commandList
+    +getCommand()
+  }
+  
+  class Manager
+  enum Error
+}
+
+class SportsManager {
+    
+}
+
+PlayerList .down.> Player
+TeamList .down.> Team
+TournamentList .down.> Tournament
+MatchmakeList .down.> Matchmake
+User <|-down- Player 
+Player -down->Team
+Player -down-> Matchmake
+Command -down-> CommandLineInterpreter
+SportsManager *--> CommandLineInterpreter
+
+
+@enduml
