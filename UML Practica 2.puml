@@ -1,38 +1,39 @@
 @startuml
 
 package Commands {
-  class Command {
-    - title
-    - description
-    +Command(String title, String description)
-    #getTitle()
-    #getDescription()
-    #setTitle()
-    #setDescription()
-  }
-    
-    class PublicCommands {
-      +LoginCommand()
-      +LogoutCommand()
-      +TournamentListCommand()
+    class Command {
+      - title
+      - description
+      +Command(String title, String description)
+      #getTitle()
+      #getDescription()
+      #setTitle()
+      #setDescription()
     }
     
-    class AdminCommands {
-      +CreatePlayerCommand()
-      +CreateTeamCommad()
-      +PlayerDeleteCommand()
-      +TeamDeleteCommand()
-      +AddTeamCommand()
-      +RemoveTeamCommand()
-      +CreateTournamentCommand()
-      +TournamentMatchmakingCommand()
-    }
-    
-    class PlayerCommands {
-      +AddTournamentCommand()
-      +RemoveTournamentCommand()
-      +StatisticsShowCommand()
-    }
+    class PublicCommand 
+    class PrivateCommand
+
+    class CreateCommand 
+    class DeleteCommand 
+    class AddCommand 
+    class RemoveCommand 
+
+    class CreatePlayerCommand
+    class CreateTeamCommand
+    class CreateTournamentCommand
+    class DeletePlayerCommand
+    class DeleteTeamCommand
+    class DeleteTournamentCommand
+    class AddTeamCommand
+    class AddTournamentCommand
+    class RemoveTeamCommand
+    class RemoveTournamentCommand
+    class StatisticsShowCommand
+    class TournamentMatchmakingCommand
+    class TournamentListCommand
+    class LoginCommand
+    class LogoutCommand
 }
 
 package Items {
@@ -40,7 +41,8 @@ package Items {
     -username
     -password
     -authenticated
-    -isAdmin
+    -admin
+    +User(String username, String password)
   }
   
   class Player {
@@ -53,44 +55,58 @@ package Items {
     -assistancePoints
     -tournamentsWon
     -generatedMoney
+    +Player(String forename, String surname, String id)
+  }
+
+  class Admin {
+    +Admin(String username, String password)
   }
   
   class PlayerList {
     - List<Player> players
+    +PlayerList()
   }
   
-  class Matchmake
+  class Matchmake {
+    -player
+    +Matchmake()
+  }
   
   class MatchmakeList {
     - List<Matchmake> matchmakes
+    +MatchmakeList()
   }
   
   class Tournament {
-    - name: String
-    - startDate: Date
-    - endDate: Date
-    - league: String
-    - sport: String
-    - participants: List<Object> // Players or Teams
+    - name
+    - startDate
+    - endDate
+    - league
+    - sport
+    - participants: List<Player>
+    +Tournament(String name, String startDate, String endDate, String league, String sport)
   }
   
   class TournamentList {
     - List<Tournament> tournaments
+    +TournamentList()
   }
   
   class Team {
-    - name: String
+    - name
     - List<Player> members
-    - matched: boolean
-    - markedPoints: double 
-    - matchesWon: doube 
-    - assistancePoints: double 
-    - tournamentsWon: double
-    - generatedMoney: double
+    - matched
+    - markedPoints
+    - matchesWon
+    - assistancePoints
+    - tournamentsWon
+    - generatedMoney
+    +Team(String name)
   }
   
   class TeamList {
     - List<Team> teams
+    +TeamList()
   }
   
 }
@@ -105,19 +121,45 @@ package Tools {
   enum Error
 }
 
-class SportsManager {
-    
-}
+class SportsManager 
 
-PlayerList .down.> Player
-TeamList .down.> Team
-TournamentList .down.> Tournament
-MatchmakeList .down.> Matchmake
+PlayerList -down-> Player
+TeamList -down-> Team
+TournamentList -down-> Tournament
+MatchmakeList -down-> Matchmake
 User <|-down- Player 
-Player -down->Team
-Player -down-> Matchmake
-Command -down-> CommandLineInterpreter
-SportsManager *--> CommandLineInterpreter
+User <|-down- Admin 
+Command .down.> CommandLineInterpreter
+Command .down.> Error
+SportsManager -down-> CommandLineInterpreter
+SportsManager -down-> Manager
 
+Command <|-down- PublicCommand 
+Command <|-down- PrivateCommand
+
+PrivateCommand <|-down- CreateCommand
+PrivateCommand <|-down- DeleteCommand
+PrivateCommand <|-down- AddCommand
+PrivateCommand <|-down- RemoveCommand
+PrivateCommand <|-down- TournamentMatchmakingCommand
+PrivateCommand <|-down- StatisticsShowCommand
+
+CreateCommand <|-down- CreatePlayerCommand
+CreateCommand <|-down- CreateTeamCommand
+CreateCommand <|-down- CreateTournamentCommand
+
+DeleteCommand <|-down- DeletePlayerCommand
+DeleteCommand <|-down- DeleteTeamCommand
+DeleteCommand <|-down- DeleteTournamentCommand
+
+AddCommand <|-down- AddTeamCommand
+AddCommand <|-down- AddTournamentCommand
+
+RemoveCommand <|-down- RemoveTeamCommand
+RemoveCommand <|-down- RemoveTournamentCommand
+
+PublicCommand <|-down- TournamentListCommand
+PublicCommand <|-down- LoginCommand
+PublicCommand <|-down- LogoutCommand
 
 @enduml
