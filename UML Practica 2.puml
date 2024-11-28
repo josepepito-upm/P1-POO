@@ -1,165 +1,159 @@
 @startuml
 
-package Commands {
-    class Command {
-      - title
-      - description
-      +Command(String title, String description)
-      #getTitle()
-      #getDescription()
-      #setTitle()
-      #setDescription()
-    }
-    
-    class PublicCommand 
-    class PrivateCommand
+class SportsManager
 
-    class CreateCommand 
-    class DeleteCommand 
-    class AddCommand 
-    class RemoveCommand 
+package models {
 
-    class CreatePlayerCommand
-    class CreateTeamCommand
-    class CreateTournamentCommand
-    class DeletePlayerCommand
-    class DeleteTeamCommand
-    class DeleteTournamentCommand
-    class AddTeamCommand
-    class AddTournamentCommand
-    class RemoveTeamCommand
-    class RemoveTournamentCommand
-    class StatisticsShowCommand
-    class TournamentMatchmakingCommand
-    class TournamentListCommand
-    class LoginCommand
-    class LogoutCommand
-}
+  enum Error
 
-package Items {
+  enum Role
+  
   class User {
-    -username
-    -password
-    -authenticated
-    -admin
-    +User(String username, String password)
+  
   }
   
   class Player {
-    -forename
-    -surname
-    -id
-    -matched
-    -markedPoints
-    -matchesWon
-    -assistancePoints
-    -tournamentsWon
-    -generatedMoney
-    +Player(String forename, String surname, String id)
+  
   }
-
+  
   class Admin {
-    +Admin(String username, String password)
-  }
   
-  class PlayerList {
-    - List<Player> players
-    +PlayerList()
-  }
-  
-  class Matchmake {
-    -player
-    +Matchmake()
-  }
-  
-  class MatchmakeList {
-    - List<Matchmake> matchmakes
-    +MatchmakeList()
-  }
-  
-  class Tournament {
-    - name
-    - startDate
-    - endDate
-    - league
-    - sport
-    - participants: List<Player>
-    +Tournament(String name, String startDate, String endDate, String league, String sport)
-  }
-  
-  class TournamentList {
-    - List<Tournament> tournaments
-    +TournamentList()
   }
   
   class Team {
-    - name
-    - List<Player> members
-    - matched
-    - markedPoints
-    - matchesWon
-    - assistancePoints
-    - tournamentsWon
-    - generatedMoney
-    +Team(String name)
+  
   }
   
-  class TeamList {
-    - List<Team> teams
-    +TeamList()
+  class Tournament {
+  
   }
+  
+  class Matchmake {
+  
+  }
+  
+  class Statistics {
+  
+  }
+  
+  package lists {
+    class PlayerList {
+    
+    }
+    
+    class TeamList {
+    
+    }
+    
+    class TournamentList {
+    
+    }
+    
+    class MatchmakeList {
+    
+    }
+  }
+}
+
+package commands {
+  interface CommandInterface {
+    +execute(String) : Error
+    +validate(String) : Error
+  }
+
+  abstract AdminCommands {
+    +validate()
+  }
+
+  abstract PublicCommands {
+    +validate()
+  }
+
+  abstract PlayerCommands {
+    +validate()
+  }
+  
+  class PlayerCreate {
+    -controller
+    +PlayerCreate(String)
+    +execute()
+  }
+  
+  
+  class PlayerDelete
+  class TeamCreate
+  class TeamDelete
+  class TeamAdd
+  class TeamRemove
+  class TournamentCreate
+  class TournamentDelete
+  class TournamentAdd
+  class TournamentRemove
+  class TournamentMatchmaking
+  class ListTournaments
+  class StatisticsShow
+  class Login
+  class Logout
   
 }
 
-package Tools {
+package views {
+
   class CommandLineInterpreter {
-    +CommandList[] commandList
-    +getCommand()
-  }
   
-  class Manager
-  enum Error
+  }
+
+  class ErrorView {
+
+  }
+
+  class CLIView
+  abstract View
 }
 
-class SportsManager 
+package controllers {
+  class PlayerController
+  class TeamController
+  class TournamentController
+  class MatchmakeController
+}
 
 PlayerList -down-> Player
 TeamList -down-> Team
 TournamentList -down-> Tournament
 MatchmakeList -down-> Matchmake
 User <|-down- Player 
-User <|-down- Admin 
-Command .down.> CommandLineInterpreter
-Command .down.> Error
-SportsManager -down-> CommandLineInterpreter
-SportsManager -down-> Manager
+User <|-down- Admin
+Player -down-> Statistics
 
-Command <|-down- PublicCommand 
-Command <|-down- PrivateCommand
+CommandInterface <|-down- AdminCommands
+CommandInterface <|-down- PublicCommands
+CommandInterface <|-down- PlayerCommands
 
-PrivateCommand <|-down- CreateCommand
-PrivateCommand <|-down- DeleteCommand
-PrivateCommand <|-down- AddCommand
-PrivateCommand <|-down- RemoveCommand
-PrivateCommand <|-down- TournamentMatchmakingCommand
-PrivateCommand <|-down- StatisticsShowCommand
+AdminCommands <|-down- PlayerCreate
+AdminCommands <|-down- PlayerDelete
+AdminCommands <|-down- TeamCreate
+AdminCommands <|-down- TeamDelete
+AdminCommands <|-down- TeamAdd
+AdminCommands <|-down- TeamRemove
+AdminCommands <|-down- TournamentCreate
+AdminCommands <|-down- TournamentDelete
+AdminCommands <|-down- TournamentMatchmaking
 
-CreateCommand <|-down- CreatePlayerCommand
-CreateCommand <|-down- CreateTeamCommand
-CreateCommand <|-down- CreateTournamentCommand
+PlayerCommands <|-down- TournamentAdd
+PlayerCommands <|-down- TournamentRemove
+PlayerCommands <|-down- StatisticsShow
 
-DeleteCommand <|-down- DeletePlayerCommand
-DeleteCommand <|-down- DeleteTeamCommand
-DeleteCommand <|-down- DeleteTournamentCommand
+PublicCommands <|-down- Login
+PublicCommands <|-down- Logout
+PublicCommands <|-down- ListTournaments
 
-AddCommand <|-down- AddTeamCommand
-AddCommand <|-down- AddTournamentCommand
+PlayerController -down-> Player
+TeamController -down-> Team
+TournamentController -down-> Tournament
+MatchmakeController -down-> Matchmake
 
-RemoveCommand <|-down- RemoveTeamCommand
-RemoveCommand <|-down- RemoveTournamentCommand
-
-PublicCommand <|-down- TournamentListCommand
-PublicCommand <|-down- LoginCommand
-PublicCommand <|-down- LogoutCommand
+View <|-down- CLIView
+View <|-down- ErrorView
 
 @enduml
