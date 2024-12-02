@@ -20,4 +20,21 @@ public class Statistics {
             stats[i] = 0;
         }
     }
+
+    public String toString() {
+        return "Marked points: " + this.markedPoints +
+        "\nMatches won: " + this.matchesWon +
+        "\nAssistance points: " + this.assistancePoints +
+        "\nTournaments won: " + this.tournamentsWon +
+        "\nGenerated money: " + this.generatedMoney;
+    }
+
+    public double[] getStats() {
+        return stats;
+    }
+
+    public double getStat(int position) {
+        return stats[position];
+    }
+
 }

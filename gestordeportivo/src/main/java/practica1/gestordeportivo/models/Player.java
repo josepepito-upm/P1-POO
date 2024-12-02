@@ -30,20 +30,17 @@ public class Player extends User {
         this.name = name;
         this.score = score;
         matched = false;
+        stats = new Statistics();
     }
 
-    public String getName() {
-        return name;
+    public String getForename() {
+        return forename;
     }
 
-    public double getScore() {
-        return score;
-    }
+    
 
-    //revisar assert
-    public void setScore(double score) {
-        assert score >= -999999.0 : "ERROR: valor demasiado pequeño";
-        this.score = score;
+    public Statistics getStats() {
+        return stats;
     }
 
     public void setMatched(boolean stat) {
@@ -55,7 +52,7 @@ public class Player extends User {
     }
 
     public String toString() {
-        return "Usuario: " + this.name + ". Puntuación: " + this.score;
+        return "Usuario: " + this.forename + ". Puntuación: " + this.score;
     }
 
 }

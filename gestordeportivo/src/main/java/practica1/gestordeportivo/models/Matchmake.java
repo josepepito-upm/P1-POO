@@ -1,25 +1,31 @@
 package practica1.gestordeportivo.models;
 
-public class Matchmake {
-    
-    private final Player player1;
-    private final Player player2;
+import practica1.gestordeportivo.models.lists.PlayerList;
 
-    //usar array de dos jugadores
-    public Matchmake(Player p1, Player p2) {
-        this.player1 = p1;
-            p1.setMatched(true);
-        this.player2 = p2;
-            p2.setMatched(true);        
+public class Matchmake {
+ 
+    private Player[] members;
+    private Player player;
+
+    public Matchmake(String player1, String player2) {
+        members = new Player[2];
+        addMembers();
+    }
+
+    private void addMembers() {
+        for (int i = 0; i < members.length; i++) {
+            for (int j = 0; j < /*longitud de la lista de jugadores; j++)*/; j++) {
+                members[i] = //posicion del jugador en la lista
+            }
+        }
     }
 
     public void unmatch () {
-        player1.setMatched(false);
-        player2.setMatched(false);
+        
     }
 
     public String toString() {
-        return player1.getName() + " (" + player1.getScore() + ") vs. " + player2.getName() + " (" + player2.getScore() + ")";
+        return members[0] + "vs." + members[1];
     }
     
 }
