@@ -36,6 +36,15 @@ package models {
   
   }
   
+  class CommandLineInterpreter {
+    - PlayerList PlayerList
+    - TeamList PlayerList
+    - TournamentList PlayerList
+    - MatchmakeList PlayerList
+
+    
+  }
+  
   package lists {
     class PlayerList {
     
@@ -99,9 +108,7 @@ package commands {
 
 package views {
 
-  class CommandLineInterpreter {
   
-  }
 
   class ErrorView {
 
