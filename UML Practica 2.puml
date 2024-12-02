@@ -29,20 +29,22 @@ package models {
   }
   
   class Matchmake {
-  
+    - Player[] members
+    - Player player
+    - void addMembers()
+    + void unmatch()
   }
   
   class Statistics {
-  
+    + getStats() : double[]
+    + getStat(int position) : double
   }
   
   class CommandLineInterpreter {
-    - PlayerList PlayerList
-    - TeamList PlayerList
-    - TournamentList PlayerList
-    - MatchmakeList PlayerList
-
-    
+    - PlayerList playerList
+    - TeamList teamList
+    - TournamentList tournamentList
+    - MatchmakeList matchmakeList    
   }
   
   package lists {
