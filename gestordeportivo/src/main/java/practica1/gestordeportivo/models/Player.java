@@ -10,14 +10,14 @@ public class Player extends User {
 
     //revisar assert
     public Player(String name) {
-        assert !name.isBlank() && 
+        /*assert !name.isBlank() && 
                 name.length() >= 2 && 
                 Character.isUpperCase(name.charAt(0)) && 
                 !name.matches(".*\\d.*") :
                 "ERROR: formato incorrecto en el nombre especificcado. ";
         this.name = name;
         score = 0.0;
-        matched = false;
+        matched = false;*/
     }
 
     //revisar assert
