@@ -12,12 +12,6 @@ public class Player extends User {
     // Constructor para inicializar forename y score
     public Player(String username, String password, String forename) {
         super(username, password); // Llama al constructor de User
-        if (forename.isBlank() || 
-            forename.length() < 2 || 
-            !Character.isUpperCase(forename.charAt(0)) || 
-            forename.matches(".*\\d.*")) {
-            throw new IllegalArgumentException("ERROR: formato incorrecto en el nombre especificado.");
-        }
         this.forename = forename;
         this.surname = "";  // O inicializa según la lógica de tu aplicación
         this.id = "";       // O inicializa según la lógica de tu aplicación
@@ -28,12 +22,6 @@ public class Player extends User {
 
     public Player(String username, String password, String forename, double score) {
         super(username, password); // Llama al constructor de User
-        if (forename.isBlank() || 
-            forename.length() < 2 || 
-            !Character.isUpperCase(forename.charAt(0)) || 
-            forename.matches(".*\\d.*")) {
-            throw new IllegalArgumentException("ERROR: formato incorrecto en el nombre especificado.");
-        }
         this.forename = forename;
         this.surname = "";  // O inicializa según la lógica de tu aplicación
         this.id = "";       // O inicializa según la lógica de tu aplicación

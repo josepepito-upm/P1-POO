@@ -13,7 +13,12 @@ package models {
   }
   
   class Player {
-  
+    - String forename 
+    - String surname
+    - String id
+    - boolean matched 
+    - double score 
+    - Statistics stats
   }
   
   class Admin {
