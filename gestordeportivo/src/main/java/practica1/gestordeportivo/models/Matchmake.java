@@ -10,10 +10,12 @@ public class Matchmake {
     }
 
     private void addMembers(String player1, String player2) {
-        members[0] = .getPlayer(player1); //poner la playerlist que se crea al principio de la ejecucion
+        members[0] = .getPlayer(player1);
         members[1] = .getPlayer(player2);
-        for (int i = 0; i < members.length; i++) {
-            members[i].setMatched(true);
+        for (Player member : members) {
+            if (member != null) {
+                member.setMatched(true);
+            }
         }
     }
 

@@ -1,5 +1,47 @@
 package practica1.gestordeportivo;
 
+import practica1.gestordeportivo.commands.CommandInterface;
+import practica1.gestordeportivo.commands.PlayerCreate;
+import practica1.gestordeportivo.controllers.PlayerController;
+import practica1.gestordeportivo.models.CommandLineInterpreter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Manager {
+    private final List<CommandInterface> commands;
+    public PlayerController playerController;  // Añadir la instancia de PlayerController
+
+    public Manager() {
+        // Inicializa el controlador de jugadores
+        playerController = new PlayerController(new CommandLineInterpreter());
+
+        // Inicializa la lista de comandos y añade el comando PlayerCreate
+        commands = new ArrayList<>();
+        commands.add(new PlayerCreate(this));  // Pasa 'this' para acceder a 'Manager'
+    }
+
+    // Método para acceder al controlador de jugadores
+    public PlayerController getPlayerController() {
+        return playerController;
+    }
+
+    public void executeCommand(String command) {
+        for (CommandInterface cmd : commands) {
+            if (command.startsWith(cmd.getTitle())) {
+                Error error = cmd.execute(command);
+                if (error != null) {
+                    System.out.println("ERROR: " + error.getMessage());
+                }
+                return;
+            }
+        }
+        System.out.println("ERROR: Comando desconocido.");
+    }
+}
+
+
+
 /*import java.util.ArrayList;
 import java.util.List;
 

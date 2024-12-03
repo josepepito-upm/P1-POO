@@ -10,21 +10,20 @@ public class Player extends User {
     private Role role;
 
     public Player(String username, String password, String forename) {
-        super(username, password); // Llama al constructor de User
+        super(username, password); 
         this.forename = forename;
-        this.surname = "";  // O inicializa según la lógica de tu aplicación
-        this.id = "";       // O inicializa según la lógica de tu aplicación
+        this.surname = "";
+        this.id = "";       
         this.matched = false;
         this.stats = new Statistics();
         this.role = Role.PLAYER;
     }
 
     public Player(String username, String password, String forename, double score) {
-        super(username, password); // Llama al constructor de User
+        super(username, password); 
         this.forename = forename;
-        this.surname = "";  // O inicializa según la lógica de tu aplicación
-        this.id = "";       // O inicializa según la lógica de tu aplicación
-        this.matched = false;
+        this.surname = ""; 
+        this.id = "";               this.matched = false;
         this.stats = new Statistics();
         this.role = Role.PLAYER;
     }
@@ -37,8 +36,8 @@ public class Player extends User {
         return stats;
     }
 
-    public void setMatched(boolean stat) {
-        matched = stat;
+    public void setMatched(boolean matched) {
+        this.matched = matched;
     }
 
     public boolean getMatched() {
