@@ -1,10 +1,17 @@
-@startuml
+@startuml Practica2UML
 
 class SportsManager
 
 package models {
 
-  enum Error
+  enum Error {
+    + COMMAND_NOT_FOUND
+    + SYNTAX_ERROR
+    + NULL
+    - String message
+    + void writeMsg(message)
+    + isNull() : boolean
+  }
 
   enum Role
   
