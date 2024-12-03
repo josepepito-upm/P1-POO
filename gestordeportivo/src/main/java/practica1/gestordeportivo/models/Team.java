@@ -9,6 +9,7 @@ public class Team {
     private Statistics stats;
 
     public Team(String name) {
+        this.name = name;
         stats = new Statistics();
         members = new ArrayList<>();
     }

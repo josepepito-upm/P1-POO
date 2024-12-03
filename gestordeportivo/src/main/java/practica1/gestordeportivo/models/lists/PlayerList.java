@@ -3,15 +3,13 @@ package practica1.gestordeportivo.models.lists;
 import practica1.gestordeportivo.models.Player;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 public class PlayerList {
-   //cambiar array por lista (?)
-   private List<Player> players; //se cambia por private List<Player> players;
 
-   //se cambia por el constructor de la lista
+   private ArrayList<Player> players;
+
    public PlayerList() {
-    players = new ArrayList<>();
+      players = new ArrayList<>();
    }
 
    //desaparece (api de java)
@@ -45,7 +43,7 @@ public class PlayerList {
    }
 
 
-   public List<Player> getPlayers() {
+   public ArrayList<Player> getPlayers() {
       return players;
    }
 

@@ -5,4 +5,8 @@ public class PlayerCreate extends AdminCommands {
     public Error execute(String command) {
         return null;
     }
+
+    public void create() {
+        
+    }
 }

@@ -1,33 +1,26 @@
 package practica1.gestordeportivo.models;
 
-import practica1.gestordeportivo.models.lists.PlayerList;
-
 public class Matchmake {
  
     private Player[] members;
 
-    public Matchmake(String player1, String player2, PlayerList playerList) {
+    public Matchmake(String player1, String player2) {
         members = new Player[2];
-        addMembers(player1, player2, playerList);
+        addMembers(player1, player2);
     }
 
-    public Matchmake(Player p1, Player p2) {
-        //TODO Auto-generated constructor stub
-    }
-
-    private void addMembers(String player1, String player2, PlayerList playerList) {
-        // for (int i = 0; i < members.length; i++) {
-        //     for (int j = 0; j < /*longitud de la lista de jugadores; j++)*/; j++) {
-        //         members[i] = //posicion del jugador en la lista
-        //     }
-        // }
-        members[0] = playerList.getPlayer(player1); // Busca y asigna el primer jugador
-        members[1] = playerList.getPlayer(player2);
+    private void addMembers(String player1, String player2) {
+        members[0] = .getPlayer(player1); //poner la playerlist que se crea al principio de la ejecucion
+        members[1] = .getPlayer(player2);
+        for (int i = 0; i < members.length; i++) {
+            members[i].setMatched(true);
+        }
     }
 
     public void unmatch () {
-        if (members[0] != null) members[0].setMatched(false);
-        if (members[1] != null) members[1].setMatched(false);
+        for (int i = 0; i < members.length; i++) {
+            if (members[i] != null) members[i].setMatched(false);
+        }
     }
 
     public String toString() {

@@ -24,7 +24,6 @@ package models {
     - String surname
     - String id
     - boolean matched 
-    - double score 
     - Statistics stats
   }
   

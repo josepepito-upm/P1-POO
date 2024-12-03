@@ -1,15 +1,15 @@
 package practica1.gestordeportivo.views;
 
+import practica1.gestordeportivo.models.Error;
+
 public class ErrorView {
 
-    private final String ERRORMESSAGES[] = {"comando no encontrado.", 
-                                      "error de sintaxis",
-                                    };
-    private Error error;                                 
-
-   void writeMsg(String message) {
-        
-            System.out.println(message);            
-        
-    } 
+  public final String[] MESSAGES = {
+    "Comando no encontrado.", 
+    "Error de sintaxis"
+  };
+                                  
+  public void writeError(Error error) {
+    System.out.println(MESSAGES[error.ordinal()]);
+  } 
 }
