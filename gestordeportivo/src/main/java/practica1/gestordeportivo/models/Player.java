@@ -14,13 +14,13 @@ public class Player extends User {
     public Player(String[] data) {
         super(data[0], data[1]); 
         this.forename = data[2];
-        this.surname = "";
-        this.id = "";       
+        this.surname = data[3];
+        this.id = data[4];       
         this.matched = false;
         this.stats = new Statistics();
         this.role = Role.PLAYER;
     }
-    
+
     public String getForename() {
         return forename;
     }

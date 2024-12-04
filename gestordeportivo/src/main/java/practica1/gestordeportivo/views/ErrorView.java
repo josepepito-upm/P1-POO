@@ -6,7 +6,8 @@ public class ErrorView {
 
   public final String[] MESSAGES = {
     "Comando no encontrado.", 
-    "Error de sintaxis"
+    "Error de sintaxis.",
+    "Comando no autorizado."
   };
                                   
   public void writeError(Error error) {

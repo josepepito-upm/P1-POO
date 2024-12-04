@@ -11,7 +11,7 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.role = Role.NULL;
+        this.role = Role.GUEST;
     }
 
     protected String getUsername() {
@@ -24,5 +24,9 @@ public class User {
 
     protected void changeRole(Role role) {
         this.role = role;
+    }
+
+    public Role getRole() {
+        return this.role;
     }
 }

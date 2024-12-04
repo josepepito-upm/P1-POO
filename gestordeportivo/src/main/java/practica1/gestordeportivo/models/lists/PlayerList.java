@@ -35,14 +35,21 @@ public class PlayerList {
    }
 
    //rehacer para listas
-   public void rank() {
-      players.sort(Comparator.comparingDouble(Player::getScore).reversed());
-      for (int i = 0; i < players.size(); i++) {
-         System.out.println((i + 1) + ") " + players.get(i).toString());
-      }
+   public void rank(int statCategory) {
+      players.sort((player1, player2) -> {
+        double stat1 = player1.getStats().getStat(statCategory);
+        double stat2 = player2.getStats().getStat(statCategory);
+        return Double.compare(stat2, stat1); // Orden descendente
+    });
+
+    // Mostrar ranking
+    for (int i = 0; i < players.size(); i++) {
+        System.out.println((i + 1) + ") " + players.get(i).getName() + " - Stat[" + statCategory + "]: " +
+            players.get(i).getStats().getStat(statCategory));
+    }
    }
 
-
+ 
    public ArrayList<Player> getPlayers() {
       return players;
    }
