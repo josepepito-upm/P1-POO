@@ -1,8 +1,10 @@
 package practica1.gestordeportivo.models.lists;
 
+import practica1.gestordeportivo.models.Matchmake;
 import practica1.gestordeportivo.models.Player;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Random;
 
 public class PlayerList {
 
@@ -11,6 +13,8 @@ public class PlayerList {
    public PlayerList() {
       players = new ArrayList<>();
    }
+
+   
 
    //desaparece (api de java)
    public void add(Player player) {
@@ -59,6 +63,26 @@ public class PlayerList {
          .filter(player -> player.getName().equals(name))
          .findFirst()
          .orElseThrow(() -> new AssertionError("ERROR: jugador no encontrado."));
-   }
+  }
+
+   public Matchmake matchMakeAuto() {
+      if (players.size() < 2) {
+            throw new IllegalArgumentException("ERROR: No hay suficientes jugadores para emparejar.");
+      }
+
+      // Seleccionar dos jugadores aleatorios
+      Random rand = new Random();
+      int index1 = rand.nextInt(players.size());
+      int index2 = rand.nextInt(players.size());
+
+      while (index1 == index2) {
+            index2 = rand.nextInt(players.size()); // Asegurarse de que los dos jugadores sean diferentes
+      }
+
+      Player player1 = players.get(index1);
+      Player player2 = players.get(index2);
+
+      return new Matchmake(player1, player2); // Emparejamiento automático
+    }
 
 }

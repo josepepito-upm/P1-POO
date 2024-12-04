@@ -7,10 +7,14 @@ import java.util.List;
 
 public class MatchmakeList {
 //cambiar array por lista (?)
-    private List<Matchmake> matchmakes;
+    private ArrayList<Matchmake> matchmakes;
 
     public MatchmakeList() {
         matchmakes = new ArrayList<>();
+    }
+
+    public void add(Matchmake match) {
+        matchmakes.add(match);
     }
 
     //rehacer para listas + assert

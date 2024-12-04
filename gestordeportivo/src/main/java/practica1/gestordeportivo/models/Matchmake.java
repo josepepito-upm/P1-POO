@@ -1,17 +1,23 @@
 package practica1.gestordeportivo.models;
 
+import practica1.gestordeportivo.models.lists.PlayerList;
+
 public class Matchmake {
  
     private Player[] members;
 
-    public Matchmake(String player1, String player2) {
+    public Matchmake(String player1, String player2, PlayerList playerList) {
         members = new Player[2];
-        addMembers(player1, player2);
+        addMembers(player1, player2, playerList);
     }
 
-    private void addMembers(String player1, String player2) {
-        members[0] = .getPlayer(player1);
-        members[1] = .getPlayer(player2);
+    public Matchmake(Player player1, Player player2) {
+        //TODO Auto-generated constructor stub
+    }
+
+    private void addMembers(String player1, String player2, PlayerList playerList) {
+        members[0] = playerList.getPlayer(player1);
+        members[1] = playerList.getPlayer(player2);
         for (Player member : members) {
             if (member != null) {
                 member.setMatched(true);
@@ -27,6 +33,10 @@ public class Matchmake {
 
     public String toString() {
         return members[0] + "vs." + members[1];
+    }
+
+    public Player[] getMembers() {
+        return members;
     }
     
 }
