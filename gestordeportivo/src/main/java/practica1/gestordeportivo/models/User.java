@@ -1,5 +1,7 @@
 package practica1.gestordeportivo.models;
 
+import practica1.gestordeportivo.types.Role;
+
 public class User {
 
     private String username;
@@ -18,5 +20,9 @@ public class User {
 
     protected String getPassword() {
         return password;
+    }
+
+    protected void changeRole(Role role) {
+        this.role = role;
     }
 }

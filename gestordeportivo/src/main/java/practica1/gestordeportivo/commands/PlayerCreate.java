@@ -1,13 +1,15 @@
 package practica1.gestordeportivo.commands;
 
 import practica1.gestordeportivo.Manager;
+import practica1.gestordeportivo.controllers.PlayerController;
+import practica1.gestordeportivo.models.CommandLineInterpreter;
 
 public class PlayerCreate extends AdminCommands {
 
-    private Manager manager;
-
-    public PlayerCreate(Manager manager) {
-        this.manager = manager;
+    private String arguments;
+    
+    public PlayerCreate(String arguments) {
+        this.arguments = arguments;
     }
 
     public Error execute(String command) {
@@ -24,8 +26,8 @@ public class PlayerCreate extends AdminCommands {
         }
 
         // Llama al controlador para crear el jugador
-        manager.getPlayerController().add(playerData);
-        System.out.println("Jugador creado: " + playerData[0] + " " + playerData[1]);
+        new PlayerController(new CommandLineInterpreter()).add(playerData);
+        //System.out.println("Jugador creado: " + playerData[0] + " " + playerData[1]);
         return null;
     }
 

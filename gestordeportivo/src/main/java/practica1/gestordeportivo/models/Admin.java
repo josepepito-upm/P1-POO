@@ -1,5 +1,7 @@
 package practica1.gestordeportivo.models;
 
+import practica1.gestordeportivo.types.Role;
+
 public class Admin extends User {
     
     private Role role;

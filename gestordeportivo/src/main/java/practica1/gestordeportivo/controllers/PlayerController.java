@@ -12,14 +12,7 @@ public class PlayerController {
     }
 
     public void add(String[] playerData) {
-        cli.getPlayerList().add(new Player(playerData, playerData, playerData));
+        cli.getPlayerList().add(new Player(playerData));
     }
-
-	public void add(String[] playerData) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'add'");
-	}
-
-
 
 }

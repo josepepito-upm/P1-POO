@@ -1,6 +1,6 @@
 package practica1.gestordeportivo.views;
 
-import practica1.gestordeportivo.models.Error;
+import practica1.gestordeportivo.types.Error;
 
 public class ErrorView {
 

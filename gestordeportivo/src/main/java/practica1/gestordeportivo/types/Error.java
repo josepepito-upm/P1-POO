@@ -1,4 +1,4 @@
-package practica1.gestordeportivo.models;
+package practica1.gestordeportivo.types;
 
 public enum Error {
     

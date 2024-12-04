@@ -7,7 +7,7 @@ import practica1.gestordeportivo.models.lists.TournamentList;
 
 public class CommandLineInterpreter {
     
-    PlayerList playerList = new PlayerList();
+    PlayerList playerList;
     MatchmakeList matchmakeList;
     TeamList teamList;
     TournamentList tournamentList;
