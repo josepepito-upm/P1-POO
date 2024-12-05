@@ -1,14 +1,17 @@
 package practica1.gestordeportivo.commands;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
+import practica1.gestordeportivo.models.User;
+import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.types.Role;
-
 
 abstract class PlayerCommands implements CommandInterface {
     
-    public abstract Error execute(String command);
+    public abstract Errors execute(String command);
 
-    public boolean validate() {
-        return (CommandLineInterpreter.getRole() == Role.PLAYER); //donde se ubique el usuario para acceder a su rol
+    public Errors validate(String command) {
+        //comprobar que el rol del usuario es player, no se como hacerlo
+        if(User.getRole() != Role.PLAYER) { 
+            return Errors.UNAUTHORIZED_COMMAND;
+        } else return null;
     }
 }

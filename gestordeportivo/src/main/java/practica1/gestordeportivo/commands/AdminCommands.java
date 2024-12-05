@@ -1,14 +1,18 @@
 package practica1.gestordeportivo.commands;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
+import practica1.gestordeportivo.models.User;
 import practica1.gestordeportivo.types.Role;
+import practica1.gestordeportivo.types.Errors;
 
 abstract class AdminCommands implements CommandInterface {
 
-    public abstract Error execute(String command);
+    public abstract Errors execute(String command);
 
-    public boolean validate() {
-        return (CommandLineInterpreter.getRole() == Role.ADMIN); //donde se ubique el usuario para acceder a su rol
+    public Errors validate(String command) {
+        //comprobar que el rol del usuario es admin, no se como hacerlo
+        if(User.getRole() != Role.ADMIN) { 
+            return Errors.UNAUTHORIZED_COMMAND;
+        } else return null;
     }
      
 }

@@ -1,14 +1,14 @@
 package practica1.gestordeportivo.commands;
 
+import practica1.gestordeportivo.types.Errors;
+
 public class ListTournaments extends PublicCommands {
     
-    @Override
-    public Error execute(String command) {
+    public Errors execute(String command) {
         return null;
     }
 
-    @Override
-    public boolean validate(){
-        return true;
+    public Errors validate(){
+        return null;
     }
 }

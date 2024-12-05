@@ -1,6 +1,7 @@
 package practica1.gestordeportivo.types;
 
 public enum Commands {
+    
     CREATE_PLAYER("player-create"), 
     CREATE_TEAM("team-create"),
     CREATE_TOURNAMENT("tournament-create"),
