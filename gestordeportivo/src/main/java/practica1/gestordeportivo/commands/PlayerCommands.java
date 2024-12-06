@@ -9,8 +9,9 @@ abstract class PlayerCommands implements CommandInterface {
     public abstract Errors execute(String command);
 
     public Errors validate(String command) {
-        //comprobar que el rol del usuario es player, no se como hacerlo
-        if(User.getRole() != Role.PLAYER) { 
+        //posibilidad de mejora
+        User user = new User(command, command);
+        if(user.getRole() == Role.GUEST) { 
             return Errors.UNAUTHORIZED_COMMAND;
         } else return null;
     }

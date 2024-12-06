@@ -25,7 +25,15 @@ public class CommandLineInterpreter {
     public PlayerList getPlayerList() {
         return playerList;
     }
-
+    public MatchmakeList getMatchmakeList() {
+        return matchmakeList;
+    }
+    public TeamList getTeamList() {
+        return teamList;
+    }
+    public TournamentList getTournamentList() {
+        return tournamentList;
+    }
 
         public void executeCommand(String command) {
         CommandInterface cmd = null;

@@ -5,12 +5,13 @@ import practica1.gestordeportivo.types.Role;
 import practica1.gestordeportivo.types.Errors;
 
 abstract class AdminCommands implements CommandInterface {
-
     public abstract Errors execute(String command);
 
     public Errors validate(String command) {
         //comprobar que el rol del usuario es admin, no se como hacerlo
-        if(User.getRole() != Role.ADMIN) { 
+        User user = new User(command, command);        
+     
+        if(user.getRole() != Role.ADMIN) { 
             return Errors.UNAUTHORIZED_COMMAND;
         } else return null;
     }

@@ -1,11 +1,10 @@
 package practica1.gestordeportivo.commands;
-
+import practica1.gestordeportivo.models;
 import practica1.gestordeportivo.types.Errors;
-
 public interface CommandInterface {
 
     abstract Errors execute(String command);
 
-    abstract Errors validate(String command);
+    abstract Errors validate(String command, User user);
 
 }
