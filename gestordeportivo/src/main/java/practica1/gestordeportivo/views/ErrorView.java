@@ -18,7 +18,10 @@ public class ErrorView {
     "El jugador se encuentra en el equipo.",
     "El jugador no se encuentra en el equipo.",
     "Un jugador ya está emparejado.",
-    "El torneo no está en curso."
+    "El torneo no está en curso.",
+    "El torneo está en curso.",
+    "El jugador no está inscrito en el torneo.",
+    "El equipo no está inscrito en el torneo."
   };
                                   
   public void writeError(Errors error) {

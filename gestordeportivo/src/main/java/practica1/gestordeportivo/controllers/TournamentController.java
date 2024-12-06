@@ -22,4 +22,30 @@ public class TournamentController {
         cli.getTournamentList().remove(name);
         message.writeMessage(Message.TOURNAMENT_DELETED);
     }
+
+    //inscribe al jugador autenticado
+    public void addPlayer(Tournament tournament) {
+
+        message.writeMessage(Message.PLAYER_ADDED);
+    }
+
+    //inscribe al equipo del jugador autenticado
+    public void addTeam(Tournament tournament) {
+
+        message.writeMessage(Message.TEAM_ADDED);
+    }
+
+    public void removePlayer(Tournament tournament) {
+
+        message.writeMessage(Message.PLAYER_REMOVED);
+    }
+
+    public void removeTeam(Tournament tournament) {
+
+        message.writeMessage(Message.TEAM_REMOVED);
+    }
+
+    public void list() {
+        
+    }
 }

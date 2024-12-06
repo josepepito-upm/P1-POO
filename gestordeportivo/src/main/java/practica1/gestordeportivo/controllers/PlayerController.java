@@ -22,4 +22,8 @@ public class PlayerController {
         cli.getPlayerList().remove(name);
         message.writeMessage(Message.PLAYER_DELETED);
     }
+
+    public void showStatistics() {
+        
+    }
 }

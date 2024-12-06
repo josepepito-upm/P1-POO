@@ -18,6 +18,9 @@ public enum Errors {
     PLAYER_NOT_IN_TEAM,
     PLAYER_MATCHED,
     TOURNAMENT_NOT_ACTIVE,
+    TOURNAMENT_ACTIVE,
+    PLAYER_NOT_IN_TOURNAMENT,
+    TEAM_NOT_IN_TOURNAMENT,
     NULL;
 
     public boolean isNull() {
