@@ -1,8 +1,26 @@
 package practica1.gestordeportivo.commands;
 
+import practica1.gestordeportivo.controllers.UserController;
+import practica1.gestordeportivo.models.CommandLineInterpreter;
+import practica1.gestordeportivo.types.Errors;
+
 public class Logout extends PublicCommands {
+
+    CommandLineInterpreter cli;
     
-    public Error execute(String command) {
+    public Errors validate(String command) {
+        super.validate(command);
+
+        if (!command.equals("logout")) {
+            return Errors.FORMAT_ERROR;
+        }   
         return null;
+    }
+
+    public Errors execute(String command) {
+        if(validate(command) == null) {
+            new UserController(cli).logout();
+            return null;
+        } else return validate(command);
     }
 }

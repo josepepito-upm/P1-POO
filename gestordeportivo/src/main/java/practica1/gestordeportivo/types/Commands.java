@@ -27,4 +27,9 @@ public enum Commands {
     public String getName() {
         return name;
     }
+
+    public static Commands get(int index) {
+        assert index >= 0 && index <= Commands.LOGOUT.ordinal();
+        return Commands.values()[index];
+    }
 }

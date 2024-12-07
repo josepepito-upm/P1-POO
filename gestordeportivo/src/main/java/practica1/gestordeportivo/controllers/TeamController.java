@@ -1,7 +1,6 @@
 package practica1.gestordeportivo.controllers;
 
 import practica1.gestordeportivo.models.CommandLineInterpreter;
-import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.models.Team;
 import practica1.gestordeportivo.views.Message;
 
@@ -14,22 +13,25 @@ public class TeamController {
         this.cli = cli;
     }
 
-    public void create(String[] TeamData) {
-        cli.getTeamList().add(new Team(teamData));
+    public void create(String name) {
+        Team team = new Team(name);
+        cli.getTeamList().getTeams().add(team);
         message.writeMessage(Message.TEAM_CREATED);
     }
 
-    public void delete(String name) {
-        cli.getTeamList().remove(name);
+    public void delete(Team team) {
+        cli.getTeamList().getTeams().remove(team);
         message.writeMessage(Message.TEAM_DELETED);
     }
 
-    public void add(Player player, Team team) {
-
+    public void add(String id, String teamName) {
+        cli.getTeamList().getTeam(teamName).getMembers().add(cli.getPlayerList().getPlayer(id));
+        message.writeMessage(Message.PLAYER_ADDED_TEAM);
     }
 
-    public void remove(Player player, Team team) {
-        
+    public void remove(String id, String teamName) {
+        cli.getTeamList().getTeam(teamName).getMembers().remove(cli.getPlayerList().getPlayer(id));
+        message.writeMessage(Message.PLAYER_REMOVED_TEAM);
     }
 
 }

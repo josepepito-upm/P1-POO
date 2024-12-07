@@ -12,6 +12,8 @@ public enum Message {
     TEAM_ADDED("Equipo inscrito al torneo."),
     PLAYER_REMOVED("Jugador dado de baja del torneo."),
     TEAM_REMOVED("Equipo dado de baja del torneo"),
+    PLAYER_ADDED_TEAM("Jugador añadido al equipo."),
+    PLAYER_REMOVED_TEAM("Jugador eliminado del equipo."),
     LOGGED_IN("Usuario autenticado en el sistema."),
     LOGGED_OUT("Usuario desautenticado del sistema.");
 

@@ -9,8 +9,9 @@ public class TournamentMatchmaking extends AdminCommands {
 
         //ERRORES: FORMATO INCORRECTO POR ESPACIOS, FORMATO INCORRECTO POR ARGUMENTOS, UNO DE LOS JUGADORES YA ESTA EMPAREJADO, EL TORNEO NO ESTA EN CURSO
         //los errores ya estan en el enumerado
-        /*String[] parts = command.split(" ");
-        if (parts.length < 2) {
+        String[] parts = command.split(" ");
+
+        if (parts.length != 2) {
             return Errors.FORMAT_ERROR;
         }
         String[] playerData = parts[1].split(";");
@@ -21,7 +22,7 @@ public class TournamentMatchmaking extends AdminCommands {
             if (existingPlayer.getId().equals(playerData[2])) { // Compara el DNI
                 return Errors.EXISTING_PLAYER;
             }
-        }*/
+        }
         return null;
     }
 

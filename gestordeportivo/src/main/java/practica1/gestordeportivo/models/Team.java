@@ -14,8 +14,17 @@ public class Team {
         members = new ArrayList<>();
     }
 
+    public String getName(){
+        return name;
+    }
+
     public void updateStats() {
         if(!members.isEmpty()) {
+            for (int i = 0; i < stats.getStats().length; i++) {
+                for (int j = 0; j < members.size(); j++) {
+                    stats.getStats()[i] = 0;
+                }
+            }
             for (int i = 0; i < stats.getStats().length; i++) {
                 for (int j = 0; j < members.size(); j++) {
                     stats.getStats()[i] += members.get(j).getStats().getStat(i);
@@ -24,5 +33,20 @@ public class Team {
             }
         }       
     }
-    
+
+    public Player getPlayer(String playerName) {
+        if (playerName == null || playerName.isEmpty()) {
+            return null;
+        }
+        for (Player player : members) {
+            if (player.getForename().equalsIgnoreCase(playerName)) { 
+                return player; 
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Player> getMembers() {
+        return members;
+    }
 }

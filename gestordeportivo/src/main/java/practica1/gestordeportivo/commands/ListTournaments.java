@@ -9,6 +9,6 @@ public class ListTournaments extends PublicCommands {
     }
 
     public Errors validate(){
-        return null;
+        
     }
 }

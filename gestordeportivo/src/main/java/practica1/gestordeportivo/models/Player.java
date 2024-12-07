@@ -11,20 +11,23 @@ public class Player extends User {
     private Statistics stats;
     private Role role;
 
-    public Player(String[] data) {
-        super(data[0], data[1]); 
-        this.forename = data[2];
-        this.surname = data[3];
-        this.id = data[4];       
+    public Player(String username, String password, String forename, String surname, String id) {
+        super(username, password); 
+        this.forename = forename;
+        this.surname = surname;
+        this.id = id;       
         this.matched = false;
         this.stats = new Statistics();
         this.role = Role.PLAYER;
     }
 
-    public String getForename() {
+    public String getForename(){
         return forename;
     }
-
+    public String getSurname(){
+        return surname;
+    }
+    
     public Statistics getStats() {
         return stats;
     }
@@ -37,7 +40,7 @@ public class Player extends User {
         return matched;
     }
 
-    public String getName() {
-        return this.forename;
+    public String getId() {
+        return id;
     }
-}
+} 

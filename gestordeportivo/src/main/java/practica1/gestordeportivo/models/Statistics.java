@@ -29,7 +29,6 @@ public class Statistics {
         "\nGenerated money: " + this.generatedMoney;
     }
 
-
     public double[] getStats() {
         return stats;
     }
@@ -37,9 +36,4 @@ public class Statistics {
     public double getStat(int position) {
         return stats[position];
     }
-
-    
-
-    
-
 }

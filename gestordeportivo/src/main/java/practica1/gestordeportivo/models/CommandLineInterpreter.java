@@ -1,11 +1,12 @@
 package practica1.gestordeportivo.models;
 
 import practica1.gestordeportivo.commands.CommandInterface;
-import practica1.gestordeportivo.commands.ListTournaments;
 import practica1.gestordeportivo.models.lists.MatchmakeList;
 import practica1.gestordeportivo.models.lists.PlayerList;
 import practica1.gestordeportivo.models.lists.TeamList;
 import practica1.gestordeportivo.models.lists.TournamentList;
+import practica1.gestordeportivo.types.Commands;
+import practica1.gestordeportivo.types.Errors;
 
 public class CommandLineInterpreter {
 
@@ -35,21 +36,16 @@ public class CommandLineInterpreter {
         return tournamentList;
     }
 
-        public void executeCommand(String command) {
-        CommandInterface cmd = null;
-
-        if (command.startsWith("tournament-list")) {
-            cmd = new ListTournaments();
-        }
-
-        if (cmd != null && cmd.validate()) {
-            Error error = cmd.execute(command);
-            if (error != null) {
-                System.out.println("Error: " + error.getMessage());
+    public Errors executeCommand(String command, CommandInterface cmdCommandInterface, Commands commandList) {
+        int i = 0;
+        while (i <= commandList.values().length) {
+            if(command.contains(commandList.get(i).getName())) {
+                return cmdCommandInterface.execute(command);
             }
-        } else {
-            System.out.println("Comando no válido o no reconocido.");
+            i++;
         }
+
+        return Errors.COMMAND_NOT_FOUND;
     }
 
 }

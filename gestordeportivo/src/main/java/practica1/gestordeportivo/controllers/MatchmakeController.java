@@ -1,17 +1,15 @@
 package practica1.gestordeportivo.controllers;
 
-import practica1.gestordeportivo.models.lists.MatchmakeList;
-import practica1.gestordeportivo.models.lists.PlayerList;
 import practica1.gestordeportivo.models.Matchmake;
 import practica1.gestordeportivo.models.Player;
+import practica1.gestordeportivo.models.lists.MatchmakeList;
+import practica1.gestordeportivo.models.lists.PlayerList;
 
 public class MatchmakeController {
 
-    private PlayerList playerList;
     private MatchmakeList matchmakeList;
+    private PlayerList playerList;
     
-
-    // Constructor que recibe la lista de jugadores
     public MatchmakeController(PlayerList playerList, MatchmakeList matchmakeList) {
         this.playerList = playerList;
         this.matchmakeList = matchmakeList;

@@ -7,12 +7,12 @@ import practica1.gestordeportivo.models.User;
 
 public class CLIView {
     private CommandLineInterpreter cli;
-    private User usr;
-    private String prompt = usr.getRole().name().concat("~>");
+    private User user;
+    private String prompt = user.getRole().name().concat("~>");
     private Console console;
 
     public void initialize() {
-    this.usr = new User("", "");
+    this.user = new User("", "");
     //faltan cosas
     }
 
@@ -20,5 +20,9 @@ public class CLIView {
         System.out.println(prompt);
         String string = console.readLine();        
         string.split(" ");
+    }
+
+    public User getUser() {
+        return user;
     }
 }
