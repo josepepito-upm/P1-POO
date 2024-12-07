@@ -29,7 +29,7 @@ public enum Commands {
     }
 
     public static Commands get(int index) {
-        assert index >= 0 && index <= Commands.LOGOUT.ordinal();
+        assert index >= 0 && index <= Commands.values().length;
         return Commands.values()[index];
     }
 }

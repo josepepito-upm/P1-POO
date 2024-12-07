@@ -12,7 +12,6 @@ public enum Errors {
     PLAYER_IN_TOURNAMENT,
     EXISTING_TEAM,
     NON_EXISTING_TEAM,
-    TEAM_ALREADY_FULL,
     EXISTING_TOURNAMENT,
     NON_EXISTING_TOURNAMENT,
     PLAYER_IN_TEAM,
@@ -32,10 +31,9 @@ public enum Errors {
     INSUFFICIENT_DATA,
     OPERATION_FAILED,
     DATA_NOT_FOUND,
+    WRONG_MATCHAKING_MODE,
     NULL;
     
-
-
     public boolean isNull() {
         return this == Errors.NULL;
     }

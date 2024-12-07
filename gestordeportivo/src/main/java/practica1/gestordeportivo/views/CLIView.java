@@ -19,7 +19,6 @@ public class CLIView {
     public void getCommand() {
         System.out.println(prompt);
         String string = console.readLine();        
-        string.split(" ");
     }
 
     public User getUser() {
