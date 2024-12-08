@@ -10,4 +10,8 @@ public class Admin extends User {
         super(username, password);
         this.role = Role.ADMIN;
     }
+    
+    public Role getRole() {
+        return role;
+    }
 }

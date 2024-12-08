@@ -3,25 +3,33 @@ package practica1.gestordeportivo.views;
 import java.io.Console;
 
 import practica1.gestordeportivo.models.CommandLineInterpreter;
-import practica1.gestordeportivo.models.User;
+import practica1.gestordeportivo.types.Errors;
 
 public class CLIView {
     private CommandLineInterpreter cli;
-    private User user;
-    private String prompt = user.getRole().name().concat("~>");
-    private Console console;
+    private Console console = System.console();
+    private ErrorView errorView;
+    private String prompt = "~>";
 
     public void initialize() {
-    this.user = new User("", "");
-    //faltan cosas
+        cli = new CommandLineInterpreter();
+        String command;
+        do {
+            System.out.println(cli.getAuthenticatedUser().toString() + prompt); 
+            command = console.readLine();
+            getCommand(command);
+        } while(!command.equals("exit"));
     }
 
-    public void getCommand() {
+    private void getCommand(String command) {
         System.out.println(prompt);
-        String string = console.readLine();        
+        Errors status = cli.executeCommand(command);
+        errorView.writeError(status);
+        if(status.isNull()) {
+            if(command.equals("list-tournament"))
+                new TournamentListView().show(cli);
+            else new MessageView().showMessage(command);
+        }
     }
-
-    public User getUser() {
-        return user;
-    }
+    
 }

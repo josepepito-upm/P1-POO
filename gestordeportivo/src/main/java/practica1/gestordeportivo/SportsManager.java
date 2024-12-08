@@ -1,11 +1,10 @@
 package practica1.gestordeportivo;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
+import practica1.gestordeportivo.views.CLIView;
 
 public class SportsManager {
     
     public static void main(String[] args) {
-        CommandLineInterpreter cli = new CommandLineInterpreter();
-        cli.executeCommand("tournament-list");
+        new CLIView().initialize();
     }
 }

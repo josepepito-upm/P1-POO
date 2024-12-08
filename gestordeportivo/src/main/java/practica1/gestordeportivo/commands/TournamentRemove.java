@@ -1,8 +1,12 @@
 package practica1.gestordeportivo.commands;
 
+import practica1.gestordeportivo.controllers.TournamentController;
+import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.types.Errors;
 
 public class TournamentRemove extends PlayerCommands {
+
+    private TournamentController tournamentController = new TournamentController();
     
     public Errors validate(String command) {
         super.validate(command);
@@ -11,21 +15,20 @@ public class TournamentRemove extends PlayerCommands {
         if (parts.length != 2) {
             return Errors.FORMAT_ERROR;
         }
-        //jugador no en torneo
-        for (Player existingPlayer : playerList.getPlayers()) {
-            if (existingPlayer.getId().equals(playerData[2])) { // Compara el DNI
+        for (Player player : tournamentController.getCli().getTournamentList().getTournament(parts[1]).getParticipants()) {
+            if (!(player.getId().equals(parts[0]))) {
                 return Errors.PLAYER_NOT_IN_TOURNAMENT;
             }
         }
-        //equipo no en torneo
-        //return Errors.TEAM_NOT_IN_TOURNAMENT;
-        return null;
+        return Errors.NULL;
     }
 
     public Errors execute(String command) {
-        if(validate(command) == null) {
-            //
-            return null;
+        String[] parts = command.split(" ");
+
+        if(validate(command).isNull()) {
+            tournamentController.removePlayer(parts[1]);
+            return Errors.NULL;
         } else return validate(command);
         
     }

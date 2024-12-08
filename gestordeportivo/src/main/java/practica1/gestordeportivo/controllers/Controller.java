@@ -6,7 +6,7 @@ public abstract class Controller {
     protected CommandLineInterpreter cli;
 
     public CommandLineInterpreter getCli() {
-        return this.getCli();
+        return this.cli;
     }
 
 }

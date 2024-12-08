@@ -3,8 +3,9 @@ package practica1.gestordeportivo.commands;
 import practica1.gestordeportivo.controllers.UserController;
 import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.types.Role;
+
 abstract class AdminCommands implements CommandInterface {
-    //¿Esto no debería de implementarse solamente en las views?
+
     UserController userController = new UserController(); 
 
     public abstract Errors execute(String command);

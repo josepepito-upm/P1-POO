@@ -22,7 +22,6 @@ public class ErrorView {
     "El torneo no está en curso.",
     "El torneo está en curso.",
     "El jugador no está inscrito en el torneo.",
-    "El equipo no está inscrito en el torneo.",
     "El formato del correo es incorrecto.",
     "Datos introducidos del equipo incorrectos.",
     "Datos introducidos del jugador incorrectos.",

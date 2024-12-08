@@ -1,5 +1,4 @@
 package practica1.gestordeportivo.models;
-
 import practica1.gestordeportivo.types.Role;
 
 public class Player extends User {
@@ -10,6 +9,8 @@ public class Player extends User {
     private boolean matched;
     private Statistics stats;
     private Role role;
+    @SuppressWarnings("unused")
+    private Admin creator;
 
     public Player(String username, String password, String forename, String surname, String id) {
         super(username, password); 
@@ -20,7 +21,6 @@ public class Player extends User {
         this.stats = new Statistics();
         this.role = Role.PLAYER;
     }
-
     public String getForename(){
         return forename;
     }
@@ -32,15 +32,23 @@ public class Player extends User {
         return stats;
     }
 
-    public void setMatched(boolean matched) {
-        this.matched = matched;
-    }
-
     public boolean getMatched() {
         return matched;
     }
 
     public String getId() {
         return id;
+    }
+//justo, tu crees que esta bien el controller.getCli? es decir el crear un controller nuevo en player
+//Espera  que me meto a disc a hablar
+    public Role getRole() {
+        return role;
+    }
+
+    public void setMatched(boolean matched) {
+        this.matched = matched;
+    }
+    public void setCreator(Admin creator) {
+        this.creator = creator;
     }
 } 

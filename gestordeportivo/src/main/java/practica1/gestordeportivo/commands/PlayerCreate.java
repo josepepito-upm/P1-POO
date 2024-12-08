@@ -24,13 +24,13 @@ public class PlayerCreate extends AdminCommands {
     }
 
     public Errors execute(String command) {
-        if (!validate(command).isNull()) {
-            return validate(command);
-        }
-
         String[] parts = command.split(" ");
         String[] playerData = parts[1].split(";");
-        playerController.create(playerData[0], playerData[1], playerData[2], playerData[3], playerData[4]);
-        return Errors.NULL;
+
+        if(validate(command).isNull()) {
+            playerController.create(playerData[0], playerData[1], playerData[2], playerData[3], playerData[4]);
+            return Errors.NULL;
+        } else return validate(command);
     }
-}
+}    
+

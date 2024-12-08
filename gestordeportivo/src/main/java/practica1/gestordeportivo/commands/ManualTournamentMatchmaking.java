@@ -15,7 +15,7 @@ public class ManualTournamentMatchmaking extends TournamentMatchmaking {
                     return Errors.NULL;               
         }
 
-        return Errors.WRONG_MATCHAKING_MODE;
+        return Errors.WRONG_MATCHMAKING_MODE;
     }
 
     public Errors execute(String command) {

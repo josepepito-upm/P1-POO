@@ -5,7 +5,8 @@ import practica1.gestordeportivo.types.MatchmakeModes;
 import practica1.gestordeportivo.controllers.MatchmakeController;
 
 public class RandomTournamentMatchmaking extends TournamentMatchmaking{
-public Errors validate(String command) {
+
+    public Errors validate(String command) {
         super.validate(command);        
         
         String[] parts = getParts(command);
@@ -14,8 +15,7 @@ public Errors validate(String command) {
                 if(string.equals(MatchmakeModes.RANDOM.getMode()))
                     return Errors.NULL;               
         }
-
-        return Errors.WRONG_MATCHAKING_MODE;
+        return Errors.WRONG_MATCHMAKING_MODE;
     }
 
     public Errors execute(String command) {

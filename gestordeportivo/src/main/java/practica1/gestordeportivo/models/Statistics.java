@@ -22,11 +22,11 @@ public class Statistics {
     }
 
     public String toString() {
-        return "Marked points: " + this.markedPoints +
-        "\nMatches won: " + this.matchesWon +
-        "\nAssistance points: " + this.assistancePoints +
-        "\nTournaments won: " + this.tournamentsWon +
-        "\nGenerated money: " + this.generatedMoney;
+        return "'PuntosMarcados': " + this.markedPoints + "," +
+        "\n'PartidosGanados': " + this.matchesWon + "," +
+        "\n'PuntosAsistencia': " + this.assistancePoints + "," +
+        "\n'TorneosGandos': " + this.tournamentsWon + "," +
+        "\n'DineroGenerado': " + this.generatedMoney;
     }
 
     public double[] getStats() {

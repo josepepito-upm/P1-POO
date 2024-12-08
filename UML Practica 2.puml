@@ -3,20 +3,16 @@
 class SportsManager
 
 package models {
-
-  enum Error {
-    + COMMAND_NOT_FOUND
-    + SYNTAX_ERROR
-    + NULL
-    - String message
-    + void writeMsg(message)
-    + isNull() : boolean
-  }
-
-  enum Role
   
   class User {
-  
+    - String username 
+    - String password
+    - Role role
+    + User()
+    # getUsername()
+    # getPassword()
+    + getRole()
+    + setRole()
   }
   
   class Player {
@@ -25,30 +21,77 @@ package models {
     - String id
     - boolean matched 
     - Statistics stats
+    - Role role
+    - Admin creator
+    - Controller controller
+    + Player()
+    + getForename()
+    + getSurname()
+    + getStats()
+    + setMatched()
+    + getMatched()
+    + getId()
+    + getRole()
   }
   
   class Admin {
-  
+    - Role role
+    + Admin()
+    + getRole()
   }
   
   class Team {
-  
+    - String name
+    - Arraylist<Player> members
+    - Statistics stats
+    + Team()
+    + getName()
+    + updateStats()
+    + getPlayer()
+    + getMembers()
   }
   
   class Tournament {
-  
+    - String name
+    - String startDate
+    - String endDate
+    - String league
+    - String sport 
+    - boolean inProgress
+    - ArrayList<Player> participants
+    + Tournament()
+    + getPlayer()
+    + getSport()
+    + getParticipants()
+    + isInProgress()
+    + setInProgress()
+    + getName()
+    + getStartDate()
+    + getEndDate()
+    + getLeague()
   }
   
   class Matchmake {
     - Player[] members
-    - Player player
-    - void addMembers()
-    + void unmatch()
+    + Matchmake()
+    - addMembers()
+    + unmatch()
+    + toString()
+    + getMembers()
   }
   
   class Statistics {
-    + getStats() : double[]
-    + getStat(int position) : double
+    - double markedPoints
+    - double matchesWon
+    - double assistancePoints
+    - double tournamentsWon
+    - double generatedMoney
+    - double[] stats
+    + Statistics()
+    + initialize()
+    + toString()
+    + getStats()
+    + getStat()
   }
   
   class CommandLineInterpreter {
@@ -56,86 +99,288 @@ package models {
     - TeamList teamList
     - TournamentList tournamentList
     - MatchmakeList matchmakeList    
+    - User authenticatedUser
+    + CommandLineInterpreter()
+    + getPlayerList()
+    + getMatchmakeList()
+    + getTeamList()
+    + getTournamentList()
+    + setAuthenticatedUser()
+    + getAuthenticatedUser()
+    + getAuthenticatedAdmin()
+    + getAuthenticatedPlayer()
+    + isAuthenticatedPlayer()
+    + executeCommand()
+
   }
   
   package lists {
     class PlayerList {
-    
+      - ArrayList<Player> players
+      + PlayerList()
+      + getPlayers()
+      + getPlayer()
+      + rank()
+      + matchMakeAuto()
     }
     
     class TeamList {
-    
+      - ArrayList<Team> teams
+      + getTeams()
+      + getTeam()
     }
     
     class TournamentList {
-    
+      - ArrayList<Tournament> tournaments
+      + getTournament()
     }
     
     class MatchmakeList {
-    
+      - ArrayList<Matchmake> matchmakes
+      + MatchmakeList()
+      + add()
+      + getNumMatchmakes()
     }
   }
 }
 
 package commands {
   interface CommandInterface {
-    +execute(String) : Error
-    +validate(String) : Error
+    {abstract} execute()
+    {abstract} validate()
   }
 
   abstract AdminCommands {
+    {abstract} execute()
     +validate()
   }
 
   abstract PublicCommands {
+    {abstract} execute()
     +validate()
   }
 
   abstract PlayerCommands {
+    {abstract} execute()
     +validate()
   }
   
   class PlayerCreate {
-    -controller
-    +PlayerCreate(String)
+    -Playercontroller
+    +validate()
     +execute()
   }
   
-  
-  class PlayerDelete
-  class TeamCreate
-  class TeamDelete
-  class TeamAdd
-  class TeamRemove
-  class TournamentCreate
-  class TournamentDelete
-  class TournamentAdd
-  class TournamentRemove
-  class TournamentMatchmaking
-  class ListTournaments
-  class StatisticsShow
-  class Login
-  class Logout
-  
+  class PlayerDelete {
+    -Playercontroller
+    +validate()
+    +execute()
+  }
+
+  class TeamCreate {
+    -Teamcontroller
+    +validate()
+    +execute()
+  }
+
+  class TeamDelete {
+    -Teamcontroller
+    +validate()
+    +execute()
+  }
+
+  class TeamAdd {
+    -Teamcontroller
+    +validate()
+    +execute()
+  }
+
+  class TeamRemove {
+    -Teamcontroller
+    +validate()
+    +execute()
+  }
+
+  class TournamentCreate {
+    -Tournamentcontroller
+    +validate()
+    +execute()
+  }
+
+  class TournamentDelete {
+    -Tournamentcontroller
+    +validate()
+    +execute()
+  }
+
+  class TournamentAdd {
+    -Tournamentcontroller
+    +validate()
+    +execute()
+  }
+
+  class TournamentRemove {
+    -Tournamentcontroller
+    +validate()
+    +execute()
+  }
+
+  class TournamentMatchmaking {
+    -Tournamentcontroller
+    +validate()
+    +execute()
+  }
+
+  class RandomTournamentMatchmaking {
+    -Tournamentcontroller
+    +validate()
+    +execute()
+  }
+
+  class ManualTournamentMatchmaking {
+    -Tournamentcontroller
+    +validate()
+    +execute()
+  }
+
+  class ListTournaments {
+    -Usercontroller
+    +validate()
+    +execute()
+  }
+
+  class StatisticsShow {
+    -StatsView
+    +validate()
+    +execute()
+  }
+
+  class Login {
+    -Usercontroller
+    +validate()
+    +execute()
+  }
+
+  class Logout {
+    -Usercontroller
+    +validate()
+    +execute()
+  }
 }
 
 package views {
-
-  
-
   class ErrorView {
-
+    + String[] MESSAGES
+    + writeError()
   }
 
-  class CLIView
-  abstract View
+  class CLIView {
+    - CommandLineInterpreter cli 
+    - Console console 
+    - ErrorView errorView 
+    - String prompt
+    + initialize()
+    + getCommand()
+  }
+
+  enum Message {
+    - String message 
+    - Commands command 
+    + Message()
+    + getCommand()
+    + writeMessage()
+    + toString()
+  }
+
+  class MessageView {
+    + showMessage()
+  }
+
+  class StatsView {
+    - CommandLineInterpreter cli 
+    + showStatisticsCSV()
+    + showStatisticsJSON()
+  }
+
+  class TournamentListView {
+    + GuestTournamentList()
+    + PlayerTournamentList()
+    + AdminTournamentList()
+  }
+
+  class TournamentView {
+    - Tournament tournament
+    + view()
+  }
+
+  class PlayerView {
+    - Player player
+    + view()
+  }
+
+  abstract class View {
+    {abstract} view()
+  }
 }
 
 package controllers {
-  class PlayerController
-  class TeamController
-  class TournamentController
-  class MatchmakeController
+  abstract class Controller {
+    # CommandLineInterpreter cli 
+    + getCli()
+  }
+
+  class PlayerController {
+    + create()
+    + delete()
+  }
+
+  class TeamController {
+    + create()
+    + delete()
+    + add()
+    + remove()
+  }
+
+  class TournamentController {
+    + create()
+    + delete()
+    + addPlayer()
+    + removePlayer()
+  }
+
+  class MatchmakeController {
+    + manualMatchmake()
+    + autoMatchmake()
+  }
+
+  class UserController {
+    + login()
+    + logout()
+  }
+}
+
+package types {
+  enum Errors {
+    + isNull()
+  }
+
+  enum Role
+
+  enum Commands {
+    - String name
+    - CommandInterface commandInterface
+    + Commands()
+    + getCommand()
+    + getName()
+  }
+
+  enum MatchmakesModes {
+    - String modeFormat
+    + CommandInterface commandInterface
+    + MatchmakeModes()
+    - setCommand()
+    + getMode()
+  }
 }
 
 PlayerList -down-> Player
@@ -167,13 +412,48 @@ PlayerCommands <|-down- StatisticsShow
 PublicCommands <|-down- Login
 PublicCommands <|-down- Logout
 PublicCommands <|-down- ListTournaments
+TournamentMatchmaking <|-down- RandomTournamentMatchmaking
+TournamentMatchmaking <|-down- ManualTournamentMatchmaking
+
 
 PlayerController -down-> Player
 TeamController -down-> Team
 TournamentController -down-> Tournament
 MatchmakeController -down-> Matchmake
+UserController -down-> CommandLineInterpreter
+Controller -down-> CommandLineInterpreter
 
-View <|-down- CLIView
-View <|-down- ErrorView
+Commands -down-> CommandInterface
+ErrorView -down-> Errors
+Message -down-> Commands
+MessageView -down-> Message
+
+StatsView -down-> CommandLineInterpreter
+
+CLIView -down-> CommandLineInterpreter
+CLIView -down-> ErrorView
+CLIView -down-> Role
+
+CommandLineInterpreter -down-> Role
+CommandLineInterpreter -down-> PlayerList
+CommandLineInterpreter -down-> MatchmakeList
+CommandLineInterpreter -down-> TournamentList
+CommandLineInterpreter -down-> TeamList
+
+TournamentListView -down-> TournamentController
+TournamentView -down-> TournamentController
+PlayerView -down-> PlayerController
+TournamentController -down-> TournamentList
+MatchmakesModes -down-> CommandInterface
+Commands -down-> Errors
+
+SportsManager .down.> CLIView
+
+PlayerCommands .down.> UserController
+AdminCommands .down.> UserController
+PublicCommands .down.> UserController
+
+View <|-down- PlayerView
+View <|-down- TournamentView
 
 @enduml

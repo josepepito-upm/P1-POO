@@ -1,5 +1,5 @@
 package practica1.gestordeportivo.views;
 
-public abstract class View {
-    
+abstract class View {
+    abstract void view();
 }
