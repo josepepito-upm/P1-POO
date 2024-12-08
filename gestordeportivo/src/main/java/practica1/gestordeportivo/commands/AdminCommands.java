@@ -13,7 +13,7 @@ abstract class AdminCommands implements CommandInterface {
     public Errors validate(String command) {  
         if(cliView.getUser().getRole() != Role.ADMIN) { 
             return Errors.UNAUTHORIZED_COMMAND;
-        } else return null;
+        } else return Errors.NULL;
     }
      
 }

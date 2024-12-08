@@ -1,37 +1,40 @@
 package practica1.gestordeportivo.commands;
-
 import practica1.gestordeportivo.controllers.UserController;
-import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.types.Errors;
 
 public class Login extends PublicCommands {
 
-    CommandLineInterpreter cli;
-    
+    private UserController userController;
+
+    public Login(UserController userController) {
+        this.userController = userController;
+    }
+
     public Errors validate(String command) {
         super.validate(command);
 
         String[] parts = command.split(" ");
-        String[] commandData = parts[1].split(";");
-        String[] username = commandData[0].split("@");
-
-        if (parts.length != 2 || commandData.length != 2) {
+        if (parts.length != 2) {
             return Errors.FORMAT_ERROR;
-        }   
-        
-        if(!username[1].equals("alumnos.upm.es") || !username[1].equals(".upm.es")) {
+        }
+
+        String[] commandData = parts[1].split(";");
+        if (commandData.length != 2 || !commandData[0].contains("@")) {
             return Errors.WRONG_MAIL;
         }
-        return null;
+
+        return Errors.NULL;
     }
 
     public Errors execute(String command) {
+        Errors validationErrors = validate(command);
+        if (validationErrors != null) {
+            return validationErrors;
+        }
+
         String[] parts = command.split(" ");
         String[] commandData = parts[1].split(";");
-
-        if(validate(command) == null) {
-            new UserController(cli).login(commandData[0], commandData[1]);
-            return null;
-        } else return validate(command);
+        userController.login(commandData[0], commandData[1]);
+        return Errors.NULL;
     }
 }

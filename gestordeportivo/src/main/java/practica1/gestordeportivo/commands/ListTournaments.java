@@ -1,6 +1,5 @@
 package practica1.gestordeportivo.commands;
 import practica1.gestordeportivo.controllers.TournamentController;
-import practica1.gestordeportivo.models.Tournament;
 import practica1.gestordeportivo.types.Errors;
 
 public class ListTournaments extends PublicCommands {
@@ -17,8 +16,8 @@ public class ListTournaments extends PublicCommands {
             return validationErrors;
         }
 
-        tournamentController.listTournaments();
-        return null;
+        tournamentController.list();
+        return Errors.NULL;
     }
 
     public Errors validate(String command){
@@ -29,7 +28,7 @@ public class ListTournaments extends PublicCommands {
             return Errors.FORMAT_ERROR; 
         }
 
-        return null;
+        return Errors.NULL;
         
     }
 }
