@@ -1,14 +1,18 @@
 package practica1.gestordeportivo.commands;
 
 import practica1.gestordeportivo.controllers.TournamentController;
-import practica1.gestordeportivo.models.CommandLineInterpreter;
-import practica1.gestordeportivo.models.Tournament;
 import practica1.gestordeportivo.types.Errors;
 
 public class TournamentCreate extends AdminCommands {
 
-    CommandLineInterpreter cli;
-    
+    private TournamentController tournamentController;
+
+    // Constructor que recibe el controlador
+    public TournamentCreate(TournamentController tournamentController) {
+        this.tournamentController = tournamentController;
+    }
+
+    // Método de validación
     public Errors validate(String command) {
         super.validate(command);
 
@@ -21,21 +25,25 @@ public class TournamentCreate extends AdminCommands {
         if (tournamentData.length != 5) {
             return Errors.FORMAT_ERROR;
         }
-        for (Tournament tournament : cli.getTournamentList().getTournaments()) {
-            if (tournament.getName().equals(tournamentData[0])) { 
-                return Errors.EXISTING_TOURNAMENT;
-            }
-        }
+
+        // if (tournamentController.tournamentExists(tournamentData[0])) {
+        //     return Errors.EXISTING_TOURNAMENT;
+        // }
+
         return null;
     }
 
     public Errors execute(String command) {
         String[] parts = command.split(" ");
         String[] tournamentData = parts[1].split(";");
-        
-        if(validate(command) == null) {
-            new TournamentController(cli).create(tournamentData[0], tournamentData[1], tournamentData[2], tournamentData[3], tournamentData[4]);
-            return null;
-        } else return validate(command);
+
+        Errors validationError = validate(command);
+        if (validationError != null) {
+            return validationError; 
+        }
+
+        tournamentController.create(tournamentData[0], tournamentData[1], tournamentData[2], tournamentData[3], tournamentData[4]);
+
+        return Errors.NULL; 
     }
 }

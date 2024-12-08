@@ -19,7 +19,8 @@ public class TeamController {
         message.writeMessage(Message.TEAM_CREATED);
     }
 
-    public void delete(Team team) {
+    public void delete(String name) {
+        Team team = new Team(name);
         cli.getTeamList().getTeams().remove(team);
         message.writeMessage(Message.TEAM_DELETED);
     }

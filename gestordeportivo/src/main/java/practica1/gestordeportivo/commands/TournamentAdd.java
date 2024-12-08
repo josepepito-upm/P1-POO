@@ -1,11 +1,14 @@
 package practica1.gestordeportivo.commands;
+
 import practica1.gestordeportivo.controllers.TournamentController;
 import practica1.gestordeportivo.types.Errors;
+
 public class TournamentAdd extends PlayerCommands {
-    
-    private TournamentController controller;
-    public TournamentAdd(TournamentController controller) {
-        this.controller = controller;
+
+    private TournamentController tournamentController;
+
+    public TournamentAdd(TournamentController tournamentController) {
+        this.tournamentController = tournamentController;
     }
 
     public Errors validate(String command) {
@@ -15,19 +18,17 @@ public class TournamentAdd extends PlayerCommands {
         if (parts.length != 2) {
             return Errors.FORMAT_ERROR;
         }
-
-        return null;
+        return null; 
     }
 
     public Errors execute(String command) {
+        String[] parts = command.split(" ");
+
         Errors validationError = validate(command);
         if (validationError != null) {
-            return validationError; // Retornar error si la validación falla
+            return validationError; 
         }
-
-        // Ejecutar la acción en el controlador
-        String tournamentName = command.split(" ")[1];
-        controller.addPlayer(tournamentName);
-        return null;
+        tournamentController.addPlayer(parts[1]);
+        return Errors.NULL;
     }
 }

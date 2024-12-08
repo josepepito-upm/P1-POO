@@ -1,14 +1,14 @@
 package practica1.gestordeportivo.commands;
-
 import practica1.gestordeportivo.controllers.TeamController;
-import practica1.gestordeportivo.models.CommandLineInterpreter;
-import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.types.Errors;
 
 public class TeamRemove extends AdminCommands {
 
-    CommandLineInterpreter cli;
+    private TeamController teamController; 
 
+    public TeamRemove(TeamController teamController) {
+        this.teamController = teamController; 
+    }
     public Errors validate(String command) {
         super.validate(command);
 
@@ -16,27 +16,23 @@ public class TeamRemove extends AdminCommands {
         String[] commandData = parts[1].split(";");
 
         if (parts.length != 2) {
-            return Errors.FORMAT_ERROR;
+            return Errors.FORMAT_ERROR; 
         }
         if (commandData.length != 2) {
-            return Errors.FORMAT_ERROR;
+            return Errors.FORMAT_ERROR; 
         }
-        for (Player player : cli.getTeamList().getTeam(commandData[1]).getMembers()) {
-            if (!(player.getId().equals(commandData[0]))) {
-                return Errors.PLAYER_NOT_IN_TEAM;
-            }
-        }
-        return null;
+        return Errors.NULL;
     }
 
     public Errors execute(String command) {
         String[] parts = command.split(" ");
         String[] commandData = parts[1].split(";");
-        
-        if(validate(command) == null) {
-            new TeamController(cli).remove(commandData[0], commandData[1]);
-            cli.getTeamList().getTeam(commandData[1]).updateStats();
-            return null;
-        } else return validate(command);
+
+        Errors validationError = validate(command); 
+        if (validationError != null) {
+            return validationError;
+        }
+        teamController.remove(commandData[0], commandData[1]);
+        return Errors.NULL;
     }
 }

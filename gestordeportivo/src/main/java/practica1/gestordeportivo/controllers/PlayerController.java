@@ -14,6 +14,15 @@ public class PlayerController {
         this.cli = cli;
     }
 
+    public Player getPlayerById(String playerId) {
+        for (Player player : cli.getPlayerList().getPlayers()) {
+            if (player.getId().equals(playerId)) {
+                return player;
+            }
+        }
+        return null;
+    }
+
     public void create(String username, String password, String forename, String surname, String id) {
         cli.getPlayerList().getPlayers().add(new Player(username, password, forename, surname, id));
         message.writeMessage(Message.PLAYER_CREATED);

@@ -26,9 +26,19 @@ public class TournamentController {
         message.writeMessage(Message.TOURNAMENT_CREATED);
     }
 
-    public void delete(Tournament tournament) {
+    public void delete(String tournamentName) {
+        Tournament tournament = getTournament(tournamentName);
         cli.getTournamentList().getTournaments().remove(tournament);
         message.writeMessage(Message.TOURNAMENT_DELETED);
+    }
+
+    private Tournament getTournament(String tournamentName) {
+        for (Tournament tournament : cli.getTournamentList().getTournaments()) {
+            if (tournament.getName().equalsIgnoreCase(tournamentName)) {
+                return tournament;
+            }
+        }
+        return null; // Si no se encuentra el torneo, retornamos null
     }
 
     public void addPlayer(String tournament) {

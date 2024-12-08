@@ -24,9 +24,9 @@ public class PlayerCreate extends AdminCommands {
             return Errors.FORMAT_ERROR;
         }
 
-        if (playerController.playerExists(playerData[4])) {
-            return Errors.EXISTING_PLAYER;
-        }
+        // if (playerController.playerExists(playerData[4])) {
+        //     return Errors.EXISTING_PLAYER;
+        // }
 
         return null;
     }

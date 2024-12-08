@@ -1,14 +1,16 @@
 package practica1.gestordeportivo.commands;
 
 import practica1.gestordeportivo.controllers.TeamController;
-import practica1.gestordeportivo.models.CommandLineInterpreter;
-import practica1.gestordeportivo.models.Team;
 import practica1.gestordeportivo.types.Errors;
 
 public class TeamDelete extends AdminCommands {
 
-    CommandLineInterpreter cli;
-    
+    private TeamController teamController;
+
+    public TeamDelete(TeamController teamController) {
+        this.teamController = teamController;
+    }
+
     public Errors validate(String command) {
         super.validate(command);
 
@@ -17,20 +19,18 @@ public class TeamDelete extends AdminCommands {
         if (parts.length != 2) {
             return Errors.FORMAT_ERROR;
         }
-        for (Team team : cli.getTeamList().getTeams()) {
-            if (!(team.getName().equals(parts[1]))) {
-                return Errors.NON_EXISTING_TEAM;
-            }
-        }
         return null;
     }
 
     public Errors execute(String command) {
         String[] parts = command.split(" ");
 
-        if(validate(command) == null) {
-            new TeamController(cli).delete(cli.getTeamList().getTeam(parts[1]));
-            return null;
-        } else return validate(command);
+        Errors validationError = validate(command); 
+        if (validationError != null) {
+            return validationError;
+        }
+
+        teamController.delete(parts[1]);
+        return Errors.NULL;
     }
 }
