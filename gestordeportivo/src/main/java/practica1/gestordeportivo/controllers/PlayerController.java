@@ -1,29 +1,24 @@
 package practica1.gestordeportivo.controllers;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.views.Message;
 
-public class PlayerController {
+public class PlayerController extends Controller{
    
-    protected CommandLineInterpreter cli;
     private Message message;
     
-    public PlayerController (CommandLineInterpreter cli) {
-        this.cli = cli;
-    }
-
     public void create(String username, String password, String forename, String surname, String id) {
-        cli.getPlayerList().getPlayers().add(new Player(username, password, forename, surname, id));
+        getCli().getPlayerList().getPlayers().add(new Player(username, password, forename, surname, id));
         message.writeMessage(Message.PLAYER_CREATED);
     }
 
     public void delete(Player player) {
-        cli.getPlayerList().getPlayers().remove(player);
+        getCli().getPlayerList().getPlayers().remove(player);
         message.writeMessage(Message.PLAYER_DELETED);
     }
 
+    //Esto va a Views
     public Errors showStatistics(Player player) {
         if (player == null) {
             System.out.println("Jugador no encontrado.");

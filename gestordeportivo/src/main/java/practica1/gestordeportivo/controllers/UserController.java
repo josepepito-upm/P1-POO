@@ -1,19 +1,14 @@
 package practica1.gestordeportivo.controllers;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.types.Role;
 import practica1.gestordeportivo.views.CLIView;
 import practica1.gestordeportivo.views.Message;
 
-public class UserController {
+public class UserController extends Controller{
 
     private CLIView cliView;
+    //Message va a Views
     private Message message;
-    protected CommandLineInterpreter cli;
-
-    public UserController (CommandLineInterpreter cli) {
-        this.cli = cli;
-    }
     
     public void login(String username, String password) {
         String[] parts = username.split("@");

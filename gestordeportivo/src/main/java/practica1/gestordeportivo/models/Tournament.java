@@ -19,7 +19,7 @@ public class Tournament {
         this.league = league;
         this.sport = sport;
         inProgress = false;
-        participants = new ArrayList<>();
+        participants = new ArrayList<Player>();
     }
 
     public Player getPlayer(String id) {

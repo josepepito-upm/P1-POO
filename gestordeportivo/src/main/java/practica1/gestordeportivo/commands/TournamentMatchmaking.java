@@ -1,15 +1,11 @@
 package practica1.gestordeportivo.commands;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
+import practica1.gestordeportivo.controllers.TournamentController;
 import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.types.Errors;
 
 public abstract class TournamentMatchmaking extends AdminCommands {
-    protected CommandLineInterpreter cli;    
-    
-    protected CommandLineInterpreter getCli() {
-        return this.cli;
-    }
+    protected TournamentController tournamentController; 
     protected String[] getParts (String command) {
         return command.split(" ");
     }        
@@ -26,7 +22,7 @@ public abstract class TournamentMatchmaking extends AdminCommands {
             return Errors.FORMAT_ERROR;
         }
 
-        for (Player existingPlayer : cli.getPlayerList().getPlayers()) {
+        for (Player existingPlayer : tournamentController.getCli().getPlayerList().getPlayers()) {
             if (existingPlayer.getId().equals(playerData[2])) { // Compara el DNI
                 return Errors.EXISTING_PLAYER;
             }

@@ -14,8 +14,4 @@ public enum MatchmakeModes {
         return modeFormat;
     }
  
-    public static MatchmakeModes get(int index) {
-        assert index >= 0 && index <= MatchmakeModes.values().length;
-        return MatchmakeModes.values()[index];
-    }
 }

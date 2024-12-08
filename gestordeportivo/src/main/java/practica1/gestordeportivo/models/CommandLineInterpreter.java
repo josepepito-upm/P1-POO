@@ -9,18 +9,19 @@ import practica1.gestordeportivo.types.Commands;
 import practica1.gestordeportivo.types.Errors;
 
 public class CommandLineInterpreter {
-
     
-    PlayerList playerList;
-    MatchmakeList matchmakeList;
-    TeamList teamList;
-    TournamentList tournamentList;
+    private PlayerList playerList;
+    private MatchmakeList matchmakeList;
+    private TeamList teamList;
+    private TournamentList tournamentList;
+    private User user;
 
-    public CommandLineInterpreter() {
+    public CommandLineInterpreter(User user) {
         playerList = new PlayerList();
         matchmakeList = new MatchmakeList();
         teamList = new TeamList();
         tournamentList = new TournamentList();
+        this.user = user;
     }
 
     public PlayerList getPlayerList() {
@@ -35,16 +36,21 @@ public class CommandLineInterpreter {
     public TournamentList getTournamentList() {
         return tournamentList;
     }
+    
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;    
+    }
 
     public Errors executeCommand(String command, CommandInterface cmdCommandInterface, Commands commandList) {
-        int i = 0;
-        while (i <= commandList.values().length) {
-            if(command.contains(commandList.get(i).getName())) {
+        for (Commands commands : Commands.values()) {
+            if(command.contains(commands.getName())) {
                 return cmdCommandInterface.execute(command);
             }
-            i++;
         }
-
         return Errors.COMMAND_NOT_FOUND;
     }
 

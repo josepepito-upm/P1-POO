@@ -1,28 +1,21 @@
 package practica1.gestordeportivo.controllers;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Matchmake;
-public class MatchmakeController {
-
-    protected CommandLineInterpreter cli;
-     
-    public MatchmakeController(CommandLineInterpreter cli) {
-        this.cli = cli;
-    }
+public class MatchmakeController extends Controller{
 
     // Emparejamiento manual
     public Matchmake manualMatchmake(String player1Name, String player2Name) {
             // Crear el emparejamiento
-            Matchmake match = new Matchmake(cli.getPlayerList(), player1Name, player2Name);
-            cli.getMatchmakeList().add(match); // Añadir el emparejamiento a la lista
+            Matchmake match = new Matchmake(getCli().getPlayerList(), player1Name, player2Name);
+            getCli().getMatchmakeList().add(match); // Añadir el emparejamiento a la lista
             return match;
    }
 
     // Emparejamiento automático
     public Matchmake autoMatchmake() {
             // Crear el emparejamiento automático
-            Matchmake match = cli.getPlayerList().matchMakeAuto();
-            cli.getMatchmakeList().add(match); // Añadir el emparejamiento a la lista
+            Matchmake match = getCli().getPlayerList().matchMakeAuto();
+            getCli().getMatchmakeList().add(match); // Añadir el emparejamiento a la lista
             return match;
     }
 
