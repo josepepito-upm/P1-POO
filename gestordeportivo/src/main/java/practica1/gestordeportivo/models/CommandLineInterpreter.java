@@ -15,12 +15,14 @@ public class CommandLineInterpreter {
     MatchmakeList matchmakeList;
     TeamList teamList;
     TournamentList tournamentList;
+    private User authenticatedUser;
 
     public CommandLineInterpreter() {
         playerList = new PlayerList();
         matchmakeList = new MatchmakeList();
         teamList = new TeamList();
         tournamentList = new TournamentList();
+        authenticatedUser = null;
     }
 
     public PlayerList getPlayerList() {
@@ -34,6 +36,14 @@ public class CommandLineInterpreter {
     }
     public TournamentList getTournamentList() {
         return tournamentList;
+    }
+
+    public void setAuthenticatedUser(User user) {
+        this.authenticatedUser = user;
+    }
+
+    public User getAuthenticatedUser() {
+        return authenticatedUser;
     }
 
     public Errors executeCommand(String command, CommandInterface cmdCommandInterface, Commands commandList) {
