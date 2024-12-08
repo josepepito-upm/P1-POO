@@ -31,6 +31,9 @@ public class Tournament {
         return null;
     }
 
+    public String getSport(){
+        return sport;
+    }
     public ArrayList<Player> getParticipants() {
         return participants;
     }

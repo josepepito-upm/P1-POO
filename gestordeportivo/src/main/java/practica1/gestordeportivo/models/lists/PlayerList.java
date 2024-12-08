@@ -52,13 +52,13 @@ public class PlayerList {
       int index2 = rand.nextInt(players.size());
 
       while (index1 == index2) {
-         index2 = rand.nextInt(players.size()); // Asegurarse de que los dos jugadores sean diferentes
+         index2 = rand.nextInt(players.size());
       }
 
       Player player1 = players.get(index1);
       Player player2 = players.get(index2);
 
-      return new Matchmake(player1, player2); // Emparejamiento automático
+      return new Matchmake(this, player1.getId(), player2.getId());
    }
 
 }

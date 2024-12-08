@@ -11,7 +11,6 @@ public Errors validate(String command) {
         String[] parts = getParts(command);
         
         for (String string : parts) {
-                //También se puede poner como parts[2] si queremos que el -m se ponga en un formato específico
                 if(string.equals(MatchmakeModes.RANDOM.getMode()))
                     return Errors.NULL;               
         }

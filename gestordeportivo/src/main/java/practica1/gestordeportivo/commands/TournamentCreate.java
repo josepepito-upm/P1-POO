@@ -1,13 +1,12 @@
 package practica1.gestordeportivo.commands;
 
 import practica1.gestordeportivo.controllers.TournamentController;
-import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Tournament;
 import practica1.gestordeportivo.types.Errors;
 
 public class TournamentCreate extends AdminCommands {
 
-    CommandLineInterpreter cli;
+    private TournamentController tournamentController = new TournamentController();
     
     public Errors validate(String command) {
         super.validate(command);
@@ -21,21 +20,21 @@ public class TournamentCreate extends AdminCommands {
         if (tournamentData.length != 5) {
             return Errors.FORMAT_ERROR;
         }
-        for (Tournament tournament : cli.getTournamentList().getTournaments()) {
+        for (Tournament tournament : tournamentController.getCli().getTournamentList().getTournaments()) {
             if (tournament.getName().equals(tournamentData[0])) { 
                 return Errors.EXISTING_TOURNAMENT;
             }
         }
-        return null;
+        return Errors.NULL;
     }
 
     public Errors execute(String command) {
         String[] parts = command.split(" ");
         String[] tournamentData = parts[1].split(";");
         
-        if(validate(command) == null) {
-            new TournamentController(cli).create(tournamentData[0], tournamentData[1], tournamentData[2], tournamentData[3], tournamentData[4]);
-            return null;
+        if(validate(command).isNull()) {
+            tournamentController.create(tournamentData[0], tournamentData[1], tournamentData[2], tournamentData[3], tournamentData[4]);
+            return Errors.NULL;
         } else return validate(command);
     }
 }

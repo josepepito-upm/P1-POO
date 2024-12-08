@@ -9,19 +9,20 @@ import practica1.gestordeportivo.types.Commands;
 import practica1.gestordeportivo.types.Errors;
 
 public class CommandLineInterpreter {
+
     
-    private PlayerList playerList;
-    private MatchmakeList matchmakeList;
-    private TeamList teamList;
-    private TournamentList tournamentList;
-    private User user;
+    PlayerList playerList;
+    MatchmakeList matchmakeList;
+    TeamList teamList;
+    TournamentList tournamentList;
+    private User authenticatedUser;
 
     public CommandLineInterpreter(User user) {
         playerList = new PlayerList();
         matchmakeList = new MatchmakeList();
         teamList = new TeamList();
         tournamentList = new TournamentList();
-        this.user = user;
+        authenticatedUser = null;
     }
 
     public PlayerList getPlayerList() {
@@ -36,13 +37,13 @@ public class CommandLineInterpreter {
     public TournamentList getTournamentList() {
         return tournamentList;
     }
-    
-    public User getUser() {
-        return user;
+
+    public void setAuthenticatedUser(User user) {
+        this.authenticatedUser = user;
     }
 
-    public void setUser(User user) {
-        this.user = user;    
+    public User getAuthenticatedUser() {
+        return authenticatedUser;
     }
 
     public Errors executeCommand(String command, CommandInterface cmdCommandInterface, Commands commandList) {

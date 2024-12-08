@@ -2,7 +2,6 @@ package practica1.gestordeportivo.controllers;
 
 import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.models.Tournament;
-import practica1.gestordeportivo.views.CLIView;
 import practica1.gestordeportivo.views.Message;
 
 public class TournamentController extends Controller{
@@ -28,7 +27,7 @@ public class TournamentController extends Controller{
     }
 
     public void removePlayer(String tournament) {
-        getCli().getTournamentList().getTournament(tournament).getParticipants().remove(getCli().getUser()); 
+        getCli().getTournamentList().getTournament(tournament).getParticipants().remove(getCli().getAuthenticatedUser()); 
         message.writeMessage(Message.PLAYER_REMOVED);
     }
 

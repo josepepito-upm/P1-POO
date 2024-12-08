@@ -13,6 +13,6 @@ abstract class PlayerCommands implements CommandInterface {
     public Errors validate(String command) {  
         if(cliView.getUser().getRole() != Role.PLAYER) { 
             return Errors.UNAUTHORIZED_COMMAND;
-        } else return null;
+        } else return Errors.NULL;
     }
 }

@@ -2,17 +2,17 @@ package practica1.gestordeportivo.commands;
 
 import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.types.Role;
-import practica1.gestordeportivo.views.CLIView;
+import practica1.gestordeportivo.controllers.UserController;
 
 abstract class PublicCommands implements CommandInterface {
 
-    CLIView cliView;
+    protected UserController userController;
     
     public abstract Errors execute(String command);
 
     public Errors validate(String command) {  
-        if(cliView.getUser().getRole() != Role.GUEST) { 
+        if(userController.getCli().getAuthenticatedUser().getRole() != Role.GUEST) { 
             return Errors.UNAUTHORIZED_COMMAND;
-        } else return null;
+        } else return Errors.NULL;
     }
 }
