@@ -6,10 +6,7 @@ import practica1.gestordeportivo.types.Errors;
 public class TeamRemove extends AdminCommands {
 
     private TeamController teamController = new TeamController();
-
-    public TeamRemove(TeamController teamController) {
-        this.teamController = teamController; 
-    }
+    
     public Errors validate(String command) {
         super.validate(command);
 

@@ -28,7 +28,8 @@ public enum Commands {
         this.commandInterface = commandInterface;
     }
 
-    public CommandInterface getCommand() {
+    
+        public CommandInterface getCommand() {
         return commandInterface;
     }
 
