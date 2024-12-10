@@ -3,7 +3,7 @@ package practica1.gestordeportivo.types;
 import practica1.gestordeportivo.commands.*;
 
 public enum Commands {
-    
+   //pull request 
     CREATE_PLAYER("player-create", new PlayerCreate()), 
     CREATE_TEAM("team-create", new TeamCreate()),
     CREATE_TOURNAMENT("tournament-create", new TournamentCreate()),
