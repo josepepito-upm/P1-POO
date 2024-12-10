@@ -14,7 +14,7 @@ public class TeamCreate extends AdminCommands {
         String[] parts = command.split(" ");
 
         if (parts.length != 2) {
-            return Errors.FORMAT_ERROR;
+            return Errors.FORMAT_ERROR; 
         }
         for (Team team : teamController.getCli().getTeamList().getTeams()) {
             if (team.getName().equals(parts[1])) {

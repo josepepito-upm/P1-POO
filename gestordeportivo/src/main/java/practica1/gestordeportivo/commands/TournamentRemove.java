@@ -32,4 +32,5 @@ public class TournamentRemove extends PlayerCommands {
         } else return validate(command);
         
     }
+
 }

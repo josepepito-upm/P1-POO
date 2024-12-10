@@ -12,6 +12,15 @@ public class TournamentController extends Controller{
         getCli().getTournamentList().getTournaments().remove(tournament);
     }
 
+    private Tournament getTournament(String tournamentName) {
+        for (Tournament tournament : cli.getTournamentList().getTournaments()) {
+            if (tournament.getName().equalsIgnoreCase(tournamentName)) {
+                return tournament;
+            }
+        }
+        return null; // Si no se encuentra el torneo, retornamos null
+    }
+
     public void addPlayer(String tournament) {        
         getCli().getTournamentList().getTournament(tournament).getParticipants().add(getCli().getAuthenticatedPlayer());
     }

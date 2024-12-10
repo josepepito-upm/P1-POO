@@ -1,5 +1,4 @@
 package practica1.gestordeportivo.commands;
-
 import practica1.gestordeportivo.controllers.TeamController;
 import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.types.Errors;
@@ -8,6 +7,9 @@ public class TeamRemove extends AdminCommands {
 
     private TeamController teamController = new TeamController();
 
+    public TeamRemove(TeamController teamController) {
+        this.teamController = teamController; 
+    }
     public Errors validate(String command) {
         super.validate(command);
 
@@ -15,10 +17,10 @@ public class TeamRemove extends AdminCommands {
         String[] commandData = parts[1].split(";");
 
         if (parts.length != 2) {
-            return Errors.FORMAT_ERROR;
+            return Errors.FORMAT_ERROR; 
         }
         if (commandData.length != 2) {
-            return Errors.FORMAT_ERROR;
+            return Errors.FORMAT_ERROR; 
         }
         for (Player player : teamController.getCli().getTeamList().getTeam(commandData[1]).getMembers()) {
             if (!(player.getId().equals(commandData[0]))) {
