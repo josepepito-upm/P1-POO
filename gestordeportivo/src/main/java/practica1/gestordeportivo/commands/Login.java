@@ -4,11 +4,7 @@ import practica1.gestordeportivo.types.Errors;
 
 public class Login extends PublicCommands {
 
-    private UserController userController;
-
-    public Login(UserController userController) {
-        this.userController = userController;
-    }
+    private UserController userController = new UserController();
 
     public Errors validate(String command) {
         super.validate(command);
@@ -27,14 +23,12 @@ public class Login extends PublicCommands {
     }
 
     public Errors execute(String command) {
-        Errors validationErrors = validate(command);
-        if (validationErrors != null) {
-            return validationErrors;
-        }
-
         String[] parts = command.split(" ");
         String[] commandData = parts[1].split(";");
-        userController.login(commandData[0], commandData[1]);
-        return Errors.NULL;
+
+        if(validate(command).isNull()) {
+            userController.login(commandData[0], commandData[1]);
+            return Errors.NULL;
+        } else return validate(command);
     }
 }

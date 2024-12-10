@@ -1,85 +1,36 @@
 package practica1.gestordeportivo.commands;
-import practica1.gestordeportivo.controllers.PlayerController;
-import practica1.gestordeportivo.models.CommandLineInterpreter;
-import practica1.gestordeportivo.models.Player;
+
 import practica1.gestordeportivo.types.Errors;
+import practica1.gestordeportivo.views.StatsView;
 
 public class StatisticsShow extends PlayerCommands {
-    
-    // private CommandLineInterpreter cli;
 
-    // public Errors validate(String command) {
-    //     super.validate(command);
-
-    //     String[] parts = command.split(" ");
-    //     if (parts.length != 1) {
-    //         return Errors.FORMAT_ERROR;
-    //     }
-
-    //     if (!(cli.getAuthenticatedUser() instanceof Player)) {
-    //         return Errors.UNAUTHORIZED_COMMAND;
-    //     }
-
-    //     return null; // Validación exitosa
-    // }
-
-    // public Errors execute(String command) {
-    //     Errors validationErrors = validate(command);
-    //     if (validationErrors!=null){
-    //         return validationErrors;
-    //     }
-    //     Player player = (Player) cli.getAuthenticatedUser();
-    //     System.out.println("Estadísticas de " + player.getForename() + " " + player.getSurname() + ":");
-    //     String[] statsNames = {
-    //         "Puntos marcados", 
-    //         "Partidos ganados", 
-    //         "Puntos de asistencia", 
-    //         "Torneos ganados", 
-    //         "Dinero generado"
-    //     };
-    //     double[] statsValues = player.getStats().getStats();
-        
-    //     for (int i = 0; i < statsNames.length; i++) {
-    //         System.out.println(statsNames[i] + ": " + statsValues[i]);
-    //     }
-
-    //     return null;
-    // }
-
-    // public StatisticsShow(CommandLineInterpreter cli){
-    //     this.cli = cli;
-    // }
-
-    private PlayerController playerController;
-
-    public StatisticsShow(PlayerController playerController) {
-        this.playerController = playerController;
-    }
+    private StatsView statsView = new StatsView();
 
     public Errors validate(String command) {
         super.validate(command);
 
         String[] parts = command.split(" ");
-        if (parts.length != 1) {
+
+        if (parts.length != 2) {
             return Errors.FORMAT_ERROR;
         }
-
-        if (!playerController.isAuthenticatedPlayer()) {
-            return Errors.UNAUTHORIZED_COMMAND;
+        if(parts[1] != "-csv" || parts[1] != "-json") {
+            return Errors.FORMAT_ERROR;
         }
-
         return Errors.NULL;
     }
 
     public Errors execute(String command) {
-        Errors validationErrors = validate(command);
-        if (validationErrors != null) {
-            return validationErrors;
-        }
+        String[] parts = command.split(" ");
 
-        playerController.showAuthenticatedPlayerStatistics();
-        return Errors.NULL;
+        if(validate(command).isNull()) {
+            if(parts[1] == "-csv") {
+                statsView.showStatisticsCSV();
+            } else {
+                statsView.showStatisticsJSON();
+            }
+            return Errors.NULL;
+        } else return validate(command);       
     }
-
-
 }

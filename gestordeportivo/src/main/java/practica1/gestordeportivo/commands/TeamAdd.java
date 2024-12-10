@@ -1,15 +1,11 @@
 package practica1.gestordeportivo.commands;
 import practica1.gestordeportivo.controllers.TeamController;
+import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.types.Errors;
 
 public class TeamAdd extends AdminCommands {
 
-    private TeamController teamController;
-
-    public TeamAdd(TeamController teamController) {
-        this.teamController = teamController; 
-    }
-
+   protected TeamController teamController = new TeamController(); 
     public Errors validate(String command) {
         super.validate(command);
 
@@ -22,6 +18,11 @@ public class TeamAdd extends AdminCommands {
         if (commandData.length != 2) {
             return Errors.FORMAT_ERROR;
         }
+        for (Player player : teamController.getCli().getTeamList().getTeam(commandData[1]).getMembers()) {
+            if (player.getId().equals(commandData[0])) {
+                return Errors.PLAYER_IN_TEAM;
+            }
+        }
         return Errors.NULL;
     }
 
@@ -29,11 +30,10 @@ public class TeamAdd extends AdminCommands {
         String[] parts = command.split(" ");
         String[] commandData = parts[1].split(";");
 
-        Errors validationError = validate(command); 
-        if (validationError != null) {
-            return validationError;
-        }
-        teamController.add(commandData[0], commandData[1]);
-        return Errors.NULL;
+        if(validate(command).isNull()) {
+            new TeamController().add(commandData[0], commandData[1]);
+            teamController.getCli().getTeamList().getTeam(commandData[1]).updateStats();
+            return Errors.NULL;
+        } else return validate(command);
     }
 }

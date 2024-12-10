@@ -1,16 +1,13 @@
 package practica1.gestordeportivo.commands;
 
 import practica1.gestordeportivo.controllers.TournamentController;
+import practica1.gestordeportivo.models.Tournament;
 import practica1.gestordeportivo.types.Errors;
 
 public class TournamentDelete extends AdminCommands {
 
-    private TournamentController tournamentController;
-
-    public TournamentDelete(TournamentController tournamentController) {
-        this.tournamentController = tournamentController;
-    }
-
+    private TournamentController tournamentController = new TournamentController();
+    
     public Errors validate(String command) {
         super.validate(command);
 
@@ -19,19 +16,20 @@ public class TournamentDelete extends AdminCommands {
         if (parts.length != 2) {
             return Errors.FORMAT_ERROR;
         }
-        return null; 
+        for (Tournament tournament : tournamentController.getCli().getTournamentList().getTournaments()) {
+            if (!(tournament.getName().equals(parts[1]))) {
+                return Errors.NON_EXISTING_TOURNAMENT;
+            }
+        }
+        return Errors.NULL;
     }
 
     public Errors execute(String command) {
         String[] parts = command.split(" ");
 
-        Errors validationError = validate(command);
-        if (validationError != null) {
-            return validationError; 
-        }
-
-        // Ejecutamos la lógica del controlador
-        tournamentController.delete(parts[1]);
-        return Errors.NULL;
+        if(validate(command).isNull()) {
+            tournamentController.delete(tournamentController.getCli().getTournamentList().getTournament(parts[1]));
+            return Errors.NULL;
+        } else return validate(command);
     }
 }

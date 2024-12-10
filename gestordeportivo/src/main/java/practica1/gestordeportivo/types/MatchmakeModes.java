@@ -1,21 +1,27 @@
 package practica1.gestordeportivo.types;
 
+import practica1.gestordeportivo.commands.CommandInterface;
+import practica1.gestordeportivo.commands.RandomTournamentMatchmaking;
+import practica1.gestordeportivo.commands.ManualTournamentMatchmaking;
+
 public enum MatchmakeModes {
-    RANDOM("-a"),
-    MANUAL("-m");
+    RANDOM("-a", new RandomTournamentMatchmaking()),
+    MANUAL("-m", new ManualTournamentMatchmaking());
 
-    private String modeFormat;
-
-    MatchmakeModes(String mode) {
-        this.modeFormat = mode;
+    private final String modeFormat;
+    public static CommandInterface commandInterface;
+    
+    MatchmakeModes(String mode, CommandInterface commandInterface) {
+            this.modeFormat = mode;
+            this.setCommand(commandInterface);
+    }
+    
+    private void setCommand(CommandInterface command) {
+        commandInterface = command;
     }
 
     public String getMode() {
         return modeFormat;
     }
  
-    public static MatchmakeModes get(int index) {
-        assert index >= 0 && index <= MatchmakeModes.values().length;
-        return MatchmakeModes.values()[index];
-    }
 }

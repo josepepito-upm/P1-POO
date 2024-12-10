@@ -1,18 +1,13 @@
 package practica1.gestordeportivo.commands;
 
 import practica1.gestordeportivo.controllers.TournamentController;
+import practica1.gestordeportivo.models.Tournament;
 import practica1.gestordeportivo.types.Errors;
 
 public class TournamentCreate extends AdminCommands {
 
-    private TournamentController tournamentController;
-
-    // Constructor que recibe el controlador
-    public TournamentCreate(TournamentController tournamentController) {
-        this.tournamentController = tournamentController;
-    }
-
-    // Método de validación
+    private TournamentController tournamentController = new TournamentController();
+    
     public Errors validate(String command) {
         super.validate(command);
 
@@ -25,25 +20,21 @@ public class TournamentCreate extends AdminCommands {
         if (tournamentData.length != 5) {
             return Errors.FORMAT_ERROR;
         }
-
-        // if (tournamentController.tournamentExists(tournamentData[0])) {
-        //     return Errors.EXISTING_TOURNAMENT;
-        // }
-
-        return null;
+        for (Tournament tournament : tournamentController.getCli().getTournamentList().getTournaments()) {
+            if (tournament.getName().equals(tournamentData[0])) { 
+                return Errors.EXISTING_TOURNAMENT;
+            }
+        }
+        return Errors.NULL;
     }
 
     public Errors execute(String command) {
         String[] parts = command.split(" ");
         String[] tournamentData = parts[1].split(";");
-
-        Errors validationError = validate(command);
-        if (validationError != null) {
-            return validationError; 
-        }
-
-        tournamentController.create(tournamentData[0], tournamentData[1], tournamentData[2], tournamentData[3], tournamentData[4]);
-
-        return Errors.NULL; 
+        
+        if(validate(command).isNull()) {
+            tournamentController.create(tournamentData[0], tournamentData[1], tournamentData[2], tournamentData[3], tournamentData[4]);
+            return Errors.NULL;
+        } else return validate(command);
     }
 }

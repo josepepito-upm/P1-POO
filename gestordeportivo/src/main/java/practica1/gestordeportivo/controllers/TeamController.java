@@ -1,38 +1,24 @@
 package practica1.gestordeportivo.controllers;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Team;
-import practica1.gestordeportivo.views.Message;
 
-public class TeamController {
-    
-    protected CommandLineInterpreter cli;
-    private Message message;
-
-    public TeamController (CommandLineInterpreter cli) {
-        this.cli = cli;
-    }
+public class TeamController extends Controller{
 
     public void create(String name) {
         Team team = new Team(name);
-        cli.getTeamList().getTeams().add(team);
-        message.writeMessage(Message.TEAM_CREATED);
+        getCli().getTeamList().getTeams().add(team);
     }
 
-    public void delete(String name) {
-        Team team = new Team(name);
-        cli.getTeamList().getTeams().remove(team);
-        message.writeMessage(Message.TEAM_DELETED);
+    public void delete(Team team) {
+        getCli().getTeamList().getTeams().remove(team);
     }
 
     public void add(String id, String teamName) {
-        cli.getTeamList().getTeam(teamName).getMembers().add(cli.getPlayerList().getPlayer(id));
-        message.writeMessage(Message.PLAYER_ADDED_TEAM);
+        getCli().getTeamList().getTeam(teamName).getMembers().add(cli.getPlayerList().getPlayer(id));
     }
 
     public void remove(String id, String teamName) {
-        cli.getTeamList().getTeam(teamName).getMembers().remove(cli.getPlayerList().getPlayer(id));
-        message.writeMessage(Message.PLAYER_REMOVED_TEAM);
+        getCli().getTeamList().getTeam(teamName).getMembers().remove(cli.getPlayerList().getPlayer(id));
     }
 
 }

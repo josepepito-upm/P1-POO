@@ -4,11 +4,7 @@ import practica1.gestordeportivo.types.Errors;
 
 public class Logout extends PublicCommands {
 
-    private UserController userController;
-    
-    public Logout(UserController userController) {
-        this.userController = userController;
-    }
+    private UserController userController = new UserController();
 
     public Errors validate(String command) {
         super.validate(command);
@@ -16,15 +12,13 @@ public class Logout extends PublicCommands {
         if (!command.equals("logout")) {
             return Errors.FORMAT_ERROR;
         }   
-        return null;
+        return Errors.NULL;
     }
 
     public Errors execute(String command) {
-        Errors validationErrors = validate(command);
-        if (validationErrors != null) {
-            return validationErrors;
-        }
-        userController.logout();
-        return Errors.NULL;
+        if(validate(command).isNull()) {
+            userController.logout();
+            return Errors.NULL;
+        } else return validate(command);
     }
 }
