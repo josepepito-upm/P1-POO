@@ -20,6 +20,10 @@ public class CLIView {
         do {
             System.out.println(cli.getAuthenticatedUser().toString() + prompt); 
             command = console.readLine();
+            if (command == null || command.trim().isEmpty()) {
+                errorView.writeError(Errors.SYNTAX_ERROR); 
+                continue;
+            }
             getCommand(command);
         } while(!command.equals("exit"));
     }
@@ -27,11 +31,18 @@ public class CLIView {
     private void getCommand(String command) {
         System.out.println(prompt);
         Errors status = cli.executeCommand(command);
+        
+        if (status == Errors.NULL) { 
+            status = Errors.COMMAND_NOT_FOUND;
+        }
+        
         errorView.writeError(status);
-        if(status.isNull()) {
-            if(command.equals("list-tournament"))
+        if (status.isNull()) {
+            if (command.equals("list-tournament")) {
                 new TournamentListView().show(cli);
-            else new MessageView().showMessage(command);
+            } else {
+                new MessageView().showMessage(command);
+            }
         }
     }
     

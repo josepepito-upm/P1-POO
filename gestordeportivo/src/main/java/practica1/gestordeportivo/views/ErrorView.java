@@ -32,10 +32,16 @@ public class ErrorView {
     "Datos insuficientes para ejecutar esta operacion",
     "Operacion fallida.",
     "Datos no encontrados.",
-    "Opcion de emparejamiento invalida/desconocida"
+    "Opcion de emparejamiento invalida/desconocida",
+    "Error desconocido o nulo."
   };
                                   
   public void writeError(Errors error) {
+    System.out.println("Error recibido -> " + error);
+    if (error == null || error.ordinal() < 0 || error.ordinal() >= MESSAGES.length) {
+        System.out.println("Error desconocido.");
+        return;
+    }
     System.out.println(MESSAGES[error.ordinal()]);
   } 
 }
