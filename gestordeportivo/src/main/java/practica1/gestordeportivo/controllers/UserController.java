@@ -10,6 +10,7 @@ public class UserController extends Controller{
         switch(parts[1]) {
             case "alumnos.upm.es" -> getCli().getAuthenticatedUser().setRole(Role.PLAYER);
             case "upm.es" -> getCli().getAuthenticatedUser().setRole(Role.ADMIN);
+            default -> getCli().getAuthenticatedUser().setRole(Role.GUEST);
         }
     }
 

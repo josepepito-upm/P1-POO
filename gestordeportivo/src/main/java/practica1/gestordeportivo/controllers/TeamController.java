@@ -14,11 +14,11 @@ public class TeamController extends Controller{
     }
 
     public void add(String id, String teamName) {
-        getCli().getTeamList().getTeam(teamName).getMembers().add(cli.getPlayerList().getPlayer(id));
+        getCli().getTeamList().getTeam(teamName).getMembers().add(getCli().getPlayerList().getPlayer(id));
     }
 
     public void remove(String id, String teamName) {
-        getCli().getTeamList().getTeam(teamName).getMembers().remove(cli.getPlayerList().getPlayer(id));
+        getCli().getTeamList().getTeam(teamName).getMembers().remove(getCli().getPlayerList().getPlayer(id));
     }
 
 }

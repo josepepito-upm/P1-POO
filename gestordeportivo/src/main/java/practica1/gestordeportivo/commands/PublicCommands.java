@@ -5,8 +5,11 @@ import practica1.gestordeportivo.types.Role;
 import practica1.gestordeportivo.controllers.UserController;
 
 abstract class PublicCommands implements CommandInterface {
-
     protected UserController userController;
+
+    public PublicCommands() {
+        this.userController = new UserController(); // Asegúrate de que userController se inicialice
+    }
     
     public abstract Errors execute(String command);
 
