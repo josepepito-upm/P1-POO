@@ -11,6 +11,9 @@ public class CLIView {
     private ErrorView errorView;
     private String prompt = "~>";
 
+    public CLIView() {
+        this.errorView = new ErrorView(); 
+    }
     public void initialize() {
         cli = new CommandLineInterpreter();
         String command;
