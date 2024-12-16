@@ -21,7 +21,7 @@ public class CommandLineInterpreter {
         matchmakeList = new MatchmakeList();
         teamList = new TeamList();
         tournamentList = new TournamentList();
-        authenticatedUser = new User(null, null);
+        authenticatedUser = new User("Guest", null);
         authenticatedUser.setRole(Role.GUEST);
     }
 
@@ -40,6 +40,7 @@ public class CommandLineInterpreter {
 
     public void setAuthenticatedUser(User user) {
         this.authenticatedUser = user;
+        System.out.println("Usuario autenticado después del login: " + getAuthenticatedUser());
     }
     
     public User getAuthenticatedUser() {

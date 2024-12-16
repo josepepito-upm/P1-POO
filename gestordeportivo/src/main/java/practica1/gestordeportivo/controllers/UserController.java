@@ -19,7 +19,7 @@ public class UserController extends Controller{
         user.setRole(role);
 
         getCli().setAuthenticatedUser(user);
-        System.out.println("Usuario autenticado: " + getCli().getAuthenticatedUser());
+        System.out.println("Usuario autenticado en UserController: " + getCli().getAuthenticatedUser());
 
 
     }

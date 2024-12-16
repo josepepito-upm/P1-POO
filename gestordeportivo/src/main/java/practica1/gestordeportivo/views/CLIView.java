@@ -15,16 +15,16 @@ public class CLIView {
     private final Map<String, Runnable> commandActions = new HashMap<>();//prueba
 
 
-    public CLIView() {
+    public CLIView(CommandLineInterpreter cli) {
+        this.cli = cli;
         this.errorView = new ErrorView(); 
         commandActions.put("list-tournament", () -> new TournamentListView().show(cli));
         commandActions.put("default", () -> new MessageView().showMessage("Comando no reconocido."));
     }
     public void initialize() {
-        cli = new CommandLineInterpreter();
         String command;
         do {
-            System.out.println("Usuario autenticado actual: " + cli.getAuthenticatedUser());//PRUEBA
+            System.out.println("Usuario autenticado en CLIView: " + cli.getAuthenticatedUser());//PRUEBA
             System.out.println(cli.getAuthenticatedUser().toString() + prompt); 
             command = console.readLine();
             if (command == null || command.trim().isEmpty()) {
