@@ -1,6 +1,8 @@
 package practica1.gestordeportivo.views;
 
 import java.io.Console;
+import java.util.HashMap;
+import java.util.Map;
 
 import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.types.Errors;
@@ -10,14 +12,19 @@ public class CLIView {
     private Console console = System.console();
     private ErrorView errorView;
     private String prompt = "~>";
+    private final Map<String, Runnable> commandActions = new HashMap<>();//prueba
+
 
     public CLIView() {
         this.errorView = new ErrorView(); 
+        commandActions.put("list-tournament", () -> new TournamentListView().show(cli));
+        commandActions.put("default", () -> new MessageView().showMessage("Comando no reconocido."));
     }
     public void initialize() {
         cli = new CommandLineInterpreter();
         String command;
         do {
+            System.out.println("Usuario autenticado actual: " + cli.getAuthenticatedUser());//PRUEBA
             System.out.println(cli.getAuthenticatedUser().toString() + prompt); 
             command = console.readLine();
             if (command == null || command.trim().isEmpty()) {
@@ -25,25 +32,20 @@ public class CLIView {
                 continue;
             }
             getCommand(command);
-        } while(!command.equals("exit"));
+        } while(!"exit".equalsIgnoreCase(command)); //PRUEBA
     }
 
     private void getCommand(String command) {
         System.out.println(prompt);
         Errors status = cli.executeCommand(command);
         
-        if (status == Errors.NULL) { 
-            status = Errors.COMMAND_NOT_FOUND;
+        if (!status.isNull()) { 
+            errorView.writeError(status);
+            return;
         }
-        
-        errorView.writeError(status);
-        if (status.isNull()) {
-            if (command.equals("list-tournament")) {
-                new TournamentListView().show(cli);
-            } else {
-                new MessageView().showMessage(command);
-            }
-        }
+
+        commandActions.getOrDefault(command, commandActions.get("default")).run();
+
     }
     
 }

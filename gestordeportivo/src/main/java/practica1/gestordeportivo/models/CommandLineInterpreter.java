@@ -43,7 +43,7 @@ public class CommandLineInterpreter {
     }
     
     public User getAuthenticatedUser() {
-        return authenticatedUser;
+        return this.authenticatedUser;
     }
     public Admin getAuthenticatedAdmin() {
         return authenticatedUser.getRole() == Role.ADMIN ? (Admin)authenticatedUser : null;
@@ -58,11 +58,22 @@ public class CommandLineInterpreter {
     }
 
     public Errors executeCommand(String command) {
+        System.out.println("Comando recibido: " + command); // Depuración
+
+        if (command == null || command.trim().isEmpty()) {
+            System.out.println("Error: Comando vacío o nulo.");
+            return Errors.SYNTAX_ERROR; 
+            
+        }
+
         for (Commands commands : Commands.values()) {
-            if(command.contains(commands.getName())) {
-                return commands.getCommand().execute(command);
+            System.out.println("Verificando comando: " + commands.getName()); // Depuración
+            if (command.startsWith(commands.getName())) { 
+                System.out.println("Comando reconocido: " + commands.getName()); // Confirmar coincidencia
+                return commands.getCommand().execute(command); 
             }
         }
+        System.out.println("Error: Comando no encontrado.");
         return Errors.COMMAND_NOT_FOUND;
     }
 }
