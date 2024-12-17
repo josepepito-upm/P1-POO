@@ -3,7 +3,6 @@ package practica1.gestordeportivo.types;
 import practica1.gestordeportivo.commands.*;
 
 public enum Commands {
-   //pull request 
     CREATE_PLAYER("player-create", new PlayerCreate()), 
     CREATE_TEAM("team-create", new TeamCreate()),
     CREATE_TOURNAMENT("tournament-create", new TournamentCreate()),
@@ -18,7 +17,9 @@ public enum Commands {
     SHOW_STATISTICS("statistics-show", new StatisticsShow()),
     LIST("tournament-list", new ListTournaments()),
     LOGIN("login", new Login()),
-    LOGOUT("logout", new Logout());
+    LOGOUT("logout", new Logout()),
+    SAVEALL("save-all", new SaveAll()),
+    RECOVERALL("recover-all", new RecoverAll());
 
     private final String name;
     private final CommandInterface commandInterface;    

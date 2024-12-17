@@ -1,8 +1,6 @@
 package practica1.gestordeportivo.views;
 
 import java.io.Console;
-import java.util.HashMap;
-import java.util.Map;
 
 import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.types.Errors;
@@ -12,14 +10,11 @@ public class CLIView {
     private Console console = System.console();
     private ErrorView errorView;
     private String prompt = "~>";
-    private final Map<String, Runnable> commandActions = new HashMap<>();//prueba
 
 
     public CLIView(CommandLineInterpreter cli) {
         this.cli = cli;
         this.errorView = new ErrorView(); 
-        commandActions.put("list-tournament", () -> new TournamentListView().show(cli));
-        commandActions.put("default", () -> new MessageView().showMessage("Comando no reconocido."));
     }
     public void initialize() {
         String command;
@@ -44,7 +39,6 @@ public class CLIView {
             return;
         }
 
-        commandActions.getOrDefault(command, commandActions.get("default")).run();
 
     }
     

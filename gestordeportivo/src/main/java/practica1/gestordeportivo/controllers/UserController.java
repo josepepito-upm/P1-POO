@@ -1,9 +1,14 @@
 package practica1.gestordeportivo.controllers;
 
+import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.User;
 import practica1.gestordeportivo.types.Role;
 
 public class UserController extends Controller{
+
+    public UserController(CommandLineInterpreter cli) {
+        super(cli);
+    }
 
     public void login(String username, String password) {
         String[] parts = username.split("@");
@@ -20,12 +25,19 @@ public class UserController extends Controller{
 
         getCli().setAuthenticatedUser(user);
         System.out.println("Usuario autenticado en UserController: " + getCli().getAuthenticatedUser());
-
-
     }
 
     public void logout() {
         User guest = new User("Guest", null);
         guest.setRole(Role.GUEST);
-        getCli().setAuthenticatedUser(guest);    }
+        getCli().setAuthenticatedUser(guest);    
+    }
+
+    public void saveAll() {
+        
+    }
+
+    public void recoverAll() {
+
+    }
 }

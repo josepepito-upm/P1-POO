@@ -39,8 +39,7 @@ public class Player extends User {
     public String getId() {
         return id;
     }
-//justo, tu crees que esta bien el controller.getCli? es decir el crear un controller nuevo en player
-//Espera  que me meto a disc a hablar
+
     public Role getRole() {
         return role;
     }

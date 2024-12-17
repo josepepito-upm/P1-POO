@@ -3,7 +3,7 @@ package practica1.gestordeportivo.views;
 import practica1.gestordeportivo.types.Commands;
 
 public enum Message {
-    
+     
     PLAYER_CREATED("Jugador creado.", Commands.CREATE_PLAYER),
     PLAYER_DELETED("Jugador borrado.", Commands.DELETE_PLAYER),
     TEAM_CREATED("Equipo creado.", Commands.CREATE_TEAM),

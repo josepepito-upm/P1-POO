@@ -3,16 +3,13 @@ package practica1.gestordeportivo.controllers;
 import practica1.gestordeportivo.models.CommandLineInterpreter;
 
 public abstract class Controller {
-    private CommandLineInterpreter cli;
+    private final CommandLineInterpreter cli;
 
-    public Controller() {
-        this.cli = new CommandLineInterpreter(); // Inicialización por defecto
+    public Controller(CommandLineInterpreter cli) {
+        this.cli = cli;
     }
 
     public CommandLineInterpreter getCli() {
-        if (cli == null) {
-            cli = new CommandLineInterpreter(); // Inicialización perezosa si es necesario
-        }
         return cli;
     }
 }
