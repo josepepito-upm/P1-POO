@@ -18,4 +18,12 @@ public class PlayerController extends Controller{
     public void delete(Player player) {
         getCli().getPlayerList().getPlayers().remove(player);
     }
+
+    public void saveAll() {
+        
+    }
+
+    public void recoverAll() {
+
+    }
 }

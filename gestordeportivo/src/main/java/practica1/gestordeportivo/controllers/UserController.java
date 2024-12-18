@@ -6,6 +6,8 @@ import practica1.gestordeportivo.types.Role;
 
 public class UserController extends Controller{
 
+    private CommandLineInterpreter cli;
+
     public UserController(CommandLineInterpreter cli) {
         super(cli);
     }

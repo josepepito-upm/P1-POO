@@ -1,13 +1,15 @@
 package practica1.gestordeportivo.commands;
 
+import practica1.gestordeportivo.controllers.PlayerController;
 import practica1.gestordeportivo.controllers.UserController;
 import practica1.gestordeportivo.types.Errors;
 
 public class SaveAll extends AdminCommands {
     
 
-    private UserController userController = new UserController();
-    
+    public SaveAll(PlayerController playerController) {
+        super(playerController); 
+    }    
     public Errors validate(String command) {
         super.validate(command);
 
@@ -19,7 +21,7 @@ public class SaveAll extends AdminCommands {
 
     public Errors execute(String command) {
         if(validate(command).isNull()) {
-            userController.saveAll();
+            playerController.saveAll();
             return Errors.NULL;
         } else return validate(command);
     }

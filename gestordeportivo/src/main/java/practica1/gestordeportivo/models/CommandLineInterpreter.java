@@ -61,12 +61,6 @@ public class CommandLineInterpreter {
     public Errors executeCommand(String command) {
         System.out.println("Comando recibido: " + command); // Depuración
 
-        if (command == null || command.trim().isEmpty()) {
-            System.out.println("Error: Comando vacío o nulo.");
-            return Errors.SYNTAX_ERROR; 
-            
-        }
-
         for (Commands commands : Commands.values()) {
             System.out.println("Verificando comando: " + commands.getName()); // Depuración
             if (command.startsWith(commands.getName())) { 

@@ -2,17 +2,32 @@ package practica1.gestordeportivo.views;
 
 import java.io.Console;
 
+import practica1.gestordeportivo.controllers.PlayerController;
+import practica1.gestordeportivo.controllers.TeamController;
+import practica1.gestordeportivo.controllers.TournamentController;
+import practica1.gestordeportivo.controllers.UserController;
 import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.types.Errors;
 
 public class CLIView {
-    private CommandLineInterpreter cli;
-    private Console console = System.console();
-    private ErrorView errorView;
-    private String prompt = "~>";
+
+    private final CommandLineInterpreter cli;
+    private final UserController userController;
+    private final PlayerController playerController;
+    private final TeamController teamController;
+    private final TournamentController tournamentController;
+
+    private final ErrorView errorView;
+    private final String prompt = "~>";
+    private final Console console = System.console();
 
 
     public CLIView(CommandLineInterpreter cli) {
+    
+        this.userController = new UserController(cli);
+        this.playerController = new PlayerController(cli);
+        this.teamController = new TeamController(cli);
+        this.tournamentController = new TournamentController(cli);
         this.cli = cli;
         this.errorView = new ErrorView(); 
     }

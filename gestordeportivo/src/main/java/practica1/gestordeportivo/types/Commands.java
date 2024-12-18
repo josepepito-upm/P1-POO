@@ -1,9 +1,10 @@
 package practica1.gestordeportivo.types;
 
+import practica1.gestordeportivo.SportsManager;
 import practica1.gestordeportivo.commands.*;
 
 public enum Commands {
-    CREATE_PLAYER("player-create", new PlayerCreate()), 
+    CREATE_PLAYER("player-create", new PlayerCreate(cli.getPlayerController())), 
     CREATE_TEAM("team-create", new TeamCreate()),
     CREATE_TOURNAMENT("tournament-create", new TournamentCreate()),
     DELETE_PLAYER("player-delete", new PlayerDelete()),
@@ -16,8 +17,8 @@ public enum Commands {
     REMOVE_TOURNAMENT("tournament-remove", new TournamentRemove()),
     SHOW_STATISTICS("statistics-show", new StatisticsShow()),
     LIST("tournament-list", new ListTournaments()),
-    LOGIN("login", new Login()),
-    LOGOUT("logout", new Logout()),
+    LOGIN("login", new Login(SportsManager.getUserController())),
+    LOGOUT("logout", new Logout(SportsManager.getUserController())),
     SAVEALL("save-all", new SaveAll()),
     RECOVERALL("recover-all", new RecoverAll());
 

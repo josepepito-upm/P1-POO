@@ -7,8 +7,8 @@ import practica1.gestordeportivo.controllers.UserController;
 abstract class PublicCommands implements CommandInterface {
     protected UserController userController;
 
-    public PublicCommands() {
-        this.userController = new UserController(); // Asegúrate de que userController se inicialice
+    public PublicCommands(UserController userController) {
+        this.userController = userController;
     }
     
     public abstract Errors execute(String command);

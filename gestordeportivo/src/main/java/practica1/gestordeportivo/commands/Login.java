@@ -4,7 +4,10 @@ import practica1.gestordeportivo.types.Errors;
 
 public class Login extends PublicCommands {
 
-    private UserController userController = new UserController();
+    public Login(UserController userController) {
+        super(userController);
+    }
+
 
     public Errors validate(String command) {
         super.validate(command);

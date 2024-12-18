@@ -7,8 +7,9 @@ import practica1.gestordeportivo.types.Errors;
 
 public class PlayerDelete extends AdminCommands {
     
-    private PlayerController playerController = new PlayerController();
-    
+    public PlayerDelete(PlayerController playerController) {
+        super(playerController); 
+    }    
     public Errors validate(String command) {
         super.validate(command);
 

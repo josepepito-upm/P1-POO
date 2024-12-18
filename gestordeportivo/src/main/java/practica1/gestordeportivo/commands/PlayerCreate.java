@@ -5,8 +5,10 @@ import practica1.gestordeportivo.types.Errors;
 
 public class PlayerCreate extends AdminCommands {
 
-    private PlayerController playerController = new PlayerController();
-
+    public PlayerCreate(PlayerController playerController) {
+        super(playerController); 
+    }
+    
     public Errors validate(String command) {
         super.validate(command);
 

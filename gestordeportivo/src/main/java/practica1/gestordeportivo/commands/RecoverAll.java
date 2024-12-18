@@ -1,12 +1,14 @@
 package practica1.gestordeportivo.commands;
 
+import practica1.gestordeportivo.controllers.PlayerController;
 import practica1.gestordeportivo.controllers.UserController;
 import practica1.gestordeportivo.types.Errors;
 
 public class RecoverAll extends AdminCommands {
 
-    private UserController userController = new UserController();
-    
+    public RecoverAll(PlayerController playerController) {
+        super(playerController); 
+    }     
     public Errors validate(String command) {
         super.validate(command);
 
@@ -18,7 +20,7 @@ public class RecoverAll extends AdminCommands {
 
     public Errors execute(String command) {
         if(validate(command).isNull()) {
-            userController.recoverAll();
+            playerController.recoverAll();
             return Errors.NULL;
         } else return validate(command);
     }
