@@ -1,5 +1,8 @@
 package practica1.gestordeportivo.controllers;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Player;
 
@@ -17,5 +20,22 @@ public class PlayerController extends Controller{
 
     public void delete(Player player) {
         getCli().getPlayerList().getPlayers().remove(player);
+    }
+
+    public void saveAllPlayers() {
+        BufferedWriter bwPlayer = getCli().getPlayerList().createPlayersFile();
+
+        for(Player player : getCli().getPlayerList().getPlayers()) {
+            try {
+                bwPlayer.write(player.getForename() + ", " + player.getSurname() + ", " + player.getId());
+                bwPlayer.newLine();
+            } catch (IOException e) {
+                e.getMessage();
+            }
+        }
+    }
+
+    public void recoverAllPlayers() {
+
     }
 }

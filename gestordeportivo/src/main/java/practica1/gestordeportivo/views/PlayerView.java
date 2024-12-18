@@ -12,4 +12,6 @@ public class PlayerView extends View {
     public void view() {
         System.out.println("Nombre: " + player.getForename() + player.getSurname() + ". ID: " + player.getId());
     }
+    
+    
 }

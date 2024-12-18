@@ -1,5 +1,9 @@
 package practica1.gestordeportivo.models.lists;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -53,6 +57,20 @@ public class PlayerList {
       Player player2 = players.get(index2);
 
       return new Matchmake(this, player1.getId(), player2.getId());
+   }
+
+   public BufferedWriter createPlayersFile() {
+      try {
+         File playersFile = new File("playerFile.txt");
+         playersFile.createNewFile();
+         FileWriter fw = new FileWriter(playersFile);
+         BufferedWriter bw = new BufferedWriter(fw);
+
+         return bw;
+      } catch (IOException ex) {
+         ex.getMessage();
+         return null;
+      }
    }
 
 }

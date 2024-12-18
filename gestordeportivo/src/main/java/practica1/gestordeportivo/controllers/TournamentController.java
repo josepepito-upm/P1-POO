@@ -1,5 +1,8 @@
 package practica1.gestordeportivo.controllers;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Tournament;
 
@@ -23,5 +26,23 @@ public class TournamentController extends Controller{
 
     public void removePlayer(String tournament) {
         getCli().getTournamentList().getTournament(tournament).getParticipants().remove(getCli().getAuthenticatedPlayer()); 
+    }
+
+    public void saveAllTournaments() {
+        BufferedWriter bwTournament = getCli().getTournamentList().createTournamentsFile();
+
+        for(Tournament tournament : getCli().getTournamentList().getTournaments()) {
+            try {
+                bwTournament.write(tournament.getName() + ", " + tournament.getleague() + ", " + tournament.getSport() + ", " +
+                                    tournament.getStartDate() + ", " + tournament.getEndDate());
+                bwTournament.newLine();
+            } catch (IOException e) {
+                e.getMessage();
+            }
+        }
+    }
+
+    public void recoverAllTournaments() {
+
     }
 }

@@ -32,12 +32,4 @@ public class UserController extends Controller{
         guest.setRole(Role.GUEST);
         getCli().setAuthenticatedUser(guest);    
     }
-
-    public void saveAll() {
-        
-    }
-
-    public void recoverAll() {
-
-    }
 }
