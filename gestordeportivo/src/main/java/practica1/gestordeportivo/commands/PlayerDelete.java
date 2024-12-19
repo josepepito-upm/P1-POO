@@ -4,10 +4,15 @@ import practica1.gestordeportivo.controllers.PlayerController;
 import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.models.Tournament;
 import practica1.gestordeportivo.types.Errors;
-
+import practica1.gestordeportivo.models.CommandLineInterpreter;
 public class PlayerDelete extends AdminCommands {
     
-    private PlayerController playerController = new PlayerController();
+    private PlayerController playerController = new PlayerController(cli);
+
+
+    public PlayerDelete(CommandLineInterpreter cli) {
+        super(cli);
+    }
     
     public Errors validate(String command) {
         super.validate(command);

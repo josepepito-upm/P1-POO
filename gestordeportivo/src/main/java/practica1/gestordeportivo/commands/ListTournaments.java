@@ -10,7 +10,7 @@ import practica1.gestordeportivo.models.lists.TournamentList;
 import practica1.gestordeportivo.models.Tournament;
 public class ListTournaments extends PublicCommands {
 
-    UserController userController = new UserController();
+    UserController userController = new UserController(cli);
     TournamentListView tournamentListView = new TournamentListView();
     TournamentList tournamentList = userController.getCli().getTournamentList();
     ArrayList<Tournament> orderedTournaments;

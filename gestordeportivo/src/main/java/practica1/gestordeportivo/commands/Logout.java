@@ -4,7 +4,7 @@ import practica1.gestordeportivo.types.Errors;
 
 public class Logout extends PublicCommands {
 
-    private UserController userController = new UserController();
+    private UserController userController = new UserController(cli);
 
     public Errors validate(String command) {
         super.validate(command);

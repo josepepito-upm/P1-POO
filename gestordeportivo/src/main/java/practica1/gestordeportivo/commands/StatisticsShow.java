@@ -2,11 +2,14 @@ package practica1.gestordeportivo.commands;
 
 import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.views.StatsView;
-
+import practica1.gestordeportivo.models.CommandLineInterpreter;
 public class StatisticsShow extends PlayerCommands {
 
     private StatsView statsView = new StatsView();
-
+    
+    public StatisticsShow(CommandLineInterpreter cli) {
+        super(cli);
+    }
     public Errors validate(String command) {
         super.validate(command);
 

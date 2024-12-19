@@ -1,6 +1,7 @@
 package practica1.gestordeportivo.types;
 
 import practica1.gestordeportivo.commands.*;
+import practica1.gestordeportivo.models.CommandLineInterpreter;
 
 public enum Commands {
     CREATE_PLAYER("player-create", new PlayerCreate()), 
@@ -23,6 +24,7 @@ public enum Commands {
 
     private final String name;
     private final CommandInterface commandInterface;    
+    private final CommandLineInterpreter cli;
     
     Commands(String name, CommandInterface commandInterface) {
         this.name = name;
@@ -30,7 +32,7 @@ public enum Commands {
     }
 
     
-        public CommandInterface getCommand() {
+    public CommandInterface getCommand() {
         return commandInterface;
     }
 

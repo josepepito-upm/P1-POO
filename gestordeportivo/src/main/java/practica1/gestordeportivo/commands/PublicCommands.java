@@ -3,13 +3,11 @@ package practica1.gestordeportivo.commands;
 import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.types.Role;
 import practica1.gestordeportivo.controllers.UserController;
+import practica1.gestordeportivo.models.CommandLineInterpreter;
 
 abstract class PublicCommands implements CommandInterface {
-    protected UserController userController;
-
-    public PublicCommands() {
-        this.userController = new UserController(); // Asegúrate de que userController se inicialice
-    }
+    protected CommandLineInterpreter cli;
+    protected UserController userController = new UserController(cli);
     
     public abstract Errors execute(String command);
 

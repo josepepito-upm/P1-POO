@@ -1,13 +1,17 @@
 package practica1.gestordeportivo.commands;
 
 import practica1.gestordeportivo.controllers.MatchmakeController;
+import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.types.Errors;
 
 public abstract class TournamentMatchmaking extends AdminCommands {
+    MatchmakeController matchmakeController = new MatchmakeController(cli);
 
-    MatchmakeController matchmakeController = new MatchmakeController();
-
+    public TournamentMatchmaking(CommandLineInterpreter cli) {
+        super(cli);
+    }
+    
     protected String[] getParts(String command) {
         return command.split(" ");
     }

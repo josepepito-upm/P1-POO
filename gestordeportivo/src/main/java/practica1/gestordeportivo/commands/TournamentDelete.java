@@ -3,10 +3,12 @@ package practica1.gestordeportivo.commands;
 import practica1.gestordeportivo.controllers.TournamentController;
 import practica1.gestordeportivo.models.Tournament;
 import practica1.gestordeportivo.types.Errors;
-
+import practica1.gestordeportivo.models.CommandLineInterpreter;
 public class TournamentDelete extends AdminCommands {
-
-    private TournamentController tournamentController = new TournamentController();
+    TournamentDelete(CommandLineInterpreter cli) {
+        super(cli);
+    }
+    private TournamentController tournamentController = new TournamentController(cli);
     
     public Errors validate(String command) {
         super.validate(command);

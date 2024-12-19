@@ -2,11 +2,13 @@ package practica1.gestordeportivo.commands;
 import practica1.gestordeportivo.controllers.TeamController;
 import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.types.Errors;
-
+import practica1.gestordeportivo.models.CommandLineInterpreter;
 public class TeamRemove extends AdminCommands {
+    public TeamRemove(CommandLineInterpreter cli) {
+        super(cli);
+    }
+    private TeamController teamController = new TeamController(cli);
 
-    private TeamController teamController = new TeamController();
-    
     public Errors validate(String command) {
         super.validate(command);
 
