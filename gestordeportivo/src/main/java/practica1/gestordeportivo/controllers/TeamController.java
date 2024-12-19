@@ -4,10 +4,6 @@ import practica1.gestordeportivo.models.Team;
 
 public class TeamController extends Controller{
 
-    public TeamController() {
-        super(null);
-    }
-
     public void create(String name) {
         Team team = new Team(name);
         getCli().getTeamList().getTeams().add(team);

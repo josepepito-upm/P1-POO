@@ -1,42 +1,38 @@
-package practica1.gestordeportivo.controllers;
+    package practica1.gestordeportivo.controllers;
 
-import practica1.gestordeportivo.models.User;
-import practica1.gestordeportivo.types.Role;
+    import practica1.gestordeportivo.models.User;
+    import practica1.gestordeportivo.types.Role;
 
-public class UserController extends Controller{
+    public class UserController extends Controller{
 
-    public UserController() {
-        super(null);
-    }
+        public void login(String username, String password) {
+            String[] parts = username.split("@");
+            Role role;
 
-    public void login(String username, String password) {
-        String[] parts = username.split("@");
-        Role role;
+            switch (parts[1]) {
+                case "alumnos.upm.es" -> role = Role.PLAYER;
+                case "upm.es" -> role = Role.ADMIN;
+                default -> role = Role.GUEST;
+            }
 
-        switch (parts[1]) {
-            case "alumnos.upm.es" -> role = Role.PLAYER;
-            case "upm.es" -> role = Role.ADMIN;
-            default -> role = Role.GUEST;
+            User user = new User(username, password);
+            user.setRole(role);
+
+            getCli().setAuthenticatedUser(user);
+            System.out.println("Usuario autenticado en UserController: " + getCli().getAuthenticatedUser());
         }
 
-        User user = new User(username, password);
-        user.setRole(role);
+        public void logout() {
+            User guest = new User("Guest", null);
+            guest.setRole(Role.GUEST);
+            getCli().setAuthenticatedUser(guest);    
+        }
 
-        getCli().setAuthenticatedUser(user);
-        System.out.println("Usuario autenticado en UserController: " + getCli().getAuthenticatedUser());
+        public void saveAll() {
+            
+        }
+
+        public void recoverAll() {
+
+        }
     }
-
-    public void logout() {
-        User guest = new User("Guest", null);
-        guest.setRole(Role.GUEST);
-        getCli().setAuthenticatedUser(guest);    
-    }
-
-    public void saveAll() {
-        
-    }
-
-    public void recoverAll() {
-
-    }
-}

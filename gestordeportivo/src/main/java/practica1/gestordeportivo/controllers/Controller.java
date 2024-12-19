@@ -9,6 +9,9 @@ public abstract class Controller {
         this.cli = cli;
     }
     
+    public Controller() {
+        this.cli = new CommandLineInterpreter();
+    }
 
     public CommandLineInterpreter getCli() {
         return cli;

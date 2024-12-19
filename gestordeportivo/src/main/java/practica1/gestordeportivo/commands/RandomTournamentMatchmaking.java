@@ -3,9 +3,13 @@ package practica1.gestordeportivo.commands;
 import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.types.MatchmakeModes;
 import practica1.gestordeportivo.controllers.MatchmakeController;
+import practica1.gestordeportivo.controllers.PlayerController;
 
 public class RandomTournamentMatchmaking extends TournamentMatchmaking{
 
+    public RandomTournamentMatchmaking(PlayerController playerController) {
+        super(playerController);
+    }
     public Errors validate(String command) {
         super.validate(command);        
         

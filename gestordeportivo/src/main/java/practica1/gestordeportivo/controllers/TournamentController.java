@@ -3,11 +3,7 @@ package practica1.gestordeportivo.controllers;
 import practica1.gestordeportivo.models.Tournament;
 
 public class TournamentController extends Controller{
-
-    public TournamentController() {
-        super(null);
-    }
-    
+   
     public void create(String name, String startDate, String endDate, String league, String sport) {
         getCli().getTournamentList().getTournaments().add(new Tournament(name, startDate, endDate, league, sport));
     }

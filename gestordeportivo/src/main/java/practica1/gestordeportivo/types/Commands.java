@@ -41,7 +41,8 @@ public enum Commands {
         DELETE_TOURNAMENT.commandInterface = new TournamentDelete(cliView.getPlayerController());
         ADD_TEAM.commandInterface = new TeamAdd(cliView.getPlayerController());
         REMOVE_TEAM.commandInterface = new TeamRemove(cliView.getPlayerController());
-        MATCHMAKING.commandInterface = MatchmakeModes.commandInterface;
+        MatchmakeModes.setCommandInterface(cliView.getPlayerController());
+        MATCHMAKING.commandInterface = MatchmakeModes.RANDOM.getCommandInterface(); // O usar MANUAL si lo prefieres
         ADD_TOURNAMENT.commandInterface = new TournamentAdd(cliView.getPlayerController());
         REMOVE_TOURNAMENT.commandInterface = new TournamentRemove(cliView.getPlayerController());
         SHOW_STATISTICS.commandInterface = new StatisticsShow(cliView.getPlayerController());

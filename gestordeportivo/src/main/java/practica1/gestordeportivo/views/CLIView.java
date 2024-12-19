@@ -39,10 +39,10 @@ public class CLIView {
     }
     public CLIView(CommandLineInterpreter cli) {
     
-        this.userController = new UserController(cli);
-        this.playerController = new PlayerController(cli);
-        this.teamController = new TeamController(cli);
-        this.tournamentController = new TournamentController(cli);
+        this.userController = new UserController();
+        this.playerController = new PlayerController();
+        this.teamController = new TeamController();
+        this.tournamentController = new TournamentController();
         this.cli = cli;
         this.errorView = new ErrorView(); 
     }

@@ -3,10 +3,6 @@ package practica1.gestordeportivo.controllers;
 import practica1.gestordeportivo.models.Player;
 
 public class PlayerController extends Controller{
-
-    public PlayerController() {
-        super(null);
-    }
    
     public void create(String username, String password, String forename, String surname, String id) {
         Player player = new Player(username, password, forename, surname, id);
