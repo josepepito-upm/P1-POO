@@ -1,5 +1,6 @@
 package practica1.gestordeportivo.commands;
 
+import practica1.gestordeportivo.controllers.PlayerController;
 import practica1.gestordeportivo.controllers.TournamentController;
 import practica1.gestordeportivo.models.Player;
 import practica1.gestordeportivo.types.Errors;
@@ -7,7 +8,9 @@ import practica1.gestordeportivo.types.Errors;
 public class TournamentRemove extends PlayerCommands {
 
     private TournamentController tournamentController = new TournamentController();
-    
+    public TournamentRemove(PlayerController playerController) {
+        super(playerController);
+    }
     public Errors validate(String command) {
         super.validate(command);
 

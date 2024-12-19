@@ -1,12 +1,11 @@
 package practica1.gestordeportivo.controllers;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Tournament;
 
 public class TournamentController extends Controller{
 
-    public TournamentController(CommandLineInterpreter cli) {
-        super(cli);
+    public TournamentController() {
+        super(null);
     }
     
     public void create(String name, String startDate, String endDate, String league, String sport) {

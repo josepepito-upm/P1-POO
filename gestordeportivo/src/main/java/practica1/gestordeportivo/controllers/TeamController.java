@@ -1,12 +1,11 @@
 package practica1.gestordeportivo.controllers;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Team;
 
 public class TeamController extends Controller{
 
-    public TeamController(CommandLineInterpreter cli) {
-        super(cli);
+    public TeamController() {
+        super(null);
     }
 
     public void create(String name) {

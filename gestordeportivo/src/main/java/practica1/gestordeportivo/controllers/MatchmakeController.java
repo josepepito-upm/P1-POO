@@ -1,12 +1,11 @@
 package practica1.gestordeportivo.controllers;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Matchmake;
 
 public class MatchmakeController extends Controller{
 
-    public MatchmakeController(CommandLineInterpreter cli) {
-        super(cli);
+    public MatchmakeController() {
+        super(null);
     }
     
     public Matchmake manualMatchmake(String player1Name, String player2Name) {

@@ -1,15 +1,12 @@
 package practica1.gestordeportivo.controllers;
 
-import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.User;
 import practica1.gestordeportivo.types.Role;
 
 public class UserController extends Controller{
 
-    private CommandLineInterpreter cli;
-
-    public UserController(CommandLineInterpreter cli) {
-        super(cli);
+    public UserController() {
+        super(null);
     }
 
     public void login(String username, String password) {

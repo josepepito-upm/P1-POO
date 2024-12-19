@@ -8,6 +8,7 @@ public abstract class Controller {
     public Controller(CommandLineInterpreter cli) {
         this.cli = cli;
     }
+    
 
     public CommandLineInterpreter getCli() {
         return cli;

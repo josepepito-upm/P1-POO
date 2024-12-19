@@ -1,10 +1,13 @@
 package practica1.gestordeportivo.commands;
 
+import practica1.gestordeportivo.controllers.PlayerController;
 import practica1.gestordeportivo.controllers.TournamentController;
 import practica1.gestordeportivo.types.Errors;
 
 public class TournamentAdd extends PlayerCommands {
-    
+    public TournamentAdd(PlayerController playerController) {
+        super(playerController);
+    }
     private TournamentController tournamentController = new TournamentController();
 
     public Errors validate(String command) {

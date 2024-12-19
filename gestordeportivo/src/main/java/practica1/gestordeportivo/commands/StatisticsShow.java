@@ -1,11 +1,15 @@
 package practica1.gestordeportivo.commands;
 
+import practica1.gestordeportivo.controllers.PlayerController;
 import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.views.StatsView;
 
 public class StatisticsShow extends PlayerCommands {
 
     private StatsView statsView = new StatsView();
+    public StatisticsShow(PlayerController playerController) {
+        super(playerController);
+    }
 
     public Errors validate(String command) {
         super.validate(command);

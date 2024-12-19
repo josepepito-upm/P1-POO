@@ -22,6 +22,21 @@ public class CLIView {
     private final Console console = System.console();
 
 
+    public UserController getUserController(){
+        return userController;
+    }
+
+    public PlayerController getPlayerController(){
+        return playerController;
+    }
+
+    public TeamController getTeamController(){
+        return teamController;
+    }
+
+    public TournamentController getTournamentController(){
+        return tournamentController;
+    }
     public CLIView(CommandLineInterpreter cli) {
     
         this.userController = new UserController(cli);
