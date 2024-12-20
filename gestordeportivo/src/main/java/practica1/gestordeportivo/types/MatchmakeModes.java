@@ -45,6 +45,4 @@ public enum MatchmakeModes {
         }        
         return null;
     }
-
-    
 }

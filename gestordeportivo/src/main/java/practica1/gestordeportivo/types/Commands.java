@@ -24,7 +24,7 @@ public enum Commands {
     RECOVERALL("recover-all");
 
     private static final CommandInterface[] generateCommands(CommandLineInterpreter cli, String modes) {
-        assert cli != null : "Error: CommandLineInterpreter is null";
+        assert cli != null : "Error: CommandLineInterpreter es null";
         
         return new CommandInterface[] {
             new PlayerCreate(cli),

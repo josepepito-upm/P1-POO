@@ -40,7 +40,6 @@ public class CommandLineInterpreter {
 
     public void setAuthenticatedUser(User user) {
         this.authenticatedUser = user;
-        System.out.println("Usuario autenticado después del login: " + getAuthenticatedUser());
     }
     
     public User getAuthenticatedUser() {
@@ -57,28 +56,4 @@ public class CommandLineInterpreter {
     public boolean isAuthenticatedPlayer() {
         return authenticatedUser instanceof Player;
     }
-/** 
-    public Errors executeCommand(String command) {
-        System.out.println("Comando recibido: " + command); // Depuración
-
-        if (command == null || command.trim().isEmpty()) {
-            System.out.println("Error: Comando vacío o nulo.");
-            return Errors.SYNTAX_ERROR; 
-            
-        }
-
-        for (Commands cmd : Commands.values()) {
-            if (command.startsWith(cmd.getName())) {
-                System.out.println("Comando reconocido: " + cmd.getName());
-                Errors validationResult = cmd.getCommand().validate(command);
-                if (!validationResult.isNull()) {
-                    return validationResult; 
-                }
-                return cmd.getCommand().execute(command); 
-            }
-        }
-        System.out.println("Error: Comando no encontrado.");
-        return Errors.COMMAND_NOT_FOUND;
-    }
-*/
 }

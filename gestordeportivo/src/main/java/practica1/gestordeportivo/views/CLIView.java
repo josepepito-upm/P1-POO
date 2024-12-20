@@ -20,19 +20,20 @@ public class CLIView {
     public void initialize() {
         String command;
         do {
-            System.out.println("Usuario autenticado en CLIView: " + cli.getAuthenticatedUser());//PRUEBA
-            System.out.println(cli.getAuthenticatedUser().toString() + prompt); 
+            
+            new UserView(cli.getAuthenticatedUser()).view();
+            System.out.print(prompt);
+
             command = console.readLine();
             if (command == null || command.trim().isEmpty()) {
                 errorView.writeError(Errors.SYNTAX_ERROR); 
                 continue;
             }
             getCommand(command);
-        } while(!"exit".equalsIgnoreCase(command)); //PRUEBA
+        } while(!"exit".equalsIgnoreCase(command)); //PRUEBA (Falta definir que si el comando es exit no devuelva un comando no encontrado)
     }
 
     private void getCommand(String command) {
-        System.out.println(prompt);
         Errors status = Commands.executeCommand(command, cli);
         if (!status.isNull()) { 
             errorView.writeError(status);
