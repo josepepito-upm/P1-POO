@@ -8,9 +8,9 @@ import practica1.gestordeportivo.views.CLIView;
 public class SportsManager {
 
     public static void main(String[] args) {
-        UserController userController = new UserController(); 
+        CommandLineInterpreter cli = new CommandLineInterpreter();
+        UserController userController = new UserController(cli); 
         DataInitializer.initializeUsers(userController); 
-        CommandLineInterpreter cli = new CommandLineInterpreter();//prueba
         new CLIView(cli).initialize();
     }
 }
