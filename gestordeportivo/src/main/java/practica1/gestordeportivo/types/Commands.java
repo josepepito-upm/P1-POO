@@ -2,6 +2,8 @@ package practica1.gestordeportivo.types;
 
 import practica1.gestordeportivo.commands.*;
 import practica1.gestordeportivo.models.CommandLineInterpreter;
+import java.util.HashMap;
+import java.util.Map;
 
 public enum Commands {
     CREATE_PLAYER("player-create"),
@@ -29,29 +31,31 @@ public enum Commands {
         this.name = name;
     }
 
-    public void initialize(CommandLineInterpreter cli) {
+    public static void initializeCommands(CommandLineInterpreter cli) {
+        Map<String, CommandInterface> commandMap = new HashMap<>();
+        commandMap.put("player-create", new PlayerCreate(cli));
+        commandMap.put("team-create", new TeamCreate(cli));
+        commandMap.put("tournament-create", new TournamentCreate(cli));
+        commandMap.put("player-delete", new PlayerDelete(cli));
+        commandMap.put("team-delete", new TeamDelete(cli));
+        commandMap.put("tournament-delete", new TournamentDelete(cli));
+        commandMap.put("team-add", new TeamAdd(cli));
+        commandMap.put("team-remove", new TeamRemove(cli));
+        commandMap.put("tournament-matchmaking", MatchmakeModes.commandInterface);
+        commandMap.put("tournament-add", new TournamentAdd(cli));
+        commandMap.put("tournament-remove", new TournamentRemove(cli));
+        commandMap.put("statistics-show", new StatisticsShow(cli));
+        commandMap.put("tournament-list", new ListTournaments(cli));
+        commandMap.put("login", new Login(cli));
+        commandMap.put("logout", new Logout(cli));
+        commandMap.put("save-all", new SaveAll(cli));
+        commandMap.put("recover-all", new RecoverAll(cli));
+
         for (Commands command : Commands.values()) {
-            command.commandInterface = switch (command) {
-                case CREATE_PLAYER -> new PlayerCreate(cli);
-                case CREATE_TEAM -> new TeamCreate(cli);
-                case CREATE_TOURNAMENT -> new TournamentCreate(cli);
-                case DELETE_PLAYER -> new PlayerDelete(cli);
-                case DELETE_TEAM -> new TeamDelete(cli);
-                case DELETE_TOURNAMENT -> new TournamentDelete(cli);
-                case ADD_TEAM -> new TeamAdd(cli);
-                case REMOVE_TEAM -> new TeamRemove(cli);
-                case MATCHMAKING -> MatchmakeModes.commandInterface;
-                case ADD_TOURNAMENT -> new TournamentAdd(cli);
-                case REMOVE_TOURNAMENT -> new TournamentRemove(cli);
-                case SHOW_STATISTICS -> new StatisticsShow(cli);
-                case LIST -> new ListTournaments(cli);
-                case LOGIN -> new Login(cli);
-                case LOGOUT -> new Logout(cli);
-                case SAVEALL -> new SaveAll(cli);
-                case RECOVERALL -> new RecoverAll(cli);
-            };
+            command.commandInterface = commandMap.get(command.name);
         }
     }
+
 
 
     public static Commands getCommandForInput(String input) {

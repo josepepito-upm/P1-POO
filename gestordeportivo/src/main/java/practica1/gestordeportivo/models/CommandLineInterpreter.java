@@ -23,9 +23,8 @@ public class CommandLineInterpreter {
         tournamentList = new TournamentList();
         authenticatedUser = new User("Guest", null);
         authenticatedUser.setRole(Role.GUEST);
-        for (Commands command : Commands.values()) {
-            command.initialize(this);
-        }
+    
+        Commands.initializeCommands(this);
     }
 
     public PlayerList getPlayerList() {
