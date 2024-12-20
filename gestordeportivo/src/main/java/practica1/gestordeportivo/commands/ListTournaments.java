@@ -7,9 +7,13 @@ import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.types.Role;
 import practica1.gestordeportivo.views.TournamentListView;
 import practica1.gestordeportivo.models.lists.TournamentList;
+import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Tournament;
 public class ListTournaments extends PublicCommands {
 
+    public ListTournaments(CommandLineInterpreter cli) {
+        super(cli);
+    }
     UserController userController = new UserController(cli);
     TournamentListView tournamentListView = new TournamentListView();
     TournamentList tournamentList = userController.getCli().getTournamentList();

@@ -8,11 +8,15 @@ import practica1.gestordeportivo.models.CommandLineInterpreter;
 abstract class PublicCommands implements CommandInterface {
     protected CommandLineInterpreter cli;
     protected UserController userController = new UserController(cli);
+    public PublicCommands(CommandLineInterpreter cli) {
+        this.cli = cli;
+        this.userController = new UserController(cli); // Inicialización correcta
+    }
     
     public abstract Errors execute(String command);
 
     public Errors validate(String command) {  
-        if(userController.getCli().getAuthenticatedUser().getRole() != Role.GUEST) { 
+        if(cli.getAuthenticatedUser().getRole() != Role.GUEST) { 
             return Errors.UNAUTHORIZED_COMMAND;
         } else return Errors.NULL;
     }

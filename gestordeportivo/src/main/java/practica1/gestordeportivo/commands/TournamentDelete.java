@@ -5,7 +5,7 @@ import practica1.gestordeportivo.models.Tournament;
 import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.models.CommandLineInterpreter;
 public class TournamentDelete extends AdminCommands {
-    TournamentDelete(CommandLineInterpreter cli) {
+    public TournamentDelete(CommandLineInterpreter cli) {
         super(cli);
     }
     private TournamentController tournamentController = new TournamentController(cli);

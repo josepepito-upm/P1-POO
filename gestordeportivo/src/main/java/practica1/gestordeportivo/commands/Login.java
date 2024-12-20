@@ -1,9 +1,13 @@
 package practica1.gestordeportivo.commands;
 import practica1.gestordeportivo.controllers.UserController;
+import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.types.Errors;
 
 public class Login extends PublicCommands {
 
+    public Login(CommandLineInterpreter cli) {
+        super(cli);
+    }
     private UserController userController = new UserController(cli);
 
     public Errors validate(String command) {
