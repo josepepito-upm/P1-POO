@@ -3,7 +3,6 @@ package practica1.gestordeportivo.types;
 import practica1.gestordeportivo.commands.*;
 import practica1.gestordeportivo.models.CommandLineInterpreter;
 import java.util.HashMap;
-import java.util.Map;
 
 public enum Commands {
     CREATE_PLAYER("player-create"),
@@ -24,41 +23,37 @@ public enum Commands {
     SAVEALL("save-all"),
     RECOVERALL("recover-all");
 
+    private static final CommandInterface[] generateCommands(CommandLineInterpreter cli, String modes) {
+        assert cli != null : "Error: CommandLineInterpreter is null";
+        
+        return new CommandInterface[] {
+            new PlayerCreate(cli),
+            new TeamCreate(cli),
+            new TournamentCreate(cli),
+            new PlayerDelete(cli),
+            new TeamDelete(cli),
+            new TournamentDelete(cli),
+            new TeamAdd(cli),
+            new TeamRemove(cli),
+            MatchmakeModes.getCommandInterface(cli, modes), //revisar
+            new TournamentAdd(cli),
+            new TournamentRemove(cli),
+            new StatisticsShow(cli),
+            new ListTournaments(cli),
+            new Login(cli),
+            new Logout(cli),
+            new SaveAll(cli),
+            new RecoverAll(cli)
+        };
+    }
+
     private final String name;
-    private CommandInterface commandInterface;
 
     Commands(String name) {
         this.name = name;
     }
 
-    public static void initializeCommands(CommandLineInterpreter cli) {
-        Map<String, CommandInterface> commandMap = new HashMap<>();
-        commandMap.put("player-create", new PlayerCreate(cli));
-        commandMap.put("team-create", new TeamCreate(cli));
-        commandMap.put("tournament-create", new TournamentCreate(cli));
-        commandMap.put("player-delete", new PlayerDelete(cli));
-        commandMap.put("team-delete", new TeamDelete(cli));
-        commandMap.put("tournament-delete", new TournamentDelete(cli));
-        commandMap.put("team-add", new TeamAdd(cli));
-        commandMap.put("team-remove", new TeamRemove(cli));
-        commandMap.put("tournament-matchmaking", MatchmakeModes.commandInterface);
-        commandMap.put("tournament-add", new TournamentAdd(cli));
-        commandMap.put("tournament-remove", new TournamentRemove(cli));
-        commandMap.put("statistics-show", new StatisticsShow(cli));
-        commandMap.put("tournament-list", new ListTournaments(cli));
-        commandMap.put("login", new Login(cli));
-        commandMap.put("logout", new Logout(cli));
-        commandMap.put("save-all", new SaveAll(cli));
-        commandMap.put("recover-all", new RecoverAll(cli));
-
-        for (Commands command : Commands.values()) {
-            command.commandInterface = commandMap.get(command.name);
-        }
-    }
-
-
-
-    public static Commands getCommandForInput(String input) {
+    private static Commands getCommandForInput(String input) {
         for (Commands command : Commands.values()) {
             if (input.startsWith(command.name)) {
                 return command;
@@ -66,15 +61,32 @@ public enum Commands {
         }
         return null; // No se encontró un comando válido
     }
-    public void initialize(CommandInterface commandInterface) {
-        this.commandInterface = commandInterface;
-    }
-
-    public CommandInterface getCommand() {
-        return commandInterface;
-    }
 
     public String getName() {
         return name;
+    }
+
+    private static HashMap<String, CommandInterface> generateHash(CommandLineInterpreter cli, String modes) {
+        HashMap<String, CommandInterface> commandMap = new HashMap<>();
+        CommandInterface[] commandList = generateCommands(cli, modes);
+        for (Commands command : Commands.values()) {
+            commandMap.put(command.getName(), commandList[command.ordinal()]);       
+        }
+        return commandMap;
+    }
+
+    public static Errors executeCommand(String command, CommandLineInterpreter cli) {
+        //Generamos la lista de comandos (Tabla hash)
+        HashMap<String, CommandInterface> commandMap = generateHash(cli, command);
+        //Obtenemos el comando
+        Commands cmd = getCommandForInput(command);
+        if (cmd == null) {
+            //Si es nulo, devolvemos el error de comando no encontrado
+            return Errors.COMMAND_NOT_FOUND;
+        } else if(cmd == Commands.MATCHMAKING && commandMap.get(Commands.MATCHMAKING.getName()) == null){
+            return Errors.WRONG_MATCHMAKING_MODE;
+        }   
+        //Si no hay ningún problema, ejecutamos el comando
+        return commandMap.get(cmd.getName()).execute(command);
     }
 }

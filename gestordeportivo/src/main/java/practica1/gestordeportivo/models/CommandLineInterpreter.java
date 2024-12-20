@@ -4,8 +4,6 @@ import practica1.gestordeportivo.models.lists.MatchmakeList;
 import practica1.gestordeportivo.models.lists.PlayerList;
 import practica1.gestordeportivo.models.lists.TeamList;
 import practica1.gestordeportivo.models.lists.TournamentList;
-import practica1.gestordeportivo.types.Commands;
-import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.types.Role;
 
 public class CommandLineInterpreter {
@@ -24,7 +22,7 @@ public class CommandLineInterpreter {
         authenticatedUser = new User("Guest", null);
         authenticatedUser.setRole(Role.GUEST);
     
-        Commands.initializeCommands(this);
+        //Commands.initializeCommands(this);
     }
 
     public PlayerList getPlayerList() {
@@ -59,7 +57,7 @@ public class CommandLineInterpreter {
     public boolean isAuthenticatedPlayer() {
         return authenticatedUser instanceof Player;
     }
-
+/** 
     public Errors executeCommand(String command) {
         System.out.println("Comando recibido: " + command); // Depuración
 
@@ -82,4 +80,5 @@ public class CommandLineInterpreter {
         System.out.println("Error: Comando no encontrado.");
         return Errors.COMMAND_NOT_FOUND;
     }
+*/
 }

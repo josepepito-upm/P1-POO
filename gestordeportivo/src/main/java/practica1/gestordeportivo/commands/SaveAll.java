@@ -1,6 +1,5 @@
 package practica1.gestordeportivo.commands;
 
-import practica1.gestordeportivo.controllers.MatchmakeController;
 import practica1.gestordeportivo.controllers.PlayerController;
 import practica1.gestordeportivo.controllers.TeamController;
 import practica1.gestordeportivo.controllers.TournamentController;
@@ -11,7 +10,6 @@ public class SaveAll extends AdminCommands {
     private PlayerController playerController = new PlayerController(cli);
     private TeamController teamController = new TeamController(cli);
     private TournamentController tournamentController = new TournamentController(cli);
-    private MatchmakeController matchmakeController = new MatchmakeController(cli);
 
     public SaveAll(CommandLineInterpreter cli) {
         super(cli);

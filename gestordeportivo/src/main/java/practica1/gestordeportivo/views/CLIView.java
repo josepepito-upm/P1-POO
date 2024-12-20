@@ -3,6 +3,7 @@ package practica1.gestordeportivo.views;
 import java.io.Console;
 
 import practica1.gestordeportivo.models.CommandLineInterpreter;
+import practica1.gestordeportivo.types.Commands;
 import practica1.gestordeportivo.types.Errors;
 
 public class CLIView {
@@ -32,8 +33,7 @@ public class CLIView {
 
     private void getCommand(String command) {
         System.out.println(prompt);
-        Errors status = cli.executeCommand(command);
-        
+        Errors status = Commands.executeCommand(command, cli);
         if (!status.isNull()) { 
             errorView.writeError(status);
             return;

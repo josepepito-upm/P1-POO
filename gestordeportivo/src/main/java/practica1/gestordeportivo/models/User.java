@@ -14,11 +14,11 @@ public class User {
         this.role = Role.GUEST;
     }
 
-    protected String getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    protected String getPassword() {
+    public String getPassword() {
         return password;
     }
 

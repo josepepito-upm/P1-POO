@@ -2,6 +2,8 @@ package practica1.gestordeportivo.controllers;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.Scanner;
+import java.io.File;
 
 import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Player;
@@ -27,7 +29,8 @@ public class PlayerController extends Controller{
 
         for(Player player : getCli().getPlayerList().getPlayers()) {
             try {
-                bwPlayer.write(player.getForename() + ", " + player.getSurname() + ", " + player.getId());
+                bwPlayer.write(player.getUsername() + "," + player.getPassword() + "," + 
+                                player.getForename() + "," + player.getSurname() + "," + player.getId());
                 bwPlayer.newLine();
             } catch (IOException e) {
                 e.getMessage();
@@ -36,6 +39,17 @@ public class PlayerController extends Controller{
     }
 
     public void recoverAllPlayers() {
-
+        File file = new File("playerFile.txt");
+        try {
+                Scanner scanner = new Scanner(file);
+                while(scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    String[] parts = line.split(",");
+                    create(parts[0], parts[1], parts[2], parts[3], parts[4]);
+                }
+                scanner.close();
+            } catch (IOException e) {
+                e.getMessage();
+            }
     }
 }

@@ -9,7 +9,6 @@ public class Player extends User {
     private boolean matched;
     private Statistics stats;
     private Role role;
-    @SuppressWarnings("unused")
     private Admin creator;
 
     public Player(String username, String password, String forename, String surname, String id) {

@@ -33,8 +33,8 @@ public class TournamentController extends Controller{
 
         for(Tournament tournament : getCli().getTournamentList().getTournaments()) {
             try {
-                bwTournament.write(tournament.getName() + ", " + tournament.getleague() + ", " + tournament.getSport() + ", " +
-                                    tournament.getStartDate() + ", " + tournament.getEndDate());
+                bwTournament.write(tournament.getName() + "," + tournament.getleague() + "," + tournament.getSport() + "," +
+                                    tournament.getStartDate() + "," + tournament.getEndDate());
                 bwTournament.newLine();
             } catch (IOException e) {
                 e.getMessage();
