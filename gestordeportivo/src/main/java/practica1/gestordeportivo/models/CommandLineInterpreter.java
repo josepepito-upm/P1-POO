@@ -23,6 +23,9 @@ public class CommandLineInterpreter {
         tournamentList = new TournamentList();
         authenticatedUser = new User("Guest", null);
         authenticatedUser.setRole(Role.GUEST);
+        for (Commands command : Commands.values()) {
+            command.initialize(this);
+        }
     }
 
     public PlayerList getPlayerList() {
@@ -67,11 +70,14 @@ public class CommandLineInterpreter {
             
         }
 
-        for (Commands commands : Commands.values()) {
-            System.out.println("Verificando comando: " + commands.getName()); // Depuración
-            if (command.startsWith(commands.getName())) { 
-                System.out.println("Comando reconocido: " + commands.getName()); // Confirmar coincidencia
-                return commands.getCommand().execute(command); 
+        for (Commands cmd : Commands.values()) {
+            if (command.startsWith(cmd.getName())) {
+                System.out.println("Comando reconocido: " + cmd.getName());
+                Errors validationResult = cmd.getCommand().validate(command);
+                if (!validationResult.isNull()) {
+                    return validationResult; 
+                }
+                return cmd.getCommand().execute(command); 
             }
         }
         System.out.println("Error: Comando no encontrado.");
