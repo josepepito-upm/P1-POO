@@ -1,7 +1,9 @@
 package practica1.gestordeportivo.controllers;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Tournament;
@@ -34,7 +36,7 @@ public class TournamentController extends Controller{
         for(Tournament tournament : getCli().getTournamentList().getTournaments()) {
             try {
                 bwTournament.write(tournament.getName() + "," + tournament.getleague() + "," + tournament.getSport() + "," +
-                                    tournament.getStartDate() + "," + tournament.getEndDate());
+                                    tournament.getStartDate() + "," + tournament.getEndDate() + "," + tournament.getParticipants());
                 bwTournament.newLine();
             } catch (IOException e) {
                 e.getMessage();
@@ -43,6 +45,15 @@ public class TournamentController extends Controller{
     }
 
     public void recoverAllTournaments() {
-
+        File tournamentsFile = new File("tournamentFile.txt");
+        try (Scanner scanner = new Scanner(tournamentsFile)) {
+            while(scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split(",");
+                create(parts[0], parts[1], parts[2], parts[3], parts[4]);
+            }
+        } catch (IOException e) {
+            e.getMessage();
+        }
     }
 }

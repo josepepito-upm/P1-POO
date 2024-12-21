@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import practica1.gestordeportivo.models.Tournament;
 public class TournamentList {
     
@@ -24,7 +25,7 @@ public class TournamentList {
    }
 
    public ArrayList<Tournament> randomOrder() {
-      ArrayList<Tournament> ordered = new ArrayList<Tournament>();
+      ArrayList<Tournament> ordered = new ArrayList<>();
       int previousIndex = -1, added = 0;
       while(added < tournaments.size()) {
          int randomIndex = (int)(Math.random()*tournaments.size());

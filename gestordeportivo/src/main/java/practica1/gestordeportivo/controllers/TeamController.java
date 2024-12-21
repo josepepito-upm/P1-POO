@@ -1,7 +1,9 @@
 package practica1.gestordeportivo.controllers;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 import practica1.gestordeportivo.models.CommandLineInterpreter;
 import practica1.gestordeportivo.models.Team;
@@ -43,7 +45,15 @@ public class TeamController extends Controller{
     }
 
     public void recoverAllTeams() {
-
+        File teamsFile = new File("teamFile.txt");
+        try (Scanner scanner = new Scanner(teamsFile)) {
+            while(scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                create(line);
+            }
+        } catch (IOException e) {
+            e.getMessage();
+        }
     }
 
 }

@@ -7,8 +7,8 @@ public class Player extends User {
     private final String surname;
     private final String id;
     private boolean matched;
-    private Statistics stats;
-    private Role role;
+    private final Statistics stats;
+    private final Role role;
     private Admin creator;
 
     public Player(String username, String password, String forename, String surname, String id) {
@@ -46,6 +46,7 @@ public class Player extends User {
     public void setMatched(boolean matched) {
         this.matched = matched;
     }
+    
     public void setCreator(Admin creator) {
         this.creator = creator;
     }

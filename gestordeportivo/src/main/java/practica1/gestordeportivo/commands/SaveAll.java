@@ -3,8 +3,9 @@ package practica1.gestordeportivo.commands;
 import practica1.gestordeportivo.controllers.PlayerController;
 import practica1.gestordeportivo.controllers.TeamController;
 import practica1.gestordeportivo.controllers.TournamentController;
-import practica1.gestordeportivo.types.Errors;
 import practica1.gestordeportivo.models.CommandLineInterpreter;
+import practica1.gestordeportivo.types.Errors;
+
 public class SaveAll extends AdminCommands {
     
     private PlayerController playerController = new PlayerController(cli);

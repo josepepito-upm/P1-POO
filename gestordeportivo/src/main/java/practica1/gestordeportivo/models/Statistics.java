@@ -36,4 +36,8 @@ public class Statistics {
     public double getStat(int position) {
         return stats[position];
     }
+
+    public void setStat(int position, double value) {
+        stats[position] = value;
+    }
 }
